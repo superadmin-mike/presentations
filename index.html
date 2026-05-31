@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentaciones — Mike Cordova (麦克)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);
+            color: #F5F5F2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #F5F5F2 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #D4AF37;
+            margin-bottom: 60px;
+        }
+        
+        .presentations {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .presentation-card {
+            background: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 5px solid #D4AF37;
+        }
+        
+        .presentation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.2);
+            border-top: 1px solid rgba(212, 175, 55, 0.4);
+        }
+        
+        .presentation-card h3 {
+            font-size: 24px;
+            color: #D4AF37;
+            margin-bottom: 12px;
+        }
+        
+        .presentation-card p {
+            font-size: 14px;
+            color: #6E6E6E;
+            line-height: 1.6;
+        }
+        
+        footer {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #2A2A2A;
+            font-size: 13px;
+            color: #6E6E6E;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Presentaciones</h1>
+        <p class="subtitle">MIKE CORDOVA (麦克) | Sistemas que hacen crecer negocios</p>
+        
+        <div class="presentations">
+            <a href="/crm-multicanal/presentacion.html" class="presentation-card">
+                <h3>CRM Multicanal</h3>
+                <p>Conversión de TikTok Ads → WhatsApp Personal<br><br>
+                Sistema nativo, costo cero al inicio, implementación 2-3 semanas.</p>
+            </a>
+        </div>
+        
+        <footer>
+            <p>© 2026 Mike Cordova. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
