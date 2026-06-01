@@ -489,60 +489,73 @@
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
-        /* FLUJO AUTOMATICO - CARD CAROUSEL */
+        /* FLUJO AUTOMATICO - 2-COLUMN GRID */
         .flow-container {
             margin-top: 60px;
             position: relative;
         }
 
         .flow-cards-wrapper {
-            position: relative;
-            height: 500px;
-            perspective: 1000px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
             margin-bottom: 60px;
+            position: relative;
         }
 
         .flow-card {
-            position: absolute;
-            inset: 0;
-            padding: 60px 40px;
+            padding: 40px;
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(20, 20, 20, 0.98));
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 20px;
-            opacity: 0;
-            visibility: hidden;
-            transform: rotateY(-90deg) translateZ(-50px);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            pointer-events: none;
-            will-change: transform, opacity, visibility;
+            will-change: transform, box-shadow, border-color;
             box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(8px);
-        }
-
-        .flow-card.active {
+            animation: flowCardEnter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
             opacity: 1;
             visibility: visible;
-            transform: rotateY(0deg) translateZ(0);
             pointer-events: auto;
-            animation: cardFlipIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 16px 64px rgba(212, 175, 55, 0.15), 0 0 32px rgba(212, 175, 55, 0.08);
         }
 
-        .flow-card.active:hover {
-            transform: rotateY(0deg) translateZ(4px) scale(1.02);
+        .flow-card:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .flow-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .flow-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .flow-card:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .flow-card:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .flow-card:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .flow-card:hover {
             border-color: rgba(212, 175, 55, 0.5);
             box-shadow: 0 20px 80px rgba(212, 175, 55, 0.2), 0 0 40px rgba(212, 175, 55, 0.12);
+            transform: translateY(-8px) scale(1.02);
         }
 
-        .flow-card.exiting {
-            opacity: 0;
-            visibility: hidden;
-            transform: rotateY(90deg) translateZ(-50px);
+        @media (max-width: 768px) {
+            .flow-cards-wrapper {
+                grid-template-columns: 1fr;
+            }
         }
 
         .card-content {
@@ -591,14 +604,8 @@
             stroke-width: 2;
         }
 
-        .flow-card.active .card-icon {
-            animation: iconFloatActive 2s ease-in-out infinite;
-            box-shadow: 0 16px 56px rgba(212, 175, 55, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-
-        .flow-card.active:hover .card-icon {
+        .card-icon:hover {
             transform: scale(1.1);
-            box-shadow: 0 20px 64px rgba(212, 175, 55, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
         .card-content h3 {
@@ -609,7 +616,7 @@
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .flow-card.active .card-content h3 {
+        .flow-card:hover .card-content h3 {
             color: var(--gold);
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
@@ -622,72 +629,32 @@
             transition: color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .flow-card.active .card-content p {
+        .flow-card:hover .card-content p {
             color: #E5E5E2;
         }
 
-        /* Navigation Controls */
+        /* Navigation Controls - HIDDEN */
         .flow-navigation {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            padding: 40px;
-            background: rgba(212, 175, 55, 0.03);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            border-radius: 12px;
+            display: none;
         }
 
-        .nav-btn {
-            padding: 12px 24px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--gold);
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            will-change: transform, box-shadow;
-        }
-
-        .nav-btn:hover:not(:disabled) {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.1));
-            border-color: rgba(212, 175, 55, 0.5);
-            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .nav-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .progress-indicator {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 2px;
-            min-width: 60px;
-            text-align: center;
-            animation: progressPulse 1s ease-in-out infinite;
-        }
 
         @media (max-width: 768px) {
-            .flow-cards-wrapper {
-                height: 600px;
-            }
-
             .flow-card {
-                padding: 40px 24px;
+                padding: 32px 24px;
             }
 
             .card-icon {
-                width: 80px;
-                height: 80px;
-                font-size: 40px;
+                width: 100px;
+                height: 100px;
+            }
+
+            .card-content h3 {
+                font-size: 24px;
+            }
+
+            .card-content p {
+                font-size: 14px;
             }
 
             .card-content h3 {
@@ -1305,6 +1272,17 @@
             }
         }
 
+        @keyframes flowCardEnter {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
         @keyframes arrowPulse {
             0%, 100% {
                 transform: translateX(0);
@@ -1551,56 +1529,8 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             new HeroParticleBackground('hero-canvas');
-
-            // Flow Card Carousel Navigation
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const cards = document.querySelectorAll('.flow-card');
-            const currentStepSpan = document.querySelector('.current-step');
-            let currentStep = 1;
-
-            function updateCarousel() {
-                cards.forEach((card) => {
-                    card.classList.remove('active', 'exiting');
-                    if (parseInt(card.dataset.step) === currentStep) {
-                        card.classList.add('active');
-                    }
-                });
-
-                currentStepSpan.textContent = currentStep;
-                prevBtn.disabled = currentStep === 1;
-                nextBtn.disabled = currentStep === cards.length;
-            }
-
-            prevBtn.addEventListener('click', () => {
-                if (currentStep > 1) {
-                    const currentCard = document.querySelector('[data-step="' + currentStep + '"]');
-                    currentCard.classList.add('exiting');
-                    currentStep--;
-                    setTimeout(updateCarousel, 100);
-                }
-            });
-
-            nextBtn.addEventListener('click', () => {
-                if (currentStep < cards.length) {
-                    const currentCard = document.querySelector('[data-step="' + currentStep + '"]');
-                    currentCard.classList.add('exiting');
-                    currentStep++;
-                    setTimeout(updateCarousel, 100);
-                }
-            });
-
-            cards.forEach((card) => {
-                card.addEventListener('click', () => {
-                    if (card.classList.contains('active') && currentStep < cards.length) {
-                        card.classList.add('exiting');
-                        currentStep++;
-                        setTimeout(updateCarousel, 100);
-                    }
-                });
-            });
-
-            updateCarousel();
+            // Flow Card Carousel Navigation - REMOVED
+            // Grid layout now displays all 6 cards simultaneously
         });
     </script>
 </head>
@@ -1780,14 +1710,6 @@
                             <p>La conexión está lista. El agente atiende el lead con contexto completo: número de consulta, campaña original, producto específico. Se inicia conversación personalizada y seguimiento directo desde WhatsApp.</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="flow-navigation">
-                    <button class="nav-btn prev-btn" id="prevBtn">← Anterior</button>
-                    <div class="progress-indicator">
-                        <span class="current-step">1</span> / <span class="total-steps">6</span>
-                    </div>
-                    <button class="nav-btn next-btn" id="nextBtn">Siguiente →</button>
                 </div>
             </div>
         </div>
