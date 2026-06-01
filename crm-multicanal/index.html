@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Multicanal — Mike Cordova · 麦克</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --black: #0D0D0D;
+            --white: #F5F5F2;
+            --gray: #6E6E6E;
+            --light-gray: #2A2A2A;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+            width: 100%;
+        }
+
+        /* HEADER */
+        header {
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.3));
+        }
+
+        header h1 {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #F5F5F2 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 20px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.8;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            flex: 1;
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 60px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .variant-card {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-left: 5px solid var(--gold);
+            padding: 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .variant-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .variant-card:hover::before {
+            left: 100%;
+        }
+
+        .variant-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
+            border-color: rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(26, 26, 26, 0.9));
+        }
+
+        .variant-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .variant-card h3 {
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .variant-card .description {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .variant-features {
+            list-style: none;
+            margin: 24px 0;
+            padding: 20px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .variant-features li {
+            font-size: 13px;
+            color: #6E6E6E;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .variant-features li:before {
+            content: '✓';
+            color: var(--gold);
+            margin-right: 10px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .view-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37, #A68B29);
+            color: var(--black);
+            padding: 14px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+            margin-top: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .variant-card:hover .view-button {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(212, 175, 55, 0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--gray);
+            background: linear-gradient(135deg, var(--black) 0%, rgba(30, 127, 126, 0.02) 100%);
+        }
+
+        footer p {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        footer strong {
+            color: var(--gold);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 30px;
+            }
+
+            header {
+                padding: 40px 0;
+            }
+
+            .logo-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            header h1 {
+                font-size: 40px;
+            }
+
+            .variants-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .variant-card {
+                padding: 40px;
+            }
+
+            .variant-card h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section">
+                <img src="logo.png" alt="Mike Cordova Logo" class="logo-img">
+                <div>
+                    <h1>CRM MULTICANAL</h1>
+                    <p class="tagline">MIKE CORDOVA · 麦克</p>
+                    <p class="subtitle">Sistema automático de conversión TikTok → WhatsApp</p>
+                </div>
+            </div>
+            <nav class="breadcrumb">
+                <a href="/">← Volver a propuestas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2 class="section-title">Variantes Disponibles</h2>
+
+            <div class="variants-grid">
+                <!-- CRM MULTICANAL - DESIGN OPTIMIZED -->
+                <a href="presentacion-v2-design.html" class="variant-card">
+                    <span class="variant-badge">✨ PRESENTACIÓN</span>
+                    <h3>Diseño Optimizado</h3>
+                    <p class="description">
+                        Presentación profesional completa con arquitectura del sistema, flujo de datos, casos de uso, plan de implementación y análisis de costos detallado.
+                    </p>
+                    <ul class="variant-features">
+                        <li>Arquitectura visual completa</li>
+                        <li>Plan de implementación 4 semanas</li>
+                        <li>Análisis de costos desglosado</li>
+                        <li>ROI y métricas de éxito</li>
+                    </ul>
+                    <button class="view-button">Ver Presentación Completa</button>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>Mike Cordova · 麦克</strong></p>
+            <p>Especialista en sistemas de bajo costo y alto impacto para negocios LATAM</p>
+            <p style="margin-top: 20px; opacity: 0.6;">© 2026 Mike Cordova. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

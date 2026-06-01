@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike Cordova · 麦克 — Propuestas de Sistemas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --black: #0D0D0D;
+            --white: #F5F5F2;
+            --gray: #6E6E6E;
+            --light-gray: #2A2A2A;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+            width: 100%;
+        }
+
+        /* HEADER */
+        header {
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.3));
+        }
+
+        header h1 {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #F5F5F2 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            flex: 1;
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 60px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .proposals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .proposal-card {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-left: 5px solid var(--gold);
+            padding: 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .proposal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .proposal-card:hover::before {
+            left: 100%;
+        }
+
+        .proposal-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
+            border-color: rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(26, 26, 26, 0.9));
+        }
+
+        .proposal-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .proposal-card h3 {
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .proposal-card .description {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .proposal-features {
+            list-style: none;
+            margin: 24px 0;
+            padding: 20px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .proposal-features li {
+            font-size: 13px;
+            color: #6E6E6E;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .proposal-features li:before {
+            content: '✓';
+            color: var(--gold);
+            margin-right: 10px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .view-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37, #A68B29);
+            color: var(--black);
+            padding: 14px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+            margin-top: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .proposal-card:hover .view-button {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(212, 175, 55, 0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--gray);
+            background: linear-gradient(135deg, var(--black) 0%, rgba(30, 127, 126, 0.02) 100%);
+        }
+
+        footer p {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        footer strong {
+            color: var(--gold);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 30px;
+            }
+
+            header {
+                padding: 40px 0;
+            }
+
+            .logo-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            header h1 {
+                font-size: 40px;
+            }
+
+            .proposals-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .proposal-card {
+                padding: 40px;
+            }
+
+            .proposal-card h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section">
+                <img src="/crm-multicanal/logo.png" alt="Mike Cordova Logo" class="logo-img">
+                <div>
+                    <h1>PROPUESTAS</h1>
+                    <p class="tagline">MIKE CORDOVA · 麦克</p>
+                    <p class="subtitle">Sistemas que hacen crecer negocios</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2 class="section-title">Base de Propuestas Disponibles</h2>
+
+            <div class="proposals-grid">
+                <!-- CRM MULTICANAL -->
+                <a href="/crm-multicanal/index.html" class="proposal-card">
+                    <span class="proposal-badge">✨ PROPUESTA</span>
+                    <h3>CRM Multicanal</h3>
+                    <p class="description">
+                        Sistema automático que convierte leads de TikTok Ads directamente a WhatsApp Personal, con seguimiento y cierre de ventas integrado.
+                    </p>
+                    <ul class="proposal-features">
+                        <li>Costo cero inicial</li>
+                        <li>Implementación 2-3 semanas</li>
+                        <li>Automatización completa</li>
+                        <li>ROI predecible</li>
+                    </ul>
+                    <button class="view-button">Ver Propuesta Completa</button>
+                </a>
+
+                <!-- PRÓXIMAS PROPUESTAS (placeholder) -->
+                <div class="proposal-card" style="opacity: 0.6; pointer-events: none;">
+                    <span class="proposal-badge">🔜 PRÓXIMA</span>
+                    <h3>Marketplace Integración</h3>
+                    <p class="description">
+                        Sincronización automática entre TikTok Shop, Shopify y sistemas de inventario con gestión centralizada.
+                    </p>
+                    <ul class="proposal-features">
+                        <li>API centralizada</li>
+                        <li>Stock en tiempo real</li>
+                        <li>Reportes unificados</li>
+                        <li>Escalabilidad garantizada</li>
+                    </ul>
+                    <button class="view-button" disabled>Próximamente</button>
+                </div>
+
+                <div class="proposal-card" style="opacity: 0.6; pointer-events: none;">
+                    <span class="proposal-badge">🔜 PRÓXIMA</span>
+                    <h3>Analytics Avanzado</h3>
+                    <p class="description">
+                        Dashboard unificado con métricas de TikTok Ads, Meta Ads y conversiones, con predicción de tendencias.
+                    </p>
+                    <ul class="proposal-features">
+                        <li>Dashboard real-time</li>
+                        <li>Predicción ML</li>
+                        <li>Alertas automáticas</li>
+                        <li>Exportación de reportes</li>
+                    </ul>
+                    <button class="view-button" disabled>Próximamente</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>Mike Cordova · 麦克</strong></p>
+            <p>Especialista en sistemas de bajo costo y alto impacto para negocios LATAM</p>
+            <p style="margin-top: 20px; opacity: 0.6;">© 2026 Mike Cordova. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
