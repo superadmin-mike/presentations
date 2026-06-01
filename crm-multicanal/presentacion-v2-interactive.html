@@ -17,11 +17,9 @@
             --gold-light: #E8D4A2;
             --black: #0D0D0D;
             --white: #F5F5F2;
-            --gray: #9E9E9E;
+            --gray: #6E6E6E;
             --light-gray: #2A2A2A;
             --darker-gray: #1A1A1A;
-            --accent-teal: #1E7F7E;
-            --accent-blue: #2B5A8C;
         }
 
         body {
@@ -43,15 +41,15 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(13, 13, 13, 0.95);
+            background: rgba(13, 13, 13, 0.98);
             backdrop-filter: blur(20px);
             padding: 20px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.9);
         }
 
         nav .logo-container {
@@ -66,22 +64,23 @@
         }
 
         nav .logo-icon {
-            width: 52px;
-            height: 52px;
+            width: 56px;
+            height: 56px;
             object-fit: contain;
-            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.4));
-            border-radius: 8px;
+            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.5));
+            border-radius: 0;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             animation: logoFloat 3s ease-in-out infinite;
         }
 
         @keyframes logoFloat {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
         }
 
         nav .logo-icon:hover {
-            transform: scale(1.1) rotateY(180deg);
+            transform: scale(1.12);
+            filter: drop-shadow(0 8px 25px rgba(212, 175, 55, 0.7));
         }
 
         nav ul {
@@ -93,11 +92,11 @@
         nav a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: all 0.3s;
-            font-weight: 500;
+            font-weight: 600;
             position: relative;
         }
 
@@ -108,20 +107,16 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--gold), var(--accent-teal));
+            background: linear-gradient(90deg, var(--gold), rgba(212, 175, 55, 0.3));
             transition: width 0.4s;
         }
 
-        nav a:hover::after {
+        nav a:hover::after, nav a.active::after {
             width: 100%;
         }
 
         nav a:hover, nav a.active {
             color: var(--gold);
-        }
-
-        nav a.active::after {
-            width: 100%;
         }
 
         /* HERO */
@@ -146,7 +141,7 @@
             right: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
             border-radius: 50%;
             animation: float 8s ease-in-out infinite;
         }
@@ -158,7 +153,7 @@
             left: -5%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(30, 127, 126, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             animation: float-reverse 10s ease-in-out infinite;
         }
@@ -232,46 +227,38 @@
             animation: slideInUp 1s ease-out 0.3s both;
         }
 
-        .hero-stats {
+        .implementation-time {
             display: flex;
-            gap: 60px;
             justify-content: center;
+            gap: 80px;
             margin-top: 60px;
-            flex-wrap: wrap;
             animation: slideInUp 1s ease-out 0.4s both;
+            flex-wrap: wrap;
         }
 
-        .stat {
+        .time-box {
             text-align: center;
             opacity: 0;
             animation: slideInUp 1s ease-out 0.5s forwards;
         }
 
-        .stat:nth-child(2) {
-            animation-delay: 0.6s;
-        }
-
-        .stat:nth-child(3) {
-            animation-delay: 0.7s;
-        }
-
-        .stat-number {
-            font-size: 48px;
+        .time-number {
+            font-size: 56px;
             font-weight: 800;
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             display: block;
-            font-variant-numeric: tabular-nums;
         }
 
-        .stat-label {
+        .time-label {
             font-size: 14px;
             color: var(--gray);
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 8px;
+            font-weight: 600;
         }
 
         .cta-button {
@@ -279,10 +266,12 @@
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: var(--black);
             padding: 16px 48px;
-            border-radius: 8px;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
             animation: slideInUp 1s ease-out 0.6s both;
@@ -294,10 +283,6 @@
             transform: translateY(-4px);
             box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
             background: linear-gradient(135deg, var(--gold-light), var(--gold));
-        }
-
-        .cta-button:active {
-            transform: translateY(-2px);
         }
 
         /* SECTIONS */
@@ -315,6 +300,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -1px;
         }
 
         /* SOLUTION CARDS */
@@ -328,13 +314,13 @@
         .solution-card {
             background: linear-gradient(135deg, rgba(42, 42, 42, 0.8), rgba(26, 26, 26, 0.6));
             padding: 40px;
-            border-radius: 12px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
             overflow: hidden;
             position: relative;
             opacity: 0;
+            border-top: 4px solid var(--gold);
         }
 
         .solution-card::before {
@@ -344,7 +330,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--gold), var(--accent-teal), var(--accent-blue));
+            background: linear-gradient(90deg, var(--gold), rgba(212, 175, 55, 0.3));
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s;
@@ -356,20 +342,42 @@
 
         .solution-card:hover {
             transform: translateY(-12px);
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(30, 127, 126, 0.05));
-            border-color: rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
+            border-color: rgba(212, 175, 55, 0.5);
             box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
         }
 
+        .solution-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+            display: inline-block;
+            width: 56px;
+            height: 56px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .solution-card:hover .solution-icon {
+            background: rgba(212, 175, 55, 0.2);
+            transform: scale(1.1);
+        }
+
         .solution-card h3 {
-            font-size: 24px;
+            font-size: 18px;
             color: var(--gold);
             margin-bottom: 12px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .solution-card p {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--gray);
             line-height: 1.8;
         }
@@ -386,7 +394,7 @@
 
         .flow-step {
             flex: 1;
-            min-width: 150px;
+            min-width: 140px;
             text-align: center;
             position: relative;
             opacity: 0;
@@ -414,9 +422,14 @@
         }
 
         .flow-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-            display: inline-block;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--gold);
+            background: rgba(212, 175, 55, 0.08);
             animation: bounce 2s ease-in-out infinite;
         }
 
@@ -426,9 +439,11 @@
         }
 
         .flow-step p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gray);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* TIMELINE */
@@ -460,9 +475,8 @@
 
         .timeline-content {
             width: calc(50% - 40px);
-            padding: 20px 30px;
+            padding: 24px 30px;
             background: rgba(42, 42, 42, 0.5);
-            border-radius: 8px;
             border-left: 3px solid var(--gold);
             transition: all 0.3s;
         }
@@ -474,19 +488,22 @@
         .timeline-item:nth-child(even) .timeline-content {
             margin-left: auto;
             border-left: none;
-            border-right: 3px solid var(--accent-teal);
+            border-right: 3px solid var(--gold);
         }
 
         .timeline-content:hover {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(212, 175, 55, 0.12);
             transform: translateX(10px);
-            border-color: var(--accent-teal);
+            border-color: rgba(212, 175, 55, 0.8);
         }
 
         .timeline-content h4 {
             color: var(--gold);
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .timeline-content p {
@@ -505,7 +522,6 @@
         .arch-component {
             background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.6));
             padding: 30px;
-            border-radius: 8px;
             border: 1px solid rgba(212, 175, 55, 0.15);
             text-align: center;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -521,97 +537,166 @@
 
         .arch-component:hover {
             transform: translateY(-8px);
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(30, 127, 126, 0.05));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
             border-color: var(--gold);
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
         }
 
         .arch-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-            display: inline-block;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--gold);
+            background: rgba(212, 175, 55, 0.08);
             transition: all 0.3s;
         }
 
         .arch-component:hover .arch-icon {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.15);
+            background: rgba(212, 175, 55, 0.15);
         }
 
         .arch-component h4 {
             color: var(--gold);
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .arch-component p {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gray);
+            line-height: 1.6;
         }
 
-        /* PRICING */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        /* PRICING / INVESTMENT */
+        .investment-container {
+            background: rgba(212, 175, 55, 0.06);
+            padding: 60px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
             margin: 60px 0;
         }
 
-        .price-card {
-            background: linear-gradient(135deg, rgba(42, 42, 42, 0.7), rgba(26, 26, 26, 0.5));
+        .investment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .investment-card {
+            background: linear-gradient(135deg, rgba(42, 42, 42, 0.8), rgba(26, 26, 26, 0.6));
             padding: 40px;
-            border-radius: 12px;
-            border-top: 4px solid var(--gold);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             text-align: center;
             opacity: 0;
             animation: slideInUp 0.8s ease-out forwards;
+            transition: all 0.4s;
         }
 
-        .price-card:nth-child(2) { animation-delay: 0.1s; }
-        .price-card:nth-child(3) { animation-delay: 0.2s; }
+        .investment-card:nth-child(2) { animation-delay: 0.1s; }
+        .investment-card:nth-child(3) { animation-delay: 0.2s; }
 
-        .price-card:hover {
-            transform: translateY(-15px);
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(30, 127, 126, 0.1));
-            border-top-color: var(--accent-teal);
+        .investment-card:hover {
+            transform: translateY(-12px);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.04));
+            border-color: var(--gold);
             box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
         }
 
-        .price-card h4 {
-            color: var(--gold);
-            font-size: 20px;
-            margin-bottom: 12px;
+        .investment-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            transition: all 0.3s;
         }
 
-        .price-amount {
-            font-size: 42px;
+        .investment-card:hover .investment-icon {
+            transform: scale(1.15);
+            background: rgba(212, 175, 55, 0.18);
+        }
+
+        .investment-card h4 {
+            color: var(--gold);
+            font-size: 16px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .investment-amount {
+            font-size: 48px;
             font-weight: 800;
             color: var(--white);
             margin: 20px 0;
-            background: linear-gradient(135deg, var(--gold), var(--accent-teal));
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .price-card ul {
-            list-style: none;
-            text-align: left;
-            margin: 30px 0;
+        .investment-period {
+            font-size: 12px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
-        .price-card li {
+        .investment-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .investment-card li {
             padding: 10px 0;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gray);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
 
-        .price-card li:before {
+        .investment-card li:before {
             content: '✓ ';
             color: var(--gold);
             margin-right: 8px;
             font-weight: 700;
+        }
+
+        .roi-highlight {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(212, 175, 55, 0.08);
+            border-left: 4px solid var(--gold);
+        }
+
+        .roi-highlight h4 {
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .roi-highlight p {
+            font-size: 15px;
+            color: var(--white);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .roi-highlight p strong {
+            color: var(--gold);
         }
 
         /* FOOTER */
@@ -620,7 +705,7 @@
             border-top: 1px solid rgba(212, 175, 55, 0.15);
             text-align: center;
             color: var(--gray);
-            font-size: 14px;
+            font-size: 13px;
         }
 
         footer p {
@@ -629,12 +714,6 @@
 
         footer strong {
             color: var(--gold);
-        }
-
-        /* ANIMATIONS ON SCROLL */
-        .reveal {
-            opacity: 0;
-            animation: slideInUp 0.8s ease-out forwards;
         }
 
         /* RESPONSIVE */
@@ -651,12 +730,21 @@
                 gap: 25px;
             }
 
+            nav a {
+                font-size: 10px;
+            }
+
             .hero h1 {
                 font-size: 48px;
             }
 
             section h2 {
                 font-size: 36px;
+            }
+
+            .implementation-time {
+                flex-direction: column;
+                gap: 40px;
             }
 
             .flow-steps {
@@ -685,9 +773,8 @@
                 border-right: none !important;
             }
 
-            .hero-stats {
-                flex-direction: column;
-                gap: 30px;
+            .investment-container {
+                padding: 40px;
             }
         }
     </style>
@@ -695,16 +782,16 @@
 <body>
     <!-- NAVIGATION -->
     <nav>
-        <a href="#solución" class="logo-container">
-            <img class="logo-icon" src="../logo.png" alt="Mike Cordova Logo" />
-            <span>MIKE CORDOVA (麦克)</span>
+        <a href="#hero" class="logo-container">
+            <img class="logo-icon" src="logo.png" alt="Mike Cordova Logo" />
+            <span>MIKE CORDOVA</span>
         </a>
         <ul>
             <li><a href="#solución" class="nav-link">Solución</a></li>
             <li><a href="#flujo" class="nav-link">Flujo</a></li>
             <li><a href="#timeline" class="nav-link">Timeline</a></li>
             <li><a href="#arquitectura" class="nav-link">Arquitectura</a></li>
-            <li><a href="#costos" class="nav-link">Costos</a></li>
+            <li><a href="#inversión" class="nav-link">Inversión</a></li>
         </ul>
     </nav>
 
@@ -713,20 +800,12 @@
         <div class="hero-content">
             <h1>CRM Multicanal</h1>
             <p class="subtitle">De TikTok Ads → WhatsApp Personal</p>
-            <p>Sistema nativo de conversión automática con costo cero inicial. Implementación en 2-3 semanas.</p>
+            <p>Sistema nativo de conversión automática. Implementación rápida y sin costos iniciales.</p>
 
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number" data-target="900">0</span>
-                    <span class="stat-label">Conversiones Mensuales</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" data-target="2.5">0</span>
-                    <span class="stat-label">CPC Optimizado (USD)</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" data-target="45">0</span>
-                    <span class="stat-label">% Reducción Costos</span>
+            <div class="implementation-time">
+                <div class="time-box">
+                    <span class="time-number">2-3</span>
+                    <span class="time-label">Semanas de Implementación</span>
                 </div>
             </div>
 
@@ -741,27 +820,57 @@
 
             <div class="solution-grid">
                 <div class="solution-card">
-                    <h3>📱 TikTok Ads Integration</h3>
-                    <p>Captura automática de leads desde campañas de TikTok Ads con sincronización en tiempo real.</p>
+                    <div class="solution-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>TikTok Ads</h3>
+                    <p>Captura automática de leads desde campañas con sincronización en tiempo real.</p>
                 </div>
                 <div class="solution-card">
-                    <h3>💬 WhatsApp CRM</h3>
-                    <p>Gestión centralizada de contactos en WhatsApp con historial completo de interacciones.</p>
+                    <div class="solution-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3>WhatsApp CRM</h3>
+                    <p>Gestión centralizada de contactos con historial completo de interacciones.</p>
                 </div>
                 <div class="solution-card">
-                    <h3>🔄 Automatización</h3>
-                    <p>Flujos automatizados para calificación, seguimiento y conversión de leads.</p>
+                    <div class="solution-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <polyline points="12 3v18M3 12h18"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Automatización</h3>
+                    <p>Flujos automáticos para calificación, seguimiento y conversión de leads.</p>
                 </div>
                 <div class="solution-card">
-                    <h3>📊 Analytics</h3>
+                    <div class="solution-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <polyline points="12 3v12M3 15h18"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Analytics</h3>
                     <p>Dashboard completo con métricas de conversión, ROI y performance del canal.</p>
                 </div>
                 <div class="solution-card">
-                    <h3>🛡️ Seguridad</h3>
+                    <div class="solution-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Seguridad</h3>
                     <p>Encriptación end-to-end y cumplimiento de normativas de privacidad LATAM.</p>
                 </div>
                 <div class="solution-card">
-                    <h3>⚡ Low-Code</h3>
+                    <div class="solution-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <circle cx="12" cy="12" r="1"></circle><path d="M12 1v6m0 6v6"></path><circle cx="4.22" cy="4.22" r="1"></circle><path d="M5.64 5.64l4.24-4.24m4.24 14.24l4.24 4.24"></path><circle cx="1" cy="12" r="1"></circle><path d="M7 12h6m6 0h6"></path><circle cx="4.22" cy="19.78" r="1"></circle><path d="M5.64 18.36l4.24 4.24m4.24-14.24l4.24-4.24"></path><circle cx="19.78" cy="19.78" r="1"></circle><path d="M18.36 18.36l4.24 4.24"></path><circle cx="19.78" cy="4.22" r="1"></circle><path d="M18.36 5.64l4.24-4.24"></path>
+                        </svg>
+                    </div>
+                    <h3>Low-Code</h3>
                     <p>Configuración sin código técnico, ideal para equipos de marketing y ventas.</p>
                 </div>
             </div>
@@ -775,23 +884,43 @@
 
             <div class="flow-steps">
                 <div class="flow-step">
-                    <div class="flow-icon">📢</div>
+                    <div class="flow-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                        </svg>
+                    </div>
                     <p>Campaña TikTok</p>
                 </div>
                 <div class="flow-step">
-                    <div class="flow-icon">👥</div>
+                    <div class="flow-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
                     <p>Lead Capture</p>
                 </div>
                 <div class="flow-step">
-                    <div class="flow-icon">🔗</div>
+                    <div class="flow-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <circle cx="12" cy="12" r="1"></circle><path d="M12 1v6m0 6v6"></path><circle cx="4.22" cy="4.22" r="1"></circle><path d="M5.64 5.64l4.24-4.24m4.24 14.24l4.24 4.24"></path><circle cx="1" cy="12" r="1"></circle><path d="M7 12h6m6 0h6"></path>
+                        </svg>
+                    </div>
                     <p>Sincronización</p>
                 </div>
                 <div class="flow-step">
-                    <div class="flow-icon">💚</div>
+                    <div class="flow-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
                     <p>WhatsApp CRM</p>
                 </div>
                 <div class="flow-step">
-                    <div class="flow-icon">✅</div>
+                    <div class="flow-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
                     <p>Conversión</p>
                 </div>
             </div>
@@ -839,97 +968,136 @@
 
             <div class="architecture-grid">
                 <div class="arch-component">
-                    <div class="arch-icon">🎯</div>
+                    <div class="arch-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
                     <h4>TikTok Ads API</h4>
-                    <p>Lead tracking y pixel sync en tiempo real</p>
+                    <p>Lead tracking y pixel sync</p>
                 </div>
                 <div class="arch-component">
-                    <div class="arch-icon">🔄</div>
+                    <div class="arch-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <circle cx="12" cy="12" r="1"></circle><path d="M12 1v6m0 6v6"></path><circle cx="4.22" cy="4.22" r="1"></circle><path d="M5.64 5.64l4.24-4.24"></path>
+                        </svg>
+                    </div>
                     <h4>Backend Service</h4>
-                    <p>Procesamiento y validación de datos</p>
+                    <p>Procesamiento y validación</p>
                 </div>
                 <div class="arch-component">
-                    <div class="arch-icon">💾</div>
+                    <div class="arch-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </div>
                     <h4>Database</h4>
-                    <p>PostgreSQL con replicación y backups automáticos</p>
+                    <p>PostgreSQL replicado</p>
                 </div>
                 <div class="arch-component">
-                    <div class="arch-icon">💬</div>
+                    <div class="arch-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
                     <h4>WhatsApp API</h4>
-                    <p>Envío de mensajes y gestión de contactos</p>
+                    <p>Mensajes en tiempo real</p>
                 </div>
                 <div class="arch-component">
-                    <div class="arch-icon">📊</div>
+                    <div class="arch-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <polyline points="12 3v12M3 15h18"></polyline>
+                        </svg>
+                    </div>
                     <h4>Analytics Engine</h4>
-                    <p>Métricas, reportes y dashboards en vivo</p>
+                    <p>Métricas y reportes</p>
                 </div>
                 <div class="arch-component">
-                    <div class="arch-icon">🛡️</div>
+                    <div class="arch-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
                     <h4>Security Layer</h4>
-                    <p>Encriptación E2E y compliance automático</p>
+                    <p>Encriptación E2E</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRICING SECTION -->
-    <section id="costos">
+    <!-- INVESTMENT SECTION -->
+    <section id="inversión">
         <div class="container">
-            <h2>Inversión y Costos</h2>
+            <h2>Inversión del Proyecto</h2>
 
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h4>Implementación</h4>
-                    <div class="price-amount">$0</div>
-                    <p><strong>Costo Inicial</strong></p>
-                    <ul>
-                        <li>Setup completo de APIs</li>
-                        <li>Configuración de workflows</li>
-                        <li>Training inicial equipo</li>
-                        <li>Optimizaciones base</li>
-                    </ul>
-                </div>
-                <div class="price-card">
-                    <h4>Mensual Base</h4>
-                    <div class="price-amount">$299</div>
-                    <p><strong>Plan Startup (0-1000 leads/mes)</strong></p>
-                    <ul>
-                        <li>Hasta 1000 leads mensuales</li>
-                        <li>Soporte por email/Slack</li>
-                        <li>Updates y mantenimiento</li>
-                        <li>1 usuario administrativo</li>
-                    </ul>
-                </div>
-                <div class="price-card">
-                    <h4>Escalable</h4>
-                    <div class="price-amount">$0.30</div>
-                    <p><strong>Por Lead Adicional</strong></p>
-                    <ul>
-                        <li>Después de 1000 leads/mes</li>
-                        <li>Soporte telefónico incluido</li>
-                        <li>Optimizaciones de performance</li>
-                        <li>Usuarios ilimitados</li>
-                    </ul>
-                </div>
-            </div>
+            <div class="investment-container">
+                <div class="investment-grid">
+                    <div class="investment-card">
+                        <div class="investment-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                                <path d="M12 1v22M17.56 3.56a8 8 0 1 0 0 16.88M6.44 20.44a8 8 0 0 0 10.88 0"></path>
+                            </svg>
+                        </div>
+                        <h4>Implementación</h4>
+                        <div class="investment-amount">$0</div>
+                        <div class="investment-period">COSTO INICIAL</div>
+                        <ul>
+                            <li>Setup completo APIs</li>
+                            <li>Configuración workflows</li>
+                            <li>Training equipo</li>
+                            <li>Optimizaciones base</li>
+                        </ul>
+                    </div>
 
-            <div style="margin-top: 80px; padding: 40px; background: rgba(212, 175, 55, 0.05); border-radius: 12px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.15);">
-                <h4 style="color: var(--gold); margin-bottom: 12px;">⚡ ROI Esperado</h4>
-                <p style="font-size: 16px; color: var(--white); margin-bottom: 20px;">
-                    Retorno de inversión en <strong>30-45 días</strong> con reducción de CPC de 45-65% respecto a canales tradicionales.
-                </p>
-                <p style="color: var(--gray); font-size: 14px;">
-                    Basado en campañas de performance LATAM | ROI varía según vertical, presupuesto y competencia
-                </p>
+                    <div class="investment-card">
+                        <div class="investment-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                                <circle cx="12" cy="12" r="1"></circle><path d="M12 1v6m0 6v6"></path><circle cx="4.22" cy="4.22" r="1"></circle><path d="M5.64 5.64l4.24-4.24m4.24 14.24l4.24 4.24"></path><circle cx="1" cy="12" r="1"></circle><path d="M7 12h6m6 0h6"></path><circle cx="19.78" cy="4.22" r="1"></circle>
+                            </svg>
+                        </div>
+                        <h4>Plan Base Mensual</h4>
+                        <div class="investment-amount">$299</div>
+                        <div class="investment-period">HASTA 1000 LEADS/MES</div>
+                        <ul>
+                            <li>1000 leads mensuales</li>
+                            <li>Soporte email/Slack</li>
+                            <li>Updates automáticos</li>
+                            <li>1 usuario admin</li>
+                        </ul>
+                    </div>
+
+                    <div class="investment-card">
+                        <div class="investment-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #D4AF37;">
+                                <polyline points="12 3v12M3 15h18"></polyline>
+                            </svg>
+                        </div>
+                        <h4>Costo Escalable</h4>
+                        <div class="investment-amount">$0.30</div>
+                        <div class="investment-period">POR LEAD ADICIONAL</div>
+                        <ul>
+                            <li>Después 1000 leads</li>
+                            <li>Soporte telefónico</li>
+                            <li>Optimizaciones premium</li>
+                            <li>Usuarios ilimitados</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roi-highlight">
+                    <h4>Retorno de Inversión Esperado</h4>
+                    <p>ROI en <strong>30-45 días</strong> con reducción de CPC de <strong>45-65%</strong> respecto a canales tradicionales.</p>
+                    <p style="font-size: 13px; color: #9E9E9E;">Basado en campañas LATAM de performance | Varía según vertical, presupuesto y competencia del mercado</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p><strong>CRM Multicanal</strong> — Diseñado para emprendedores e empresas LATAM</p>
-        <p>Mike Cordova (麦克) | <strong>Sistemas que hacen crecer negocios</strong></p>
-        <p style="margin-top: 30px; opacity: 0.6;">© 2026 Mike Cordova. All rights reserved.</p>
+        <p><strong>MIKE CORDOVA (麦克)</strong></p>
+        <p><strong>Sistemas que hacen crecer negocios</strong></p>
+        <p style="margin-top: 20px; opacity: 0.6;">© 2026 Mike Cordova. Todos los derechos reservados.</p>
     </footer>
 
     <script>
@@ -963,53 +1131,6 @@
             });
         });
 
-        // COUNTER ANIMATION ON SCROLL
-        function animateCounters() {
-            const stats = document.querySelectorAll('.stat-number');
-            stats.forEach(stat => {
-                const target = parseFloat(stat.getAttribute('data-target'));
-                const duration = 2000;
-                const start = Date.now();
-                const startValue = 0;
-
-                function update() {
-                    const elapsed = Date.now() - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const value = startValue + (target - startValue) * easeOutQuad(progress);
-
-                    if (target === 2.5) {
-                        stat.textContent = value.toFixed(1);
-                    } else if (target === 45) {
-                        stat.textContent = Math.round(value);
-                    } else {
-                        stat.textContent = Math.round(value);
-                    }
-
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
-                    }
-                }
-
-                update();
-            });
-
-            function easeOutQuad(t) {
-                return t * (2 - t);
-            }
-        }
-
-        // TRIGGER COUNTER WHEN VISIBLE
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.target.id === 'hero') {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-
-        observer.observe(document.getElementById('hero'));
-
         // REVEAL ANIMATIONS ON SCROLL
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1019,7 +1140,7 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.solution-card, .timeline-item, .arch-component, .price-card').forEach(el => {
+        document.querySelectorAll('.solution-card, .timeline-item, .arch-component, .investment-card').forEach(el => {
             revealObserver.observe(el);
         });
     </script>
