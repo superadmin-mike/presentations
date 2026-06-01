@@ -506,9 +506,9 @@
             position: absolute;
             inset: 0;
             padding: 60px 40px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(26, 26, 26, 0.95));
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(20, 20, 20, 0.98));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
             opacity: 0;
             visibility: hidden;
             transform: rotateY(-90deg) translateZ(-50px);
@@ -518,6 +518,8 @@
             justify-content: center;
             pointer-events: none;
             will-change: transform, opacity, visibility;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
         }
 
         .flow-card.active {
@@ -526,6 +528,15 @@
             transform: rotateY(0deg) translateZ(0);
             pointer-events: auto;
             animation: cardFlipIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 16px 64px rgba(212, 175, 55, 0.15), 0 0 32px rgba(212, 175, 55, 0.08);
+        }
+
+        .flow-card.active:hover {
+            transform: rotateY(0deg) translateZ(4px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 20px 80px rgba(212, 175, 55, 0.2), 0 0 40px rgba(212, 175, 55, 0.12);
         }
 
         .flow-card.exiting {
@@ -556,24 +567,38 @@
         }
 
         .card-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #D4AF37, #A68B29);
-            border-radius: 16px;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #D4AF37, #B8860B);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 48px;
-            font-weight: 700;
+            margin: 0 auto 28px;
             color: var(--black);
-            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             animation: iconFloat 3s ease-in-out infinite;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-icon svg {
+            width: 56px;
+            height: 56px;
+            color: inherit;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
         }
 
         .flow-card.active .card-icon {
             animation: iconFloatActive 2s ease-in-out infinite;
+            box-shadow: 0 16px 56px rgba(212, 175, 55, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .flow-card.active:hover .card-icon {
+            transform: scale(1.1);
+            box-shadow: 0 20px 64px rgba(212, 175, 55, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
         .card-content h3 {
@@ -1565,6 +1590,16 @@
                 }
             });
 
+            cards.forEach((card) => {
+                card.addEventListener('click', () => {
+                    if (card.classList.contains('active') && currentStep < cards.length) {
+                        card.classList.add('exiting');
+                        currentStep++;
+                        setTimeout(updateCarousel, 100);
+                    }
+                });
+            });
+
             updateCarousel();
         });
     </script>
@@ -1666,7 +1701,12 @@
                     <div class="flow-card active" data-step="1">
                         <div class="card-content">
                             <div class="step-badge">Paso 1 de 6</div>
-                            <div class="card-icon icon-view">👁</div>
+                            <div class="card-icon icon-view">
+                                <svg viewBox="0 0 64 64" width="56" height="56">
+                                    <circle cx="32" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="32" cy="32" r="8" fill="currentColor"/>
+                                </svg>
+                            </div>
                             <h3>Usuario ve anuncio en TikTok</h3>
                             <p>El usuario descubre tu campaña en el feed de TikTok y se siente atraído por tu contenido visualmente impactante, generando la intención de contacto.</p>
                         </div>
@@ -1674,7 +1714,11 @@
                     <div class="flow-card" data-step="2">
                         <div class="card-content">
                             <div class="step-badge">Paso 2 de 6</div>
-                            <div class="card-icon icon-click">👆</div>
+                            <div class="card-icon icon-click">
+                                <svg viewBox="0 0 64 64" width="56" height="56">
+                                    <path d="M32 12L24 24H28V52H36V24H40L32 12Z" fill="currentColor"/>
+                                </svg>
+                            </div>
                             <h3>Hace clic en "Enviar por WhatsApp"</h3>
                             <p>El usuario interesado hace clic en el botón "Enviar mensaje por WhatsApp" para iniciar una conversación inmediata sin dejar TikTok.</p>
                         </div>
@@ -1682,7 +1726,12 @@
                     <div class="flow-card" data-step="3">
                         <div class="card-content">
                             <div class="step-badge">Paso 3 de 6</div>
-                            <div class="card-icon icon-capture">📞</div>
+                            <div class="card-icon icon-capture">
+                                <svg viewBox="0 0 64 64" width="56" height="56">
+                                    <path d="M32 12C22.06 12 14 20.06 14 30C14 40.43 25.04 52 32 52C38.96 52 50 40.43 50 30C50 20.06 41.94 12 32 12Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M32 22V42M22 32H42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
                             <h3>Captura automática de número</h3>
                             <p>El sistema extrae automáticamente el número de teléfono del usuario y lo valida. Los datos se almacenan en tu base de datos centralizada de forma segura y encriptada.</p>
                         </div>
@@ -1690,7 +1739,14 @@
                     <div class="flow-card" data-step="4">
                         <div class="card-content">
                             <div class="step-badge">Paso 4 de 6</div>
-                            <div class="card-icon icon-message">🤖</div>
+                            <div class="card-icon icon-message">
+                                <svg viewBox="0 0 64 64" width="56" height="56">
+                                    <path d="M52 12H12C10.9 12 10 12.9 10 14V42C10 43.1 10.9 44 12 44H20V52L32 44H52C53.1 44 54 43.1 54 42V14C54 12.9 53.1 12 52 12Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="20" cy="28" r="3" fill="currentColor"/>
+                                    <circle cx="32" cy="28" r="3" fill="currentColor"/>
+                                    <circle cx="44" cy="28" r="3" fill="currentColor"/>
+                                </svg>
+                            </div>
                             <h3>Saludo automático del agente</h3>
                             <p>El usuario recibe un mensaje instantáneo: "Hola! Bienvenido a [Nombre Empresa]. Te atenderá [Nombre del Agente] directamente desde su número de consulta personal para una atención y seguimiento personalizado. Espere su mensaje."</p>
                         </div>
@@ -1698,7 +1754,13 @@
                     <div class="flow-card" data-step="5">
                         <div class="card-content">
                             <div class="step-badge">Paso 5 de 6</div>
-                            <div class="card-icon icon-identify">🔍</div>
+                            <div class="card-icon icon-identify">
+                                <svg viewBox="0 0 64 64" width="56" height="56">
+                                    <circle cx="28" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M18 38C18 32 22.5 28 28 28C33.5 28 38 32 38 38V44H18V38Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M44 20V44C44 46.21 45.79 48 48 48C50.21 48 52 46.21 52 44V20" fill="none" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
                             <h3>Identificación de campaña/producto</h3>
                             <p>El agente escanea el código QR vinculado a su número de WhatsApp para identificar automáticamente de qué campaña de TikTok proviene el lead y qué producto se ofrece, contextualizando la conversación.</p>
                         </div>
@@ -1706,7 +1768,11 @@
                     <div class="flow-card" data-step="6">
                         <div class="card-content">
                             <div class="step-badge">Paso 6 de 6</div>
-                            <div class="card-icon icon-connect">✓</div>
+                            <div class="card-icon icon-connect">
+                                <svg viewBox="0 0 64 64" width="56" height="56">
+                                    <path d="M48 20L26 42L16 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
                             <h3>Conexión personalizada establecida</h3>
                             <p>La conexión está lista. El agente atiende el lead con contexto completo: número de consulta, campaña original, producto específico. Se inicia conversación personalizada y seguimiento directo desde WhatsApp.</p>
                         </div>
