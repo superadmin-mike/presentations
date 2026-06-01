@@ -513,15 +513,20 @@
         }
 
         /* COSTOS */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 60px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(30, 127, 126, 0.1) 0%, rgba(42, 90, 140, 0.1) 100%);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
         .costs-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 60px;
-            background: linear-gradient(135deg, rgba(30, 127, 126, 0.1) 0%, rgba(42, 90, 140, 0.1) 100%);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            background: transparent;
+            overflow: visible;
         }
 
         .costs-table th, .costs-table td {
@@ -720,14 +725,23 @@
                 padding: 40px 20px !important;
             }
 
+            /* Costs table wrapper scrollable in mobile */
+            .table-wrapper {
+                margin: 60px -30px 0 -30px;
+                padding: 0 30px;
+                border-radius: 0;
+            }
+
             /* Costs table responsive padding and font size */
             .costs-table {
                 font-size: 13px;
+                min-width: 100%;
             }
 
             .costs-table th, .costs-table td {
                 padding: 14px 10px !important;
                 font-size: 13px !important;
+                white-space: nowrap;
             }
 
             .costs-table th {
@@ -1132,89 +1146,93 @@
         </div>
 
         <h3 style="margin-top: 80px;">Desglose de Implementación</h3>
-        <table class="costs-table">
-            <thead>
-                <tr>
-                    <th>Concepto</th>
-                    <th>Horas</th>
-                    <th>Tarifa</th>
-                    <th>Total USD</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Arquitectura & Especificación</td>
-                    <td>5</td>
-                    <td>$25/hr</td>
-                    <td class="price">$125</td>
-                </tr>
-                <tr>
-                    <td>Backend API (Express + Webhooks)</td>
-                    <td>15</td>
-                    <td>$25/hr</td>
-                    <td class="price">$375</td>
-                </tr>
-                <tr>
-                    <td>Base de Datos & Migrations</td>
-                    <td>5</td>
-                    <td>$25/hr</td>
-                    <td class="price">$125</td>
-                </tr>
-                <tr>
-                    <td>Integración WhatsApp</td>
-                    <td>8</td>
-                    <td>$25/hr</td>
-                    <td class="price">$200</td>
-                </tr>
-                <tr style="background: rgba(212, 175, 55, 0.1);">
-                    <td colspan="3" style="font-weight: 700; text-align: right; color: var(--gold);">TOTAL</td>
-                    <td class="price" style="font-size: 24px;">$900</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="costs-table">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Horas</th>
+                        <th>Tarifa</th>
+                        <th>Total USD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Arquitectura & Especificación</td>
+                        <td>5</td>
+                        <td>$25/hr</td>
+                        <td class="price">$125</td>
+                    </tr>
+                    <tr>
+                        <td>Backend API (Express + Webhooks)</td>
+                        <td>15</td>
+                        <td>$25/hr</td>
+                        <td class="price">$375</td>
+                    </tr>
+                    <tr>
+                        <td>Base de Datos & Migrations</td>
+                        <td>5</td>
+                        <td>$25/hr</td>
+                        <td class="price">$125</td>
+                    </tr>
+                    <tr>
+                        <td>Integración WhatsApp</td>
+                        <td>8</td>
+                        <td>$25/hr</td>
+                        <td class="price">$200</td>
+                    </tr>
+                    <tr style="background: rgba(212, 175, 55, 0.1);">
+                        <td colspan="3" style="font-weight: 700; text-align: right; color: var(--gold);">TOTAL</td>
+                        <td class="price" style="font-size: 24px;">$900</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <h3 style="margin-top: 80px;">Costos Operativos Mensuales (Post-Implementación)</h3>
-        <table class="costs-table">
-            <thead>
-                <tr>
-                    <th>Componente</th>
-                    <th>Volumen Base</th>
-                    <th>Costo Base</th>
-                    <th>Costo Escalado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Base de Datos</td>
-                    <td>&lt; 500MB</td>
-                    <td class="price">$0</td>
-                    <td class="price">$25 (si creces)</td>
-                </tr>
-                <tr>
-                    <td>Backend (Servidor)</td>
-                    <td>&lt; 1000 req/min</td>
-                    <td class="price">$0</td>
-                    <td class="price">$7-15</td>
-                </tr>
-                <tr>
-                    <td>WhatsApp API</td>
-                    <td>&lt; 100 msg/día</td>
-                    <td class="price">$0</td>
-                    <td class="price">$0.0075/msg</td>
-                </tr>
-                <tr>
-                    <td>Conexión Nativa</td>
-                    <td>Ilimitado</td>
-                    <td class="price">$0</td>
-                    <td class="price">$0</td>
-                </tr>
-                <tr style="background: rgba(212, 175, 55, 0.1);">
-                    <td colspan="2" style="font-weight: 700; color: var(--gold);">TOTAL MENSUAL</td>
-                    <td class="price" style="font-size: 18px;">$0-10</td>
-                    <td class="price" style="font-size: 18px;">$30-50</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="costs-table">
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Volumen Base</th>
+                        <th>Costo Base</th>
+                        <th>Costo Escalado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Base de Datos</td>
+                        <td>&lt; 500MB</td>
+                        <td class="price">$0</td>
+                        <td class="price">$25 (si creces)</td>
+                    </tr>
+                    <tr>
+                        <td>Backend (Servidor)</td>
+                        <td>&lt; 1000 req/min</td>
+                        <td class="price">$0</td>
+                        <td class="price">$7-15</td>
+                    </tr>
+                    <tr>
+                        <td>WhatsApp API</td>
+                        <td>&lt; 100 msg/día</td>
+                        <td class="price">$0</td>
+                        <td class="price">$0.0075/msg</td>
+                    </tr>
+                    <tr>
+                        <td>Conexión Nativa</td>
+                        <td>Ilimitado</td>
+                        <td class="price">$0</td>
+                        <td class="price">$0</td>
+                    </tr>
+                    <tr style="background: rgba(212, 175, 55, 0.1);">
+                        <td colspan="2" style="font-weight: 700; color: var(--gold);">TOTAL MENSUAL</td>
+                        <td class="price" style="font-size: 18px;">$0-10</td>
+                        <td class="price" style="font-size: 18px;">$30-50</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <!-- DISCLAIMER -->
         <div class="disclaimer">
