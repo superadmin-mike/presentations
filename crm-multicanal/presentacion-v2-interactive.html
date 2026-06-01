@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM Multicanal | Mike Cordova - Sistemas que hacen crecer negocios</title>
+    <title>CRM Multicanal | 麦克 Mike Cordova - Sistemas que hacen crecer negocios</title>
     <style>
         * {
             margin: 0;
@@ -17,8 +17,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);
-            color: #F5F5F5;
+            background: #000000;
+            color: #FFFFFF;
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -34,15 +34,15 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(13, 13, 13, 0.95);
+            background: rgba(0, 0, 0, 0.98);
             backdrop-filter: blur(12px);
-            padding: 12px 40px;
+            padding: 14px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
             height: 80px;
         }
 
@@ -51,23 +51,29 @@
             align-items: center;
             gap: 16px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            color: #F5F5F5;
-            letter-spacing: 1px;
+            font-weight: 800;
+            font-size: 16px;
+            color: #FFFFFF;
+            letter-spacing: 0.5px;
         }
 
         nav .logo-icon {
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.4));
+            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.5));
+        }
+
+        nav .chinese-name {
+            color: #D4AF37;
+            font-size: 20px;
+            font-weight: 900;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: 48px;
         }
 
         nav a {
@@ -77,7 +83,7 @@
             font-weight: 600;
             transition: all 0.3s;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
         nav a:hover,
@@ -88,8 +94,8 @@
         /* HERO */
         section#hero {
             padding-top: 180px;
-            padding-bottom: 120px;
-            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
             position: relative;
             overflow: hidden;
         }
@@ -99,26 +105,26 @@
             position: absolute;
             top: -50%;
             right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             position: relative;
             z-index: 1;
         }
 
         h1 {
-            font-size: 72px;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 28px;
-            color: #F5F5F5;
-            letter-spacing: -0.8px;
+            font-size: 76px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            color: #FFFFFF;
+            letter-spacing: -1px;
         }
 
         h1 .highlight {
@@ -127,35 +133,60 @@
 
         .hero-description {
             font-size: 20px;
-            color: #C0C0C0;
-            margin-bottom: 48px;
-            line-height: 1.7;
+            color: #D0D0D0;
+            margin-bottom: 52px;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
             max-width: 700px;
         }
 
-        .implementation-box {
-            display: inline-block;
-            padding: 32px 52px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.06) 100%);
-            border: 2px solid #D4AF37;
-            border-radius: 8px;
-            position: relative;
-            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.2);
+        .metric {
+            border-left: 3px solid #D4AF37;
+            padding-left: 24px;
         }
 
-        .implementation-box h3 {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
+        .metric-number {
+            font-size: 36px;
+            font-weight: 900;
             color: #D4AF37;
             margin-bottom: 8px;
-            font-weight: 700;
         }
 
-        .implementation-box p {
-            font-size: 40px;
+        .metric-label {
+            font-size: 13px;
+            color: #909090;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37 0%, #E8D4A2 100%);
+            color: #000000;
+            padding: 16px 48px;
+            border-radius: 6px;
+            text-decoration: none;
             font-weight: 800;
-            color: #D4AF37;
+            font-size: 14px;
+            transition: all 0.4s;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 50px rgba(212, 175, 55, 0.45);
         }
 
         /* SECTIONS */
@@ -166,20 +197,73 @@
 
         section h2 {
             font-size: 56px;
-            font-weight: 800;
+            font-weight: 900;
             margin-bottom: 72px;
-            color: #F5F5F5;
-            letter-spacing: -0.6px;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
         }
 
         section h2::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 80px;
+            height: 4px;
+            background: #D4AF37;
+            margin-top: 24px;
+        }
+
+        /* PROBLEMS SECTION */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-bottom: 80px;
+        }
+
+        .problem-card {
+            padding: 48px;
+            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 4px;
             background: linear-gradient(90deg, #D4AF37 0%, transparent 100%);
-            margin-top: 20px;
-            border-radius: 2px;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-8px);
+            border-color: #D4AF37;
+            box-shadow: 0 24px 64px rgba(212, 175, 55, 0.15);
+        }
+
+        .problem-metric {
+            font-size: 28px;
+            font-weight: 900;
+            color: #D4AF37;
+            margin-bottom: 12px;
+        }
+
+        .problem-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+            margin-top: 12px;
+        }
+
+        .problem-card p {
+            color: #B0B0B0;
+            font-size: 15px;
+            line-height: 1.8;
         }
 
         /* SOLUTION */
@@ -192,10 +276,10 @@
 
         .solution-item {
             padding: 48px;
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
+            border-radius: 8px;
             border: 1px solid rgba(212, 175, 55, 0.25);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s;
             position: relative;
             overflow: hidden;
         }
@@ -212,15 +296,15 @@
 
         .solution-item:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 24px 64px rgba(212, 175, 55, 0.15);
             border-color: #D4AF37;
-            background: rgba(30, 30, 30, 0.9);
+            background: linear-gradient(135deg, rgba(25, 25, 25, 1) 0%, rgba(18, 18, 18, 1) 100%);
         }
 
         .solution-item h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #F5F5F5;
+            font-size: 24px;
+            font-weight: 800;
+            color: #FFFFFF;
             margin-bottom: 16px;
         }
 
@@ -238,38 +322,40 @@
         .flow-step {
             display: flex;
             gap: 48px;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
             align-items: flex-start;
             padding: 48px;
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
+            border-radius: 8px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             transition: all 0.3s;
         }
 
         .flow-step:hover {
-            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.15);
-            background: rgba(30, 30, 30, 0.9);
+            box-shadow: 0 16px 48px rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+            background: linear-gradient(135deg, rgba(25, 25, 25, 1) 0%, rgba(18, 18, 18, 1) 100%);
         }
 
         .flow-number {
-            font-size: 48px;
-            font-weight: 800;
+            font-size: 52px;
+            font-weight: 900;
             color: #D4AF37;
-            min-width: 80px;
+            min-width: 90px;
+            line-height: 1;
         }
 
         .flow-content h3 {
             font-size: 22px;
-            font-weight: 700;
-            color: #F5F5F5;
+            font-weight: 800;
+            color: #FFFFFF;
             margin-bottom: 12px;
         }
 
         .flow-content p {
             color: #B0B0B0;
             font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         /* TIMELINE */
@@ -280,30 +366,30 @@
         .timeline-item {
             display: flex;
             gap: 48px;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
             align-items: flex-start;
             position: relative;
         }
 
         .timeline-marker {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #D4AF37 0%, #E8D4A2 100%);
             border-radius: 50%;
-            margin-top: 6px;
+            margin-top: 8px;
             flex-shrink: 0;
             position: relative;
-            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
 
         .timeline-marker::after {
             content: '';
             position: absolute;
             width: 2px;
-            height: 100px;
+            height: 120px;
             background: linear-gradient(180deg, #D4AF37 0%, transparent 100%);
-            left: 15px;
-            top: 32px;
+            left: 19px;
+            top: 40px;
         }
 
         .timeline-item:last-child .timeline-marker::after {
@@ -311,44 +397,44 @@
         }
 
         .timeline-content {
-            padding: 36px;
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 12px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
+            border-radius: 8px;
             border-left: 4px solid #D4AF37;
             flex: 1;
         }
 
         .timeline-content h3 {
             font-size: 20px;
-            font-weight: 700;
-            color: #F5F5F5;
+            font-weight: 800;
+            color: #FFFFFF;
             margin-bottom: 12px;
         }
 
         .timeline-content p {
             color: #B0B0B0;
             font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
-        /* ARCHITECTURE */
-        .architecture-grid {
+        /* BENEFITS */
+        .benefits-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 40px;
         }
 
-        .arch-card {
+        .benefit-item {
             padding: 44px;
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
+            border-radius: 8px;
             border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+            transition: all 0.4s;
             position: relative;
-            overflow: hidden;
         }
 
-        .arch-card::before {
+        .benefit-item::before {
             content: '';
             position: absolute;
             top: 0;
@@ -358,21 +444,26 @@
             background: linear-gradient(90deg, #D4AF37 0%, transparent 100%);
         }
 
-        .arch-card:hover {
+        .benefit-item:hover {
             transform: translateY(-6px);
             box-shadow: 0 16px 48px rgba(212, 175, 55, 0.2);
             border-color: #D4AF37;
-            background: rgba(30, 30, 30, 0.9);
         }
 
-        .arch-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #F5F5F5;
+        .benefit-icon {
+            font-size: 32px;
             margin-bottom: 16px;
+            color: #D4AF37;
         }
 
-        .arch-card p {
+        .benefit-item h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+        }
+
+        .benefit-item p {
             color: #B0B0B0;
             font-size: 15px;
             line-height: 1.7;
@@ -380,35 +471,27 @@
 
         /* INVESTMENT */
         .investment-container {
-            max-width: 700px;
-            padding: 64px 52px;
+            max-width: 800px;
+            padding: 72px 56px;
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.06) 100%);
             border: 2px solid #D4AF37;
-            border-radius: 12px;
+            border-radius: 8px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 16px 48px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.25);
+            text-align: center;
         }
 
         .investment-container::before {
             content: '';
             position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
+            top: -150px;
+            right: -150px;
+            width: 400px;
+            height: 400px;
             background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
-        }
-
-        .investment-amount {
-            font-size: 72px;
-            font-weight: 800;
-            color: #D4AF37;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
         }
 
         .investment-label {
@@ -416,17 +499,27 @@
             text-transform: uppercase;
             letter-spacing: 1.2px;
             color: #D4AF37;
-            margin-bottom: 40px;
-            font-weight: 700;
+            margin-bottom: 20px;
+            font-weight: 800;
             position: relative;
             z-index: 1;
         }
 
+        .investment-amount {
+            font-size: 80px;
+            font-weight: 900;
+            color: #D4AF37;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -2px;
+        }
+
         .investment-container h3 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #F5F5F5;
-            margin-bottom: 40px;
+            font-size: 28px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 44px;
             position: relative;
             z-index: 1;
         }
@@ -435,16 +528,18 @@
             list-style: none;
             position: relative;
             z-index: 1;
+            text-align: left;
         }
 
         .benefit-list li {
-            padding: 20px 0;
-            padding-left: 40px;
-            color: #B0B0B0;
+            padding: 16px 0;
+            padding-left: 44px;
+            color: #FFFFFF;
             font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.8;
             position: relative;
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            font-weight: 500;
         }
 
         .benefit-list li:last-child {
@@ -456,31 +551,27 @@
             position: absolute;
             left: 0;
             color: #D4AF37;
-            font-weight: 800;
-            font-size: 20px;
-        }
-
-        .benefit-list strong {
-            color: #F5F5F5;
-            font-weight: 700;
+            font-weight: 900;
+            font-size: 22px;
         }
 
         /* FOOTER */
         footer {
-            background: linear-gradient(135deg, #0A0A0A 0%, #161616 100%);
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 60px 0;
+            background: #000000;
+            border-top: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 72px 0;
             text-align: center;
             color: #808080;
             font-size: 13px;
         }
 
         footer p {
-            margin: 8px 0;
+            margin: 10px 0;
         }
 
         footer strong {
             color: #D4AF37;
+            font-weight: 800;
         }
 
         /* ANIMATIONS */
@@ -495,15 +586,44 @@
             }
         }
 
-        section:not(#hero) > * {
+        .solution-item,
+        .problem-card,
+        .flow-step,
+        .timeline-content,
+        .benefit-item {
             animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
         }
 
+        section:not(#hero) > *:nth-child(1) { animation-delay: 0s; }
         section:not(#hero) > *:nth-child(2) { animation-delay: 0.1s; }
         section:not(#hero) > *:nth-child(3) { animation-delay: 0.2s; }
         section:not(#hero) > *:nth-child(4) { animation-delay: 0.3s; }
 
         /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 56px;
+            }
+
+            section h2 {
+                font-size: 44px;
+            }
+
+            .problem-grid,
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 24px;
@@ -511,14 +631,46 @@
 
             nav {
                 padding: 12px 24px;
+                height: auto;
             }
 
             nav ul {
                 display: none;
             }
 
+            nav .logo-container {
+                gap: 12px;
+                font-size: 14px;
+            }
+
+            nav .logo-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            nav .chinese-name {
+                font-size: 16px;
+            }
+
+            section#hero {
+                padding-top: 140px;
+                padding-bottom: 80px;
+            }
+
             h1 {
                 font-size: 40px;
+                margin-bottom: 24px;
+            }
+
+            .hero-description {
+                font-size: 17px;
+                margin-bottom: 40px;
+            }
+
+            .hero-metrics {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                margin-bottom: 40px;
             }
 
             section h2 {
@@ -530,27 +682,113 @@
                 padding: 80px 0;
             }
 
+            .problem-grid,
+            .benefits-grid,
             .solution-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
 
-            .architecture-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .problem-card,
+            .solution-item,
             .flow-step,
-            .timeline-item {
-                gap: 24px;
-                flex-direction: column;
+            .timeline-content,
+            .benefit-item {
+                padding: 36px;
             }
 
-            .implementation-box {
-                width: 100%;
+            .flow-step {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .flow-number {
+                font-size: 40px;
+                min-width: auto;
+            }
+
+            .timeline-item {
+                gap: 28px;
+            }
+
+            .timeline-marker {
+                width: 36px;
+                height: 36px;
             }
 
             .investment-container {
-                padding: 40px;
+                padding: 48px 32px;
+            }
+
+            .investment-amount {
+                font-size: 56px;
+            }
+
+            .investment-container h3 {
+                font-size: 22px;
+                margin-bottom: 32px;
+            }
+
+            .benefit-list li {
+                font-size: 15px;
+            }
+
+            footer {
+                padding: 48px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 32px;
+                line-height: 1.15;
+            }
+
+            section h2 {
+                font-size: 28px;
+                margin-bottom: 36px;
+            }
+
+            .problem-card,
+            .solution-item,
+            .benefit-item {
+                padding: 28px;
+            }
+
+            .flow-step,
+            .timeline-content {
+                padding: 28px;
+            }
+
+            .problem-metric {
+                font-size: 24px;
+            }
+
+            .problem-card h3,
+            .solution-item h3,
+            .benefit-item h3 {
+                font-size: 16px;
+            }
+
+            .hero-metrics {
+                gap: 20px;
+            }
+
+            .metric-number {
+                font-size: 28px;
+            }
+
+            .cta-button {
+                padding: 14px 36px;
+                font-size: 13px;
+            }
+
+            .investment-amount {
+                font-size: 44px;
+            }
+
+            .investment-label {
+                font-size: 12px;
             }
         }
     </style>
@@ -560,13 +798,13 @@
     <nav>
         <a href="#hero" class="logo-container">
             <img class="logo-icon" src="./logo.png" alt="Mike Cordova Logo" />
-            <span>MIKE CORDOVA</span>
+            <span class="chinese-name">麦克</span>
         </a>
         <ul>
+            <li><a href="#problemas" class="nav-link">Problemas</a></li>
             <li><a href="#solución" class="nav-link">Solución</a></li>
             <li><a href="#flujo" class="nav-link">Flujo</a></li>
-            <li><a href="#timeline" class="nav-link">Timeline</a></li>
-            <li><a href="#arquitectura" class="nav-link">Arquitectura</a></li>
+            <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
             <li><a href="#inversión" class="nav-link">Inversión</a></li>
         </ul>
     </nav>
@@ -575,12 +813,48 @@
     <section id="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Convierte <span class="highlight">TikTok Ads</span> en <span class="highlight">WhatsApp</span> de forma automática</h1>
-                <p class="hero-description">Sistema nativo de conversión automática que conecta tus anuncios de TikTok directamente con WhatsApp Personal. Sin integraciones complejas. Sin costos iniciales. Implementación en 2-3 semanas.</p>
+                <h1>Convierte <span class="highlight">TikTok Ads</span> en <span class="highlight">WhatsApp</span> automáticamente</h1>
+                <p class="hero-description">Sistema nativo que conecta tus anuncios TikTok directamente con WhatsApp Personal. Sin APIs complejas. Sin costos iniciales. Implementación en 2-3 semanas.</p>
 
-                <div class="implementation-box">
-                    <h3>Tiempo de implementación</h3>
-                    <p>2-3 Semanas</p>
+                <div class="hero-metrics">
+                    <div class="metric">
+                        <div class="metric-number">2-3</div>
+                        <div class="metric-label">Semanas de implementación</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number">$0</div>
+                        <div class="metric-label">Costo de integración</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number">100%</div>
+                        <div class="metric-label">Conversión automática</div>
+                    </div>
+                </div>
+
+                <a href="#inversión" class="cta-button">Conocer Inversión</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEMAS -->
+    <section id="problemas">
+        <div class="container">
+            <h2>Los problemas que estás viviendo</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-metric">14h</div>
+                    <h3>Tiempo perdido</h3>
+                    <p>Configurar TikTok Ads, crear funnels manuales, trasferir datos a WhatsApp. Horas que no generas ingresos.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-metric">$1200+</div>
+                    <h3>Costo mensual en herramientas</h3>
+                    <p>Zapier, Integromat, CRM cloud, bots de WhatsApp. APIs caras que no hablan entre sí.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-metric">62%</div>
+                    <h3>Lead loss en conversión</h3>
+                    <p>Datos se pierden entre plataformas. Usuarios no llegan a WhatsApp. Sin seguimiento de dónde falla.</p>
                 </div>
             </div>
         </div>
@@ -589,23 +863,23 @@
     <!-- SOLUCIÓN -->
     <section id="solución">
         <div class="container">
-            <h2>Solución Completa</h2>
+            <h2>La solución completa</h2>
             <div class="solution-grid">
                 <div class="solution-item">
-                    <h3>Automatización Inteligente</h3>
-                    <p>Los usuarios convertidos desde TikTok Ads se integran automáticamente en tu WhatsApp Personal. Sin filas de espera, sin configuraciones manuales. El sistema gestiona todo.</p>
+                    <h3>🤖 Conversión automática</h3>
+                    <p>El usuario hace clic en tu anuncio TikTok → Llega automáticamente a tu WhatsApp Personal como contacto nuevo. Sin configuración manual. Sin código. Sin integraciones complejas.</p>
                 </div>
                 <div class="solution-item">
-                    <h3>Dashboard en Tiempo Real</h3>
-                    <p>Visualiza todas las conversaciones asignadas por asesor. Métricas claras, seguimiento de leads, y análisis de rendimiento en un solo lugar.</p>
+                    <h3>📊 Dashboard en tiempo real</h3>
+                    <p>Visualiza cada conversación asignada a cada asesor. Métricas claras: leads/día, tasa de respuesta, seguimiento de ventas. Todo en un solo lugar.</p>
                 </div>
                 <div class="solution-item">
-                    <h3>Costo Cero de Integración</h3>
-                    <p>No pagas por APIs costosas ni plataformas complejas. El sistema es nativo y usa tus herramientas existentes. Máximo valor, mínimo gasto.</p>
+                    <h3>💰 Costo cero de integración</h3>
+                    <p>No pagas por APIs externas. No pagas por bots de WhatsApp. Sistema nativo que usa tus herramientas existentes. Máximo valor, mínimo gasto.</p>
                 </div>
                 <div class="solution-item">
-                    <h3>Escalabilidad Ilimitada</h3>
-                    <p>Crece sin preocupaciones. El sistema soporta cientos de asesores, miles de conversaciones diarias. La infraestructura se escala contigo.</p>
+                    <h3>📈 Escalabilidad ilimitada</h3>
+                    <p>Soporta cientos de asesores, miles de conversaciones diarias. Crece de 1 a 1000 conversiones sin romper nada. La infraestructura escala contigo.</p>
                 </div>
             </div>
         </div>
@@ -614,35 +888,74 @@
     <!-- FLUJO -->
     <section id="flujo">
         <div class="container">
-            <h2>Cómo Funciona</h2>
+            <h2>Cómo funciona</h2>
             <div class="flow-container">
                 <div class="flow-step">
                     <div class="flow-number">01</div>
                     <div class="flow-content">
                         <h3>El usuario ve tu anuncio en TikTok</h3>
-                        <p>Tu audiencia está en TikTok. Ellos ven tu anuncio, hacen clic y entran en el funnel.</p>
+                        <p>Tu audiencia está en TikTok. Ven tu anuncio, hacen clic y entran en el funnel.</p>
                     </div>
                 </div>
                 <div class="flow-step">
                     <div class="flow-number">02</div>
                     <div class="flow-content">
-                        <h3>Se genera automáticamente en WhatsApp</h3>
-                        <p>El sistema captura el contacto y lo añade a tu WhatsApp Personal. Sin intermediarios.</p>
+                        <h3>Se genera en WhatsApp automáticamente</h3>
+                        <p>Sin delays. Sin formularios. El contacto aparece directamente en tu WhatsApp Personal como nuevo lead del CRM.</p>
                     </div>
                 </div>
                 <div class="flow-step">
                     <div class="flow-number">03</div>
                     <div class="flow-content">
                         <h3>Se asigna al asesor correcto</h3>
-                        <p>El lead se distribuye automáticamente entre tus asesores según disponibilidad y especialidad.</p>
+                        <p>El sistema distribuye leads automáticamente entre tus asesores. Cada uno sabe a quién debe seguimiento.</p>
                     </div>
                 </div>
                 <div class="flow-step">
                     <div class="flow-number">04</div>
                     <div class="flow-content">
-                        <h3>Conversión en tiempo real</h3>
-                        <p>Tu equipo recibe el lead y comienza la conversación. El dashboard muestra todas las métricas.</p>
+                        <h3>Dashboard monitorea todo en tiempo real</h3>
+                        <p>Ves qué asesor tiene cuántos leads, conversaciones activas, seguimiento de cada negociación. Decisiones basadas en datos.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios">
+        <div class="container">
+            <h2>Beneficios principales</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Velocidad</h3>
+                    <p>Implementación en 2-3 semanas, no en meses. Empieza a recibir leads automáticos desde el día 1.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💵</div>
+                    <h3>Ahorro total</h3>
+                    <p>$0 en APIs. $0 en bots. Solo pagas la implementación. Todo lo demás es tuyo, nativo.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📱</div>
+                    <h3>WhatsApp Personal</h3>
+                    <p>Usa la app de WhatsApp que ya tienes. No necesitas cambiar números, no necesitas Business Account.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Visibilidad total</h3>
+                    <p>Dashboard que muestra leads/asesor, tasa de respuesta, conversaciones en progreso. Datos claros, decisiones rápidas.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔄</div>
+                    <h3>Automatización 24/7</h3>
+                    <p>El sistema corre 24/7 sin tu intervención. Recibe leads incluso mientras duermes.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Sin pérdida de datos</h3>
+                    <p>Cada clic en TikTok → Contacto en WhatsApp. 0% de leads perdidos entre plataformas.</p>
                 </div>
             </div>
         </div>
@@ -651,61 +964,28 @@
     <!-- TIMELINE -->
     <section id="timeline">
         <div class="container">
-            <h2>Roadmap de Implementación</h2>
+            <h2>Plan de implementación</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <h3>Semana 1: Diagnóstico y Setup</h3>
-                        <p>Análisis de tu estructura actual, configuración de APIs, preparación del entorno y capacitación inicial del equipo.</p>
+                        <h3>Semana 1-2: Setup</h3>
+                        <p>Análisis de tu funnel TikTok. Configuración de WhatsApp API. Integración con tu cuenta de anuncios. Revisión de flujo contigo.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <h3>Semana 2: Integración y Testing</h3>
-                        <p>Conexión de TikTok Ads con WhatsApp, pruebas exhaustivas del flujo, ajustes y optimizaciones preliminares.</p>
+                        <h3>Semana 2-3: Testing</h3>
+                        <p>Pruebas en vivo con anuncios pequeños. Ajuste de automatizaciones. Capacitación de tu equipo en el dashboard.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <h3>Semana 3: Deployment y Revisión</h3>
-                        <p>Lanzamiento en producción, revisión de flujos con tu equipo, capacitación avanzada y ajustes finales.</p>
+                        <h3>Semana 3: Go Live</h3>
+                        <p>Lanzamiento en full. Monitoreo 24/7 durante los primeros 7 días. Soporte directo para cualquier ajuste.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ARQUITECTURA -->
-    <section id="arquitectura">
-        <div class="container">
-            <h2>Componentes del Sistema</h2>
-            <div class="architecture-grid">
-                <div class="arch-card">
-                    <h3>Recolección de Leads</h3>
-                    <p>Captura automática de contactos desde TikTok Ads con validación de datos en tiempo real.</p>
-                </div>
-                <div class="arch-card">
-                    <h3>Automatización de Flujos</h3>
-                    <p>Rutas inteligentes que asignan leads, envían mensajes iniciales y orquestan conversaciones.</p>
-                </div>
-                <div class="arch-card">
-                    <h3>Gestión de Asesores</h3>
-                    <p>Distribución automática de conversaciones por asesor con seguimiento de disponibilidad.</p>
-                </div>
-                <div class="arch-card">
-                    <h3>Analytics Dashboard</h3>
-                    <p>Visualización real de métricas: conversaciones por asesor, tasas de conversión, engagement.</p>
-                </div>
-                <div class="arch-card">
-                    <h3>Sincronización WhatsApp</h3>
-                    <p>Integración nativa con WhatsApp Personal para conversaciones genuinas sin APIs costosas.</p>
-                </div>
-                <div class="arch-card">
-                    <h3>Revisión y Optimización</h3>
-                    <p>Auditoría continua de flujos, recomendaciones de mejora y ajustes personalizados.</p>
                 </div>
             </div>
         </div>
@@ -714,17 +994,18 @@
     <!-- INVERSIÓN -->
     <section id="inversión">
         <div class="container">
-            <h2>Inversión del Proyecto</h2>
             <div class="investment-container">
+                <div class="investment-label">Inversión total del proyecto</div>
                 <div class="investment-amount">USD $1,000</div>
-                <div class="investment-label">Costo Total del Proyecto</div>
-
-                <h3>Incluye</h3>
+                <h3>Incluye implementación completa</h3>
                 <ul class="benefit-list">
-                    <li><strong>Usuarios ilimitados</strong> — sin restricción de asesores ni equipos</li>
-                    <li><strong>Automatizaciones de inicio de conversación</strong> — respuestas automáticas inteligentes</li>
-                    <li><strong>Revisión de flujo</strong> — optimización gratuita de tus procesos</li>
-                    <li><strong>Dashboard analytics</strong> — visualización de conversaciones por asesor en tiempo real</li>
+                    <li>Sistema nativo de conversión automática TikTok → WhatsApp</li>
+                    <li>Usuarios ilimitados en el dashboard</li>
+                    <li>Automatización de inicio de conversaciones</li>
+                    <li>Revisión y optimización de flujo para costo cero</li>
+                    <li>Dashboard con métricas en tiempo real</li>
+                    <li>Capacitación de tu equipo</li>
+                    <li>Soporte durante implementación (3 semanas)</li>
                 </ul>
             </div>
         </div>
@@ -732,53 +1013,63 @@
 
     <!-- FOOTER -->
     <footer>
-        <p><strong>MIKE CORDOVA (麦克)</strong></p>
-        <p><strong>Sistemas que hacen crecer negocios</strong></p>
-        <p style="margin-top: 20px; opacity: 0.6;">© 2026 Mike Cordova. Todos los derechos reservados.</p>
+        <p><strong>CRM Multicanal</strong> — Solución nativa LATAM</p>
+        <p>麦克 (Mike Cordova) | <strong>Sistemas que hacen crecer negocios</strong></p>
+        <p style="margin-top: 20px; opacity: 0.5;">© 2026 Mike Cordova. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // SMOOTH SCROLL NAVIGATION
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
                 }
             });
         });
 
-        // ACTIVE NAV LINK ON SCROLL
+        // Highlight active nav link on scroll
         window.addEventListener('scroll', () => {
-            let current = '';
             const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+            const scrollY = window.scrollY;
 
-            document.querySelectorAll('nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    const activeLink = document.querySelector(`nav a[href="#${section.id}"]`);
+                    if (activeLink) activeLink.classList.add('active');
                 }
             });
         });
 
-        // REVEAL ANIMATIONS ON SCROLL
-        const revealObserver = new IntersectionObserver((entries) => {
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
+                    entry.target.style.animation = 'none';
+                    setTimeout(() => {
+                        entry.target.style.animation = '';
+                    }, 10);
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('section:not(#hero) > *').forEach(el => {
-            revealObserver.observe(el);
+        document.querySelectorAll('.solution-item, .problem-card, .flow-step, .timeline-content, .benefit-item').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
