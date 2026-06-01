@@ -507,10 +507,18 @@
             flex: 1;
             min-width: 160px;
             text-align: center;
-            animation: fadeInUp 0.8s ease both;
+            animation: flowItemEnter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+            position: relative;
+            padding: 20px 10px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .flow-item:nth-child(2) {
+        .flow-item:hover {
+            transform: translateY(-8px) scale(1.05);
+        }
+
+        .flow-item:nth-child(1) {
             animation-delay: 0.1s;
         }
 
@@ -518,30 +526,42 @@
             animation-delay: 0.2s;
         }
 
-        .flow-item:nth-child(4) {
+        .flow-item:nth-child(5) {
             animation-delay: 0.3s;
         }
 
-        .flow-item:nth-child(5) {
+        .flow-item:nth-child(7) {
             animation-delay: 0.4s;
         }
 
-        .flow-item:nth-child(6) {
+        .flow-item:nth-child(9) {
             animation-delay: 0.5s;
         }
 
+        .flow-item:nth-child(11) {
+            animation-delay: 0.6s;
+        }
+
         .flow-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, #D4AF37, #A68B29);
-            border-radius: 8px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 16px;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             color: var(--black);
+            box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3);
+            animation: flowIconGlow 2s ease-in-out infinite;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .flow-item:hover .flow-icon {
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .flow-item p {
@@ -549,18 +569,33 @@
             color: var(--gray);
             line-height: 1.6;
             margin: 0;
+            transition: color 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 500;
+        }
+
+        .flow-item:hover p {
+            color: #E5E5E2;
         }
 
         .flow-arrow {
-            font-size: 24px;
+            font-size: 28px;
             color: var(--gold);
-            opacity: 0.4;
+            opacity: 0.3;
             display: none;
+            animation: arrowPulse 1.5s ease-in-out infinite;
+            transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .flow-diagram:hover .flow-arrow {
+            opacity: 0.7;
         }
 
         @media (min-width: 768px) {
             .flow-arrow {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex: 0 0 40px;
             }
         }
 
@@ -1101,6 +1136,37 @@
             }
         }
 
+        @keyframes flowItemEnter {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9) rotateX(-10deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotateX(0);
+            }
+        }
+
+        @keyframes flowIconGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3), 0 0 0 0 rgba(212, 175, 55, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 20px 2px rgba(212, 175, 55, 0.2), 0 0 0 8px rgba(212, 175, 55, 0.05);
+            }
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% {
+                transform: translateX(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateX(4px);
+                opacity: 0.7;
+            }
+        }
+
         @keyframes processHighlight {
             from {
                 opacity: 0;
@@ -1436,27 +1502,27 @@
                     <div class="flow-icon">1</div>
                     <p>Usuario ve anuncio en TikTok</p>
                 </div>
-                <div class="flow-arrow"></div>
+                <div class="flow-arrow">→</div>
                 <div class="flow-item">
                     <div class="flow-icon">2</div>
                     <p>Hace clic y llena formulario</p>
                 </div>
-                <div class="flow-arrow"></div>
+                <div class="flow-arrow">→</div>
                 <div class="flow-item">
                     <div class="flow-icon">3</div>
                     <p>Datos capturados automáticamente</p>
                 </div>
-                <div class="flow-arrow"></div>
+                <div class="flow-arrow">→</div>
                 <div class="flow-item">
                     <div class="flow-icon">4</div>
-                    <p>Envo instantneo a WhatsApp</p>
+                    <p>Envío instantáneo a WhatsApp</p>
                 </div>
-                <div class="flow-arrow"></div>
+                <div class="flow-arrow">→</div>
                 <div class="flow-item">
                     <div class="flow-icon">5</div>
                     <p>Seguimiento y cierre</p>
                 </div>
-                <div class="flow-arrow"></div>
+                <div class="flow-arrow">→</div>
                 <div class="flow-item">
                     <div class="flow-icon">6</div>
                     <p>Venta completada</p>
