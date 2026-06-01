@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM Multicanal — Propuesta Completa | Mike Cordova · 麦克</title>
+    <title>CRM Multicanal — Proyecto | Mike Cordova · 麦克</title>
     <style>
         * {
             margin: 0;
@@ -24,6 +24,71 @@
             background: var(--black);
             color: var(--white);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        @keyframes floatUp {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes borderFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .container {
@@ -38,6 +103,7 @@
             padding: 60px 0;
             text-align: center;
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         header h1 {
@@ -56,6 +122,7 @@
             color: var(--gold);
             font-weight: 500;
             margin-bottom: 8px;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .subtitle {
@@ -64,11 +131,13 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         .breadcrumb {
             font-size: 13px;
             color: var(--gray);
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .breadcrumb a {
@@ -81,6 +150,46 @@
             opacity: 0.8;
         }
 
+        /* CERTIFICATIONS */
+        .certifications {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .cert-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .cert-badge:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .cert-logo {
+            height: 30px;
+            max-width: 100px;
+            object-fit: contain;
+        }
+
+        .cert-text {
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         /* MAIN */
         main {
             padding: 80px 0;
@@ -88,91 +197,147 @@
 
         section {
             margin-bottom: 120px;
+            animation: fadeInUp 1s ease-out;
         }
 
         .section-title {
-            font-size: 42px;
+            font-size: 48px;
             color: var(--gold);
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             font-weight: 700;
             position: relative;
             padding-bottom: 20px;
+            text-align: center;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
             height: 3px;
-            background: var(--gold);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
             border-radius: 2px;
         }
 
-        .section-subtitle {
-            font-size: 24px;
+        /* HERO SECTION */
+        .hero-highlight {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 60px 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        .hero-highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            animation: slideInLeft 3s ease-in-out infinite;
+        }
+
+        .hero-highlight h3 {
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-highlight p {
+            font-size: 18px;
             color: var(--white);
-            margin: 40px 0 20px 0;
-            font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
 
-        p {
-            font-size: 16px;
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-
-        /* PROBLEM SECTION */
-        .problem-grid {
+        /* FEATURES SECTION */
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
         }
 
-        .problem-card {
+        .feature-card {
             background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-left: 4px solid var(--gold);
-            padding: 30px;
-            border-radius: 8px;
+            padding: 35px;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out backwards;
         }
 
-        .problem-card h4 {
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 70px rgba(212, 175, 55, 0.3);
+            border-color: rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(26, 26, 26, 0.95));
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h4 {
             color: var(--gold);
             font-size: 18px;
             margin-bottom: 12px;
             font-weight: 700;
         }
 
-        .problem-card p {
+        .feature-card p {
             font-size: 14px;
-            margin-bottom: 0;
-        }
-
-        /* SOLUTION SECTION */
-        .solution-highlight {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
-            border-left: 5px solid var(--gold);
-            padding: 30px;
-            border-radius: 8px;
-            margin: 30px 0;
-        }
-
-        .solution-highlight h4 {
-            color: var(--gold);
-            font-size: 18px;
-            margin-bottom: 12px;
-            font-weight: 700;
+            color: var(--gray);
+            line-height: 1.6;
         }
 
         /* FLOW SECTION */
+        .flow-container {
+            position: relative;
+            padding: 40px 0;
+        }
+
         .flow-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
             margin-bottom: 40px;
         }
 
@@ -180,8 +345,24 @@
             background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
             border: 1px solid rgba(212, 175, 55, 0.2);
             padding: 30px;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
+            position: relative;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .flow-step:nth-child(1) { animation-delay: 0.1s; }
+        .flow-step:nth-child(2) { animation-delay: 0.2s; }
+        .flow-step:nth-child(3) { animation-delay: 0.3s; }
+        .flow-step:nth-child(4) { animation-delay: 0.4s; }
+        .flow-step:nth-child(5) { animation-delay: 0.5s; }
+        .flow-step:nth-child(6) { animation-delay: 0.6s; }
+
+        .flow-step:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25);
+            border-color: rgba(212, 175, 55, 0.5);
         }
 
         .step-number {
@@ -195,7 +376,14 @@
             font-weight: 700;
             font-size: 24px;
             margin-bottom: 16px;
+            animation: floatUp 2s ease-in-out infinite;
         }
+
+        .flow-step:nth-child(2) .step-number { animation-delay: 0.2s; }
+        .flow-step:nth-child(3) .step-number { animation-delay: 0.4s; }
+        .flow-step:nth-child(4) .step-number { animation-delay: 0.6s; }
+        .flow-step:nth-child(5) .step-number { animation-delay: 0.8s; }
+        .flow-step:nth-child(6) .step-number { animation-delay: 1s; }
 
         .flow-step h4 {
             color: var(--gold);
@@ -206,51 +394,44 @@
 
         .flow-step p {
             font-size: 14px;
-            margin-bottom: 0;
+            color: var(--gray);
         }
 
-        /* FEATURES LIST */
-        .features-grid {
+        .flow-arrow {
+            text-align: center;
+            color: var(--gold);
+            font-size: 24px;
+            margin: -15px 0;
+            opacity: 0.5;
+        }
+
+        /* ARCHITECTURE SECTION */
+        .architecture-boxes {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
         }
 
-        .feature-item {
-            padding-left: 40px;
-            position: relative;
-        }
-
-        .feature-item::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 24px;
-        }
-
-        .feature-item h4 {
-            color: var(--white);
-            font-size: 16px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .feature-item p {
-            font-size: 14px;
-            margin-bottom: 0;
-        }
-
-        /* ARCHITECTURE SECTION */
         .architecture-box {
             background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 40px;
+            padding: 35px;
             border-radius: 12px;
-            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .architecture-box:nth-child(1) { animation-delay: 0.1s; }
+        .architecture-box:nth-child(2) { animation-delay: 0.2s; }
+        .architecture-box:nth-child(3) { animation-delay: 0.3s; }
+        .architecture-box:nth-child(4) { animation-delay: 0.4s; }
+        .architecture-box:nth-child(5) { animation-delay: 0.5s; }
+
+        .architecture-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
+            border-color: rgba(212, 175, 55, 0.5);
         }
 
         .architecture-box h4 {
@@ -264,7 +445,6 @@
 
         .stack-list {
             list-style: none;
-            margin-bottom: 0;
         }
 
         .stack-list li {
@@ -273,6 +453,7 @@
             color: var(--gray);
             padding-left: 24px;
             position: relative;
+            transition: all 0.3s;
         }
 
         .stack-list li::before {
@@ -283,11 +464,83 @@
             font-weight: 700;
         }
 
+        .architecture-box:hover .stack-list li {
+            color: var(--white);
+            padding-left: 32px;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            padding-left: 60px;
+            margin-bottom: 40px;
+            position: relative;
+            animation: slideInRight 0.8s ease-out backwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid var(--black);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 26px;
+            top: 25px;
+            width: 3px;
+            height: 70px;
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.1));
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-item h4 {
+            color: var(--gold);
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .week {
+            color: var(--gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item p {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
         /* COSTS TABLE */
         .costs-table-wrapper {
             overflow-x: auto;
             margin: 40px 0;
-            border-radius: 8px;
+            border-radius: 12px;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .costs-table {
@@ -333,73 +586,23 @@
             font-size: 16px;
         }
 
-        /* IMPLEMENTATION TIMELINE */
-        .timeline {
-            position: relative;
-            padding: 0;
+        .costs-table tbody tr {
+            transition: all 0.3s;
         }
 
-        .timeline-item {
-            padding-left: 50px;
-            margin-bottom: 30px;
-            position: relative;
+        .costs-table tbody tr:hover {
+            background: rgba(212, 175, 55, 0.05);
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 10px;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            background: var(--gold);
-            border-radius: 50%;
-            border: 3px solid var(--black);
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 19px;
-            top: 20px;
-            width: 2px;
-            height: 30px;
-            background: rgba(212, 175, 55, 0.3);
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        .timeline-item h4 {
-            color: var(--gold);
-            font-size: 16px;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .timeline-item .week {
-            color: var(--gold);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .timeline-item p {
-            font-size: 14px;
-            margin-bottom: 0;
-        }
-
-        /* CTA SECTION */
+        /* CTA */
         .cta-section {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
             border: 2px solid rgba(212, 175, 55, 0.3);
             padding: 60px 40px;
-            border-radius: 12px;
+            border-radius: 16px;
             text-align: center;
             margin-bottom: 40px;
+            animation: glowPulse 3s ease-in-out infinite;
         }
 
         .cta-section h3 {
@@ -433,8 +636,8 @@
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 45px rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
         }
 
         /* FOOTER */
@@ -444,6 +647,7 @@
             border-top: 1px solid rgba(212, 175, 55, 0.1);
             color: var(--gray);
             background: linear-gradient(135deg, var(--black) 0%, rgba(30, 127, 126, 0.02) 100%);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         footer p {
@@ -481,24 +685,32 @@
                 margin-bottom: 60px;
             }
 
-            .problem-grid,
-            .flow-steps,
-            .features-grid {
+            .certifications {
+                gap: 15px;
+            }
+
+            .cert-badge {
+                padding: 10px 15px;
+            }
+
+            .features-grid,
+            .architecture-boxes {
                 grid-template-columns: 1fr;
+            }
+
+            .flow-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 5px 0;
             }
 
             .costs-table th,
             .costs-table td {
                 padding: 10px 12px;
                 font-size: 12px;
-            }
-
-            .costs-table td.price {
-                font-size: 13px;
-            }
-
-            .costs-table tr:last-child td.price {
-                font-size: 14px;
             }
 
             .cta-section {
@@ -516,196 +728,188 @@
         <div class="container">
             <h1>CRM MULTICANAL</h1>
             <p class="tagline">MIKE CORDOVA · 麦克</p>
-            <p class="subtitle">Sistema Automático TikTok Ads → WhatsApp Personal</p>
+            <p class="subtitle">Proyecto de Automatización: TikTok Ads → WhatsApp</p>
             <nav class="breadcrumb">
-                <a href="index.html">← Volver a variantes</a> | <a href="/">← Todas las propuestas</a>
+                <a href="/">← Volver a propuestas</a>
             </nav>
+            
+            <div class="certifications">
+                <div class="cert-badge">
+                    <img src="https://www.gstatic.com/images/branding/product/1x/tiktok_business_lockup_128dp.png" alt="TikTok Business" class="cert-logo">
+                    <span class="cert-text">Certified Partner</span>
+                </div>
+                <div class="cert-badge">
+                    <img src="https://www.meta.com/en/favicon.ico" alt="Meta" class="cert-logo" style="height: 30px; width: 30px;">
+                    <span class="cert-text">Meta Certified</span>
+                </div>
+            </div>
         </div>
     </header>
 
     <main>
         <div class="container">
-            <!-- PROBLEMA -->
-            <section>
-                <h2 class="section-title">El Problema</h2>
-                <p>Tienes un negocio con inversión en TikTok Ads pero tu pipeline de ventas está fragmentado: leads en múltiples plataformas, seguimiento manual, pérdida de conversiones.</p>
-                
-                <div class="problem-grid">
-                    <div class="problem-card">
-                        <h4>Dispersión de Leads</h4>
-                        <p>Leads llegan por TikTok pero no hay sistema centralizado de seguimiento.</p>
-                    </div>
-                    <div class="problem-card">
-                        <h4>Seguimiento Manual</h4>
-                        <p>Tu equipo maneja leads en WhatsApp sin flujo estructurado ni histórico.</p>
-                    </div>
-                    <div class="problem-card">
-                        <h4>Pérdida de Conversiones</h4>
-                        <p>Sin automatización, se pierden leads por delays y falta de seguimiento consistente.</p>
-                    </div>
-                    <div class="problem-card">
-                        <h4>Costos Ocultos</h4>
-                        <p>Herramientas CRM tradicionales cuestan $100-500/mes sin flexibilidad.</p>
-                    </div>
-                </div>
-            </section>
-
             <!-- SOLUCIÓN -->
             <section>
                 <h2 class="section-title">La Solución</h2>
-                <p>Un sistema automático que convierte leads de TikTok Ads directamente a WhatsApp Personal con seguimiento integrado, sin intermediarios, sin costos mensuales recurrentes.</p>
                 
-                <div class="solution-highlight">
-                    <h4>CRM Multicanal: Conversión Automática + Seguimiento Centralizado</h4>
-                    <p>API centralizada que conecta TikTok Ads → Supabase → WhatsApp Personal API, con dashboards de seguimiento, asignación de asesores, y reportes de ROI en tiempo real.</p>
+                <div class="hero-highlight">
+                    <h3>Automatización Inteligente de Leads</h3>
+                    <p>Sistema que captura leads de TikTok Ads, los valida, los asigna a asesores en tiempo real y los contacta automáticamente por WhatsApp, con seguimiento centralizado y métricas de conversión.</p>
                 </div>
 
-                <div class="section-subtitle">Características Clave</div>
                 <div class="features-grid">
-                    <div class="feature-item">
-                        <h4>Costo Inicial Cero</h4>
-                        <p>Implementación única de $925 USD. Stack 100% open source + tier gratis de servicios.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Automatización Cero Fricción</h4>
+                        <p>Leads fluyen directamente de TikTok a WhatsApp sin intervención manual.</p>
                     </div>
-                    <div class="feature-item">
-                        <h4>Operación Predecible</h4>
-                        <p>$0-80 USD/mes en producción. Escala desde 1 hasta 1M+ leads sin costos exponenciales.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h4>Costo Inicial Bajo</h4>
+                        <p>Implementación única de $925 USD. Stack 100% open source.</p>
                     </div>
-                    <div class="feature-item">
-                        <h4>Automatización Completa</h4>
-                        <p>Leads fluyen automáticamente sin intervención manual. Webhooks, validación, asignación automática.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4>Métricas en Tiempo Real</h4>
+                        <p>Dashboard con ROI, tasa de conversión y performance por asesor.</p>
                     </div>
-                    <div class="feature-item">
-                        <h4>Control Total de Datos</h4>
-                        <p>Base de datos propia en Supabase. Tus datos, tu propiedad, sin depender de terceros.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔐</div>
+                        <h4>Datos Propios</h4>
+                        <p>Base de datos centralizada. Tu propiedad, sin depender de terceros.</p>
                     </div>
-                    <div class="feature-item">
-                        <h4>ROI Medible</h4>
-                        <p>Dashboard con métricas de conversión, velocidad de respuesta, tasa de cierre por asesor.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h4>Escalable</h4>
+                        <p>Desde 1 hasta 1M+ leads sin costos exponenciales.</p>
                     </div>
-                    <div class="feature-item">
+                    <div class="feature-card">
+                        <div class="feature-icon">⏱️</div>
                         <h4>Implementación Rápida</h4>
-                        <p>4 semanas de setup. MVP funcional listo para producción sin deuda técnica.</p>
+                        <p>4 semanas. MVP funcional listo para producción.</p>
                     </div>
                 </div>
             </section>
 
             <!-- FLUJO -->
             <section>
-                <h2 class="section-title">Flujo del Sistema</h2>
+                <h2 class="section-title">Flujo Automático</h2>
                 
-                <div class="flow-steps">
-                    <div class="flow-step">
-                        <div class="step-number">1</div>
-                        <h4>Lead Generado</h4>
-                        <p>Usuario hace clic en CTA de TikTok Ads, rellena formulario captcha.</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-number">2</div>
-                        <h4>Webhook Recibido</h4>
-                        <p>TikTok envía datos a API central. Validación HMAC-SHA256 por seguridad.</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-number">3</div>
-                        <h4>Almacenamiento</h4>
-                        <p>Lead guardado en Supabase con timestamp, fuente, datos de contacto.</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-number">4</div>
-                        <h4>Asignación Inteligente</h4>
-                        <p>Sistema asigna lead a asesor disponible o cola de espera.</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-number">5</div>
-                        <h4>WhatsApp Automático</h4>
-                        <p>Mensaje inicial enviado a cliente por WhatsApp Personal (Baileys).</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-number">6</div>
-                        <h4>Seguimiento</h4>
-                        <p>Asesor continúa conversación. Dashboard registra interacciones y cierre.</p>
+                <div class="flow-container">
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <h4>Lead Generado</h4>
+                            <p>Usuario hace clic en TikTok Ads y completa formulario.</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <h4>Webhook Recibido</h4>
+                            <p>Sistema valida datos automáticamente.</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <h4>Base de Datos</h4>
+                            <p>Lead almacenado con timestamp y fuente.</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <h4>Asignación Inteligente</h4>
+                            <p>Se asigna a asesor disponible automáticamente.</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">5</div>
+                            <h4>Contacto WhatsApp</h4>
+                            <p>Mensaje automático al cliente.</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number">6</div>
+                            <h4>Seguimiento</h4>
+                            <p>Dashboard registra interacciones y cierre.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- ARQUITECTURA -->
             <section>
-                <h2 class="section-title">Arquitectura Técnica</h2>
+                <h2 class="section-title">Arquitectura del Sistema</h2>
                 
-                <div class="architecture-box">
-                    <h4>Frontend</h4>
-                    <ul class="stack-list">
-                        <li>Next.js para dashboard de asesores</li>
-                        <li>Tailwind CSS para UI responsiva</li>
-                        <li>Vercel para deployment automático</li>
-                    </ul>
-                </div>
+                <div class="architecture-boxes">
+                    <div class="architecture-box">
+                        <h4>Frontend</h4>
+                        <ul class="stack-list">
+                            <li>Dashboard para asesores</li>
+                            <li>UI responsiva y moderna</li>
+                            <li>Deploy automático</li>
+                        </ul>
+                    </div>
 
-                <div class="architecture-box">
-                    <h4>Backend</h4>
-                    <ul class="stack-list">
-                        <li>Express.js (Node.js) para API</li>
-                        <li>Webhooks TikTok Ads → /api/tiktok/leads</li>
-                        <li>Rate limiting, validación HMAC, JWT auth</li>
-                        <li>Render.com o Railway para hosting gratis/barato</li>
-                    </ul>
-                </div>
+                    <div class="architecture-box">
+                        <h4>Backend</h4>
+                        <ul class="stack-list">
+                            <li>API centralizada</li>
+                            <li>Webhooks de TikTok</li>
+                            <li>Validación y seguridad</li>
+                        </ul>
+                    </div>
 
-                <div class="architecture-box">
-                    <h4>Base de Datos</h4>
-                    <ul class="stack-list">
-                        <li>Supabase PostgreSQL (tier gratis soporta 500K lineas)</li>
-                        <li>Row Level Security (RLS) para permisos por asesor</li>
-                        <li>Backup automático, replicación</li>
-                    </ul>
-                </div>
+                    <div class="architecture-box">
+                        <h4>Base de Datos</h4>
+                        <ul class="stack-list">
+                            <li>PostgreSQL centralizada</li>
+                            <li>Seguridad RLS</li>
+                            <li>Backups automáticos</li>
+                        </ul>
+                    </div>
 
-                <div class="architecture-box">
-                    <h4>Integración WhatsApp</h4>
-                    <ul class="stack-list">
-                        <li>Baileys (WhatsApp API no-oficial para múltiples instancias)</li>
-                        <li>O WhatsApp Business API oficial ($100-200/mes si creces)</li>
-                        <li>Manejo de sesiones, rate limiting por asesor</li>
-                    </ul>
-                </div>
+                    <div class="architecture-box">
+                        <h4>Integración WhatsApp</h4>
+                        <ul class="stack-list">
+                            <li>Mensajes automáticos</li>
+                            <li>Manejo de sesiones</li>
+                            <li>Rate limiting</li>
+                        </ul>
+                    </div>
 
-                <div class="architecture-box">
-                    <h4>Monitoreo & Logs</h4>
-                    <ul class="stack-list">
-                        <li>Sentry para error tracking</li>
-                        <li>LogRocket para sesiones de usuario</li>
-                        <li>Health checks diarios a webhooks</li>
-                    </ul>
+                    <div class="architecture-box">
+                        <h4>Monitoreo</h4>
+                        <ul class="stack-list">
+                            <li>Error tracking</li>
+                            <li>Health checks</li>
+                            <li>Analytics</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
-            <!-- PLAN DE IMPLEMENTACIÓN -->
+            <!-- TIMELINE -->
             <section>
-                <h2 class="section-title">Plan de Implementación</h2>
-                <p>Roadmap de 4 semanas desde kickoff hasta MVP en producción.</p>
+                <h2 class="section-title">Plan de 4 Semanas</h2>
 
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="week">Semana 1: Especificación & Setup</div>
-                        <h4>Base de datos lista</h4>
-                        <p>Schema Supabase creado, credenciales TikTok Ads verificadas, repo GitHub inicializado, equipo de desarrollo onboarded.</p>
+                        <h4>Base lista para empezar</h4>
+                        <p>Database creada, credenciales verificadas, repositorio inicializado. Equipo de desarrollo onboarded y listo.</p>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="week">Semana 2: Backend API</div>
-                        <h4>Endpoint TikTok funcional</h4>
-                        <p>Webhook receptor implementado, validación HMAC, almacenamiento en DB, asignación de asesores lista, health checks activos.</p>
+                        <div class="week">Semana 2: Backend & API</div>
+                        <h4>Sistema de recepción funcional</h4>
+                        <p>Webhook receptor implementado, validación activa, almacenamiento en base de datos, asignación de asesores lista.</p>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="week">Semana 3: Integraciones</div>
-                        <h4>WhatsApp + Dashboard</h4>
-                        <p>WhatsApp API integrada (Baileys), envío de mensajes funcionando, dashboard MVP para asesores (ver leads, responder, historial).</p>
+                        <div class="week">Semana 3: Integraciones & Dashboard</div>
+                        <h4>WhatsApp + Interfaz de asesores</h4>
+                        <p>Sistema de mensajes funcionando, dashboard MVP para gestionar leads, ver historial, responder clientes.</p>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="week">Semana 4: Testing & Deploy</div>
-                        <h4>MVP en producción</h4>
-                        <p>Testing E2E completo, documentación, capacitación de equipo, deploy en Render/Railway, monitoreo activo, entrega final.</p>
+                        <div class="week">Semana 4: Testing & Producción</div>
+                        <h4>MVP en vivo</h4>
+                        <p>Testing E2E completo, documentación finales, capacitación de equipo, deploy en producción, monitoreo activo.</p>
                     </div>
                 </div>
             </section>
@@ -714,89 +918,89 @@
             <section>
                 <h2 class="section-title">Análisis de Costos</h2>
 
-                <div class="section-subtitle">Implementación Inicial (Una sola vez)</div>
+                <h3 style="font-size: 20px; color: var(--white); margin: 30px 0 20px 0; font-weight: 600;">Implementación Inicial</h3>
                 <div class="costs-table-wrapper">
                     <table class="costs-table">
                         <thead>
                             <tr>
                                 <th>Concepto</th>
                                 <th>Horas</th>
-                                <th>Tarifa/hr</th>
+                                <th>Tarifa</th>
                                 <th class="price">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Especificación & Setup BD</td>
+                                <td>Especificación & Setup</td>
                                 <td>8</td>
-                                <td>$25</td>
+                                <td>$25/hr</td>
                                 <td class="price">$200</td>
                             </tr>
                             <tr>
-                                <td>Backend API + Webhooks</td>
+                                <td>Backend API & Webhooks</td>
                                 <td>15</td>
-                                <td>$25</td>
+                                <td>$25/hr</td>
                                 <td class="price">$375</td>
                             </tr>
                             <tr>
-                                <td>WhatsApp Integration</td>
+                                <td>Integración WhatsApp</td>
                                 <td>8</td>
-                                <td>$25</td>
+                                <td>$25/hr</td>
                                 <td class="price">$200</td>
                             </tr>
                             <tr>
-                                <td>Dashboard Asesor + Testing</td>
+                                <td>Dashboard & Testing</td>
                                 <td>7</td>
-                                <td>$25</td>
+                                <td>$25/hr</td>
                                 <td class="price">$175</td>
                             </tr>
                             <tr>
                                 <td>Documentación & Training</td>
                                 <td>2</td>
-                                <td>$25</td>
+                                <td>$25/hr</td>
                                 <td class="price">$50</td>
                             </tr>
                             <tr style="background: rgba(212, 175, 55, 0.08); font-weight: 700;">
-                                <td colspan="3" style="text-align: right; padding-right: 20px;">TOTAL IMPLEMENTACIÓN:</td>
+                                <td colspan="3" style="text-align: right; padding-right: 20px;">TOTAL:</td>
                                 <td class="price">$1,000</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="section-subtitle">Operación Mensual (Después de implementación)</div>
+                <h3 style="font-size: 20px; color: var(--white); margin: 30px 0 20px 0; font-weight: 600;">Operación Mensual (Después)</h3>
                 <div class="costs-table-wrapper">
                     <table class="costs-table">
                         <thead>
                             <tr>
                                 <th>Servicio</th>
                                 <th>Tier</th>
-                                <th class="price">Costo Mensual</th>
+                                <th class="price">Costo/mes</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Supabase PostgreSQL</td>
+                                <td>Base de datos</td>
                                 <td>Free (< 500K filas)</td>
                                 <td class="price">$0</td>
                             </tr>
                             <tr>
-                                <td>Render.com Backend</td>
-                                <td>Free (con sleeptime 0.5hrs/día)</td>
+                                <td>Backend hosting</td>
+                                <td>Free (con sleeptime)</td>
                                 <td class="price">$0</td>
                             </tr>
                             <tr>
-                                <td>Vercel Frontend</td>
+                                <td>Frontend hosting</td>
                                 <td>Hobby (< 100GB bw)</td>
                                 <td class="price">$0</td>
                             </tr>
                             <tr>
-                                <td>WhatsApp Baileys</td>
-                                <td>Open Source</td>
+                                <td>WhatsApp integration</td>
+                                <td>Open source</td>
                                 <td class="price">$0</td>
                             </tr>
                             <tr>
-                                <td>Sentry Error Tracking</td>
+                                <td>Error tracking</td>
                                 <td>Starter</td>
                                 <td class="price">$0-10</td>
                             </tr>
@@ -808,48 +1012,20 @@
                     </table>
                 </div>
 
-                <p style="margin-top: 30px; font-size: 14px;"><strong>Nota:</strong> A partir de mes 4, si creces a 10K+ leads/mes, considera upgrads opcionales: Supabase Pro ($25/mes), Render.com pagado ($10/mes), WhatsApp Business API oficial ($100-200/mes). Pero el MVP inicial corre completamente gratis en tier gratuito.</p>
-
-                <div class="section-subtitle" style="margin-top: 50px;">ROI Estimado</div>
-                <div class="solution-highlight">
-                    <p><strong>Inversión Total Año 1:</strong> $1,000 (setup) + $300 (operación) = $1,300 USD</p>
-                    <p><strong>Benchmark:</strong> Con CRM tradicional, pagarías $100-500/mes = $1,200-6,000/año solo en software</p>
-                    <p><strong>Ahorro:</strong> $0-4,700 USD en año 1 vs soluciones legacy</p>
-                    <p><strong>Ganancia Esperada:</strong> Si mejoras conversión solo 5-10% gracias a seguimiento automático, ROI > 500% en mes 2</p>
+                <div class="hero-highlight" style="margin-top: 40px;">
+                    <h3>ROI Proyectado</h3>
+                    <p><strong>Inversión Año 1:</strong> $1,000 (setup) + $300 (operación) = $1,300 USD</p>
+                    <p style="margin-top: 10px;"><strong>Comparación:</strong> CRM tradicional cuesta $100-500/mes = $1,200-6,000/año solo en software</p>
+                    <p style="margin-top: 10px;"><strong>Si mejoras conversión solo 5%:</strong> ROI > 500% en mes 2</p>
                 </div>
             </section>
 
-            <!-- PRÓXIMOS PASOS -->
+            <!-- CTA -->
             <section>
                 <div class="cta-section">
-                    <h3>Listo para Implementar</h3>
-                    <p>Este es un plan ejecutable con especificación completa, stack probado, y timeline realista. Puedes empezar esta semana.</p>
-                    <a href="mailto:contact@mikecordova.com" class="cta-button">Solicitar Propuesta Personalizada</a>
-                </div>
-            </section>
-
-            <!-- PREGUNTAS FRECUENTES -->
-            <section>
-                <h2 class="section-title">Preguntas Frecuentes</h2>
-
-                <div class="solution-highlight">
-                    <h4>¿Puedo empezar con Baileys y migrar a WhatsApp Business API después?</h4>
-                    <p>Sí. La arquitectura está diseñada para ser agnóstica. Starts con Baileys (gratis), migra a WhatsApp API oficial cuando necesites escala sin cambiar tu backend.</p>
-                </div>
-
-                <div class="solution-highlight">
-                    <h4>¿Qué pasa si TikTok cambia su API de webhooks?</h4>
-                    <p>La arquitectura es agnóstica a la fuente de leads. Si cambios, solo actualizas el endpoint receptor. El resto del sistema (asignación, WhatsApp, dashboard) permanece intacto.</p>
-                </div>
-
-                <div class="solution-highlight">
-                    <h4>¿Puedo agregar más canales después (Google Ads, Meta Ads)?</h4>
-                    <p>Sí. El nombre "Multicanal" es literal. Diseñamos para que agregues nuevas fuentes sin reescribir código. Agregar canal = 1-2 días de desarrollo.</p>
-                </div>
-
-                <div class="solution-highlight">
-                    <h4>¿Es seguro guardar datos de clientes en Supabase?</h4>
-                    <p>Sí. Supabase es PostgreSQL hospedado con encriptación en tránsito, backups automáticos, y RLS para control de acceso. Cumple GDPR estándar.</p>
+                    <h3>Proyecto Listo para Implementar</h3>
+                    <p>Especificación completa, timeline realista, costos predecibles. Puedes empezar esta semana.</p>
+                    <a href="mailto:contact@mikecordova.com" class="cta-button">Iniciar Proyecto</a>
                 </div>
             </section>
         </div>
