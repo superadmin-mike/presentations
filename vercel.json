@@ -1,5 +1,24 @@
 {
   "buildCommand": "echo 'Static files ready'",
   "outputDirectory": ".",
-  "installCommand": "echo 'No dependencies needed'"
+  "installCommand": "echo 'No dependencies needed'",
+  "rewrites": [
+    {
+      "source": "/crm-multicanal",
+      "destination": "/crm-multicanal/index.html"
+    },
+    {
+      "source": "/crm-multicanal/",
+      "destination": "/crm-multicanal/index.html"
+    },
+    {
+      "source": "/crm-multicanal/design",
+      "destination": "/crm-multicanal/presentacion-v2-design.html"
+    },
+    {
+      "source": "/crm-multicanal/design/",
+      "destination": "/crm-multicanal/presentacion-v2-design.html"
+    }
+  ],
+  "cleanUrls": true
 }
