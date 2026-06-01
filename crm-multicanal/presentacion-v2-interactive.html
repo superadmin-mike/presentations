@@ -29,45 +29,48 @@
             padding: 0 40px;
         }
 
-        /* NAVIGATION */
+        /* ═════════════════════════════════════════
+           NAVIGATION - FIXED HEADER
+           ═════════════════════════════════════════ */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(12px);
-            padding: 8px 40px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
-            height: 110px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            height: 100px;
         }
 
         nav .logo-container {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 20px;
             text-decoration: none;
-            font-weight: 800;
-            font-size: 16px;
-            color: #FFFFFF;
-            letter-spacing: 0.5px;
         }
 
         nav .logo-icon {
-            width: 90px;
-            height: 90px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.5));
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4));
+            transition: transform 0.3s;
+        }
+
+        nav .logo-icon:hover {
+            transform: scale(1.05);
         }
 
         nav .chinese-name {
             color: #D4AF37;
-            font-size: 20px;
+            font-size: 28px;
             font-weight: 900;
+            letter-spacing: 2px;
         }
 
         nav ul {
@@ -77,13 +80,25 @@
         }
 
         nav a {
-            color: #B0B0B0;
+            color: #9E9E9E;
             text-decoration: none;
             font-size: 12px;
-            font-weight: 600;
-            transition: all 0.3s;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s;
         }
 
         nav a:hover,
@@ -91,10 +106,17 @@
             color: #D4AF37;
         }
 
-        /* HERO */
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* ═════════════════════════════════════════
+           HERO SECTION - VISUAL IMPACT
+           ═════════════════════════════════════════ */
         section#hero {
             padding-top: 160px;
-            padding-bottom: 60px;
+            padding-bottom: 120px;
             background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
             position: relative;
             overflow: hidden;
@@ -103,53 +125,96 @@
         section#hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            top: -40%;
+            right: -10%;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(40px); }
         }
 
         .hero-content {
             max-width: 900px;
             position: relative;
             z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
-            font-size: 60px;
+            font-size: 72px;
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 24px;
             color: #FFFFFF;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
+            word-spacing: 0.1em;
         }
 
         h1 .highlight {
-            color: #D4AF37;
+            background: linear-gradient(135deg, #D4AF37 0%, #F5DEB3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
         }
 
         .hero-description {
-            font-size: 16px;
-            color: #D0D0D0;
-            margin-bottom: 40px;
+            font-size: 18px;
+            color: #C0C0C0;
+            margin-bottom: 48px;
             line-height: 1.8;
-            max-width: 800px;
+            max-width: 900px;
+            font-weight: 400;
         }
 
         .hero-metrics {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
-            margin-bottom: 40px;
-            max-width: 700px;
+            margin-bottom: 60px;
+            max-width: 900px;
         }
 
         .metric {
-            border-left: 3px solid #D4AF37;
-            padding-left: 24px;
+            padding: 32px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            border-left: 4px solid #D4AF37;
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .metric:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .metric:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .metric:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-4px);
+            border-color: #D4AF37;
         }
 
         .metric-number {
@@ -157,131 +222,98 @@
             font-weight: 900;
             color: #D4AF37;
             margin-bottom: 8px;
+            letter-spacing: -1px;
         }
 
         .metric-label {
-            font-size: 13px;
-            color: #909090;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            font-weight: 600;
+            font-size: 14px;
+            color: #9E9E9E;
+            font-weight: 500;
         }
 
         .cta-button {
             display: inline-block;
             background: linear-gradient(135deg, #D4AF37 0%, #E8D4A2 100%);
             color: #000000;
-            padding: 16px 48px;
-            border-radius: 6px;
+            padding: 18px 48px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 800;
             font-size: 14px;
-            transition: all 0.4s;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
             border: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1.5px;
+            box-shadow: 0 12px 48px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
         }
 
         .cta-button:hover {
             transform: translateY(-4px);
-            box-shadow: 0 18px 50px rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4);
         }
 
-        /* SECTIONS */
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* ═════════════════════════════════════════
+           SOLUTION SECTION
+           ═════════════════════════════════════════ */
         section {
-            padding: 80px 0;
+            padding: 100px 0;
             position: relative;
         }
 
         section h2 {
-            font-size: 44px;
+            font-size: 56px;
             font-weight: 900;
-            margin-bottom: 48px;
+            margin-bottom: 72px;
             color: #FFFFFF;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
+            position: relative;
+            padding-bottom: 24px;
         }
 
         section h2::after {
             content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: #D4AF37;
-            margin-top: 24px;
-        }
-
-        /* PROBLEMS SECTION */
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            margin-bottom: 80px;
-        }
-
-        .problem-card {
-            padding: 48px;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
-            border-radius: 8px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            transition: all 0.4s;
-            position: relative;
-        }
-
-        .problem-card::before {
-            content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
-            right: 0;
-            height: 4px;
+            width: 80px;
+            height: 5px;
             background: linear-gradient(90deg, #D4AF37 0%, transparent 100%);
+            border-radius: 3px;
         }
 
-        .problem-card:hover {
-            transform: translateY(-8px);
-            border-color: #D4AF37;
-            box-shadow: 0 24px 64px rgba(212, 175, 55, 0.15);
-        }
-
-        .problem-metric {
-            font-size: 28px;
-            font-weight: 900;
-            color: #D4AF37;
-            margin-bottom: 12px;
-        }
-
-        .problem-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 16px;
-            margin-top: 12px;
-        }
-
-        .problem-card p {
-            color: #B0B0B0;
-            font-size: 15px;
-            line-height: 1.8;
-        }
-
-        /* SOLUTION */
         .solution-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            align-items: start;
+            gap: 40px;
         }
 
         .solution-item {
-            padding: 32px;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
-            border-radius: 8px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            transition: all 0.4s;
+            padding: 48px;
+            background: linear-gradient(135deg, rgba(30, 30, 30, 1) 0%, rgba(20, 20, 20, 1) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .solution-item::before {
@@ -294,144 +326,139 @@
             background: linear-gradient(90deg, #D4AF37 0%, transparent 100%);
         }
 
+        .solution-item::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 80%);
+            transition: top 0.6s;
+            pointer-events: none;
+        }
+
         .solution-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 64px rgba(212, 175, 55, 0.15);
-            border-color: #D4AF37;
-            background: linear-gradient(135deg, rgba(25, 25, 25, 1) 0%, rgba(18, 18, 18, 1) 100%);
+            transform: translateY(-12px);
+            box-shadow: 0 32px 80px rgba(212, 175, 55, 0.2);
+            background: linear-gradient(135deg, rgba(35, 35, 35, 1) 0%, rgba(25, 25, 25, 1) 100%);
+        }
+
+        .solution-item:hover::after {
+            top: 0;
+        }
+
+        .solution-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
         }
 
         .solution-item h3 {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 800;
             color: #FFFFFF;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
         }
 
         .solution-item p {
             color: #B0B0B0;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
 
-        /* FLOW */
-        .flow-container {
-            max-width: 900px;
+        /* ═════════════════════════════════════════
+           FLOW SECTION - IMPLEMENTATION STEPS
+           ═════════════════════════════════════════ */
+        .flow-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
         }
 
         .flow-step {
-            display: flex;
-            gap: 32px;
-            margin-bottom: 32px;
-            align-items: flex-start;
-            padding: 32px;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
-            border-radius: 8px;
+            padding: 40px 32px;
+            background: linear-gradient(135deg, rgba(30, 30, 30, 1) 0%, rgba(20, 20, 20, 1) 100%);
+            border-radius: 12px;
             border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            position: relative;
             transition: all 0.3s;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .flow-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #D4AF37 0%, transparent 100%);
         }
 
         .flow-step:hover {
-            box-shadow: 0 16px 48px rgba(212, 175, 55, 0.2);
-            border-color: #D4AF37;
-            background: linear-gradient(135deg, rgba(25, 25, 25, 1) 0%, rgba(18, 18, 18, 1) 100%);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+            background: linear-gradient(135deg, rgba(35, 35, 35, 1) 0%, rgba(25, 25, 25, 1) 100%);
         }
 
         .flow-number {
-            font-size: 40px;
+            font-size: 48px;
             font-weight: 900;
             color: #D4AF37;
-            min-width: 70px;
-            line-height: 1;
+            margin-bottom: 16px;
+            animation: countUp 0.6s ease-out;
         }
 
-        .flow-content h3 {
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .flow-title {
             font-size: 16px;
-            font-weight: 800;
+            font-weight: 700;
             color: #FFFFFF;
-            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .flow-content p {
-            color: #B0B0B0;
-            font-size: 14px;
+        .flow-description {
+            font-size: 13px;
+            color: #9E9E9E;
+            margin-top: 12px;
             line-height: 1.6;
         }
 
-        /* TIMELINE */
-        .timeline {
-            max-width: 900px;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 48px;
-            margin-bottom: 48px;
-            align-items: flex-start;
-            position: relative;
-        }
-
-        .timeline-marker {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #D4AF37 0%, #E8D4A2 100%);
-            border-radius: 50%;
-            margin-top: 8px;
-            flex-shrink: 0;
-            position: relative;
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-        }
-
-        .timeline-marker::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            height: 120px;
-            background: linear-gradient(180deg, #D4AF37 0%, transparent 100%);
-            left: 19px;
-            top: 40px;
-        }
-
-        .timeline-item:last-child .timeline-marker::after {
-            display: none;
-        }
-
-        .timeline-content {
-            padding: 28px;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
-            border-radius: 8px;
-            border-left: 4px solid #D4AF37;
-            flex: 1;
-        }
-
-        .timeline-content h3 {
-            font-size: 20px;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin-bottom: 12px;
-        }
-
-        .timeline-content p {
-            color: #B0B0B0;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        /* BENEFITS */
+        /* ═════════════════════════════════════════
+           BENEFITS SECTION
+           ═════════════════════════════════════════ */
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            gap: 32px;
         }
 
         .benefit-item {
-            padding: 28px;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(15, 15, 15, 1) 100%);
-            border-radius: 8px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 40px 32px;
+            background: linear-gradient(135deg, rgba(30, 30, 30, 1) 0%, rgba(20, 20, 20, 1) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
             text-align: center;
-            transition: all 0.4s;
+            transition: all 0.3s;
             position: relative;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .benefit-item::before {
@@ -445,81 +472,121 @@
         }
 
         .benefit-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(212, 175, 55, 0.2);
-            border-color: #D4AF37;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+            background: linear-gradient(135deg, rgba(35, 35, 35, 1) 0%, rgba(25, 25, 25, 1) 100%);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         .benefit-icon {
-            font-size: 32px;
+            font-size: 40px;
             margin-bottom: 16px;
-            color: #D4AF37;
+            display: block;
         }
 
         .benefit-item h3 {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: #FFFFFF;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .benefit-item p {
-            color: #B0B0B0;
+            color: #9E9E9E;
             font-size: 14px;
             line-height: 1.6;
         }
 
-        /* INVESTMENT */
+        /* ═════════════════════════════════════════
+           INVESTMENT SECTION - FOCAL POINT
+           ═════════════════════════════════════════ */
+        section#inversión {
+            padding: 120px 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(15, 15, 15, 1) 100%);
+        }
+
         .investment-container {
-            max-width: 800px;
-            padding: 48px 40px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.06) 100%);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 60px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%);
             border: 2px solid #D4AF37;
-            border-radius: 8px;
+            border-radius: 12px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 40px 120px rgba(212, 175, 55, 0.25);
             text-align: center;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .investment-container::before {
             content: '';
             position: absolute;
-            top: -150px;
-            right: -150px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .investment-header {
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .investment-label {
             font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
+            letter-spacing: 2px;
             color: #D4AF37;
-            margin-bottom: 20px;
-            font-weight: 800;
-            position: relative;
-            z-index: 1;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: block;
         }
 
         .investment-amount {
-            font-size: 64px;
+            font-size: 80px;
             font-weight: 900;
             color: #D4AF37;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             position: relative;
             z-index: 1;
             letter-spacing: -2px;
+            line-height: 1;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .investment-container h3 {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 800;
             color: #FFFFFF;
-            margin-bottom: 32px;
+            margin-bottom: 48px;
             position: relative;
             z-index: 1;
         }
@@ -529,21 +596,35 @@
             position: relative;
             z-index: 1;
             text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .benefit-list li {
-            padding: 16px 0;
-            padding-left: 44px;
-            color: #FFFFFF;
+            padding: 18px 0;
+            padding-left: 40px;
             font-size: 16px;
-            line-height: 1.8;
-            position: relative;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            color: #FFFFFF;
             font-weight: 500;
+            position: relative;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            animation: slideInLeft 0.6s ease-out;
+            line-height: 1.6;
         }
 
         .benefit-list li:last-child {
             border-bottom: none;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .benefit-list li::before {
@@ -552,55 +633,13 @@
             left: 0;
             color: #D4AF37;
             font-weight: 900;
-            font-size: 22px;
+            font-size: 20px;
+            top: 12px;
         }
 
-        /* FOOTER */
-        footer {
-            background: #000000;
-            border-top: 1px solid rgba(212, 175, 55, 0.25);
-            padding: 72px 0;
-            text-align: center;
-            color: #808080;
-            font-size: 13px;
-        }
-
-        footer p {
-            margin: 10px 0;
-        }
-
-        footer strong {
-            color: #D4AF37;
-            font-weight: 800;
-        }
-
-        /* ANIMATIONS */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .solution-item,
-        .problem-card,
-        .flow-step,
-        .timeline-content,
-        .benefit-item {
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
-        }
-
-        section:not(#hero) > *:nth-child(1) { animation-delay: 0s; }
-        section:not(#hero) > *:nth-child(2) { animation-delay: 0.1s; }
-        section:not(#hero) > *:nth-child(3) { animation-delay: 0.2s; }
-        section:not(#hero) > *:nth-child(4) { animation-delay: 0.3s; }
-
-        /* RESPONSIVE */
+        /* ═════════════════════════════════════════
+           RESPONSIVE DESIGN
+           ═════════════════════════════════════════ */
         @media (max-width: 1024px) {
             h1 {
                 font-size: 56px;
@@ -608,140 +647,126 @@
 
             section h2 {
                 font-size: 44px;
+                margin-bottom: 56px;
             }
 
-            .problem-grid,
+            .solution-grid,
             .benefits-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
             }
 
-            .solution-grid {
-                grid-template-columns: 1fr;
+            .solution-item,
+            .benefit-item {
+                padding: 36px 28px;
             }
 
-            .hero-metrics {
+            .flow-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .investment-amount {
+                font-size: 64px;
             }
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 0 24px;
-            }
-
             nav {
                 padding: 12px 24px;
-                height: auto;
+                height: 90px;
+            }
+
+            nav .logo-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            nav .chinese-name {
+                font-size: 20px;
             }
 
             nav ul {
                 display: none;
             }
 
-            nav .logo-container {
-                gap: 12px;
-                font-size: 14px;
+            h1 {
+                font-size: 40px;
+                margin-bottom: 20px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+                margin-bottom: 36px;
+            }
+
+            .hero-metrics {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-bottom: 40px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            section h2 {
+                font-size: 36px;
+                margin-bottom: 48px;
+            }
+
+            .solution-grid,
+            .benefits-grid,
+            .flow-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .solution-item,
+            .benefit-item,
+            .flow-step {
+                padding: 32px 24px;
+            }
+
+            .investment-container {
+                padding: 56px 40px;
+            }
+
+            .investment-amount {
+                font-size: 48px;
+            }
+
+            .investment-container h3 {
+                font-size: 22px;
+                margin-bottom: 36px;
+            }
+
+            .benefit-list li {
+                font-size: 15px;
+                padding-left: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                height: 80px;
             }
 
             nav .logo-icon {
-                width: 44px;
-                height: 44px;
+                width: 60px;
+                height: 60px;
             }
 
             nav .chinese-name {
                 font-size: 16px;
             }
 
-            section#hero {
-                padding-top: 140px;
-                padding-bottom: 80px;
-            }
-
             h1 {
-                font-size: 40px;
-                margin-bottom: 24px;
+                font-size: 32px;
+                line-height: 1.1;
             }
 
             .hero-description {
-                font-size: 17px;
-                margin-bottom: 40px;
-            }
-
-            .hero-metrics {
-                grid-template-columns: 1fr;
-                gap: 28px;
-                margin-bottom: 40px;
-            }
-
-            section h2 {
-                font-size: 32px;
-                margin-bottom: 48px;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .problem-grid,
-            .benefits-grid,
-            .solution-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .problem-card,
-            .solution-item,
-            .flow-step,
-            .timeline-content,
-            .benefit-item {
-                padding: 36px;
-            }
-
-            .flow-step {
-                flex-direction: column;
-                gap: 24px;
-            }
-
-            .flow-number {
-                font-size: 40px;
-                min-width: auto;
-            }
-
-            .timeline-item {
-                gap: 28px;
-            }
-
-            .timeline-marker {
-                width: 36px;
-                height: 36px;
-            }
-
-            .investment-container {
-                padding: 48px 32px;
-            }
-
-            .investment-amount {
-                font-size: 56px;
-            }
-
-            .investment-container h3 {
-                font-size: 22px;
-                margin-bottom: 32px;
-            }
-
-            .benefit-list li {
-                font-size: 15px;
-            }
-
-            footer {
-                padding: 48px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 32px;
-                line-height: 1.15;
+                font-size: 14px;
             }
 
             section h2 {
@@ -749,52 +774,37 @@
                 margin-bottom: 36px;
             }
 
-            .problem-card,
-            .solution-item,
-            .benefit-item {
-                padding: 28px;
-            }
-
-            .flow-step,
-            .timeline-content {
-                padding: 28px;
-            }
-
-            .problem-metric {
-                font-size: 24px;
-            }
-
-            .problem-card h3,
-            .solution-item h3,
-            .benefit-item h3 {
-                font-size: 16px;
-            }
-
-            .hero-metrics {
-                gap: 20px;
+            .metric {
+                padding: 24px;
             }
 
             .metric-number {
                 font-size: 28px;
             }
 
-            .cta-button {
-                padding: 14px 36px;
-                font-size: 13px;
+            .solution-item,
+            .benefit-item,
+            .flow-step {
+                padding: 24px 16px;
+            }
+
+            .flow-number {
+                font-size: 36px;
             }
 
             .investment-amount {
                 font-size: 44px;
+                margin-bottom: 16px;
             }
 
-            .investment-label {
-                font-size: 12px;
+            .benefit-list li {
+                font-size: 14px;
+                padding: 14px 0 14px 32px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- NAVIGATION -->
     <nav>
         <a href="#hero" class="logo-container">
             <img class="logo-icon" src="./logo.png" alt="Mike Cordova Logo" />
@@ -841,20 +851,24 @@
             <h2>La solución completa</h2>
             <div class="solution-grid">
                 <div class="solution-item">
-                    <h3>🤖 Conversión automática</h3>
-                    <p>El usuario hace clic en tu anuncio TikTok → Llega automáticamente a tu WhatsApp Personal como contacto nuevo. Sin configuración manual. Sin código. Sin integraciones complejas.</p>
+                    <span class="solution-icon">🤖</span>
+                    <h3>Conversión automática</h3>
+                    <p>Tu anuncio en TikTok genera un lead. Automáticamente se abre WhatsApp del usuario con tu mensaje personalizado. Sin intermediarios.</p>
                 </div>
                 <div class="solution-item">
-                    <h3>📊 Dashboard en tiempo real</h3>
-                    <p>Visualiza cada conversación asignada a cada asesor. Métricas claras: leads/día, tasa de respuesta, seguimiento de ventas. Todo en un solo lugar.</p>
+                    <span class="solution-icon">📊</span>
+                    <h3>Dashboard completo</h3>
+                    <p>Visualiza en tiempo real: leads capturados, mensajes enviados, respuestas, tasas de conversión. Todas tus métricas en un solo lugar.</p>
                 </div>
                 <div class="solution-item">
-                    <h3>💰 Costo cero de integración</h3>
-                    <p>No pagas por APIs externas. No pagas por bots de WhatsApp. Sistema nativo que usa tus herramientas existentes. Máximo valor, mínimo gasto.</p>
+                    <span class="solution-icon">⚡</span>
+                    <h3>Sin costos ocultos</h3>
+                    <p>USD $1,000 único. Cero integración, cero API fees, cero comisiones por mensaje. Escalable a usuarios ilimitados.</p>
                 </div>
                 <div class="solution-item">
-                    <h3>📈 Escalabilidad ilimitada</h3>
-                    <p>Soporta cientos de asesores, miles de conversaciones diarias. Crece de 1 a 1000 conversiones sin romper nada. La infraestructura escala contigo.</p>
+                    <span class="solution-icon">🔧</span>
+                    <h3>Implementación rápida</h3>
+                    <p>2-3 semanas de setup completo. Testing exhaustivo. Capacitación de tu equipo. Go-live sin sorpresas.</p>
                 </div>
             </div>
         </div>
@@ -864,34 +878,26 @@
     <section id="flujo">
         <div class="container">
             <h2>Cómo funciona</h2>
-            <div class="flow-container">
+            <div class="flow-grid">
                 <div class="flow-step">
-                    <div class="flow-number">01</div>
-                    <div class="flow-content">
-                        <h3>El usuario ve tu anuncio en TikTok</h3>
-                        <p>Tu audiencia está en TikTok. Ven tu anuncio, hacen clic y entran en el funnel.</p>
-                    </div>
+                    <div class="flow-number">1</div>
+                    <div class="flow-title">TikTok Ads</div>
+                    <div class="flow-description">Tu campaña activa genera clicks</div>
                 </div>
                 <div class="flow-step">
-                    <div class="flow-number">02</div>
-                    <div class="flow-content">
-                        <h3>Se genera en WhatsApp automáticamente</h3>
-                        <p>Sin delays. Sin formularios. El contacto aparece directamente en tu WhatsApp Personal como nuevo lead del CRM.</p>
-                    </div>
+                    <div class="flow-number">2</div>
+                    <div class="flow-title">Captura Lead</div>
+                    <div class="flow-description">Sistema detecta y registra automáticamente</div>
                 </div>
                 <div class="flow-step">
-                    <div class="flow-number">03</div>
-                    <div class="flow-content">
-                        <h3>Se asigna al asesor correcto</h3>
-                        <p>El sistema distribuye leads automáticamente entre tus asesores. Cada uno sabe a quién debe seguimiento.</p>
-                    </div>
+                    <div class="flow-number">3</div>
+                    <div class="flow-title">WhatsApp Personal</div>
+                    <div class="flow-description">Abre directamente en el teléfono del usuario</div>
                 </div>
                 <div class="flow-step">
-                    <div class="flow-number">04</div>
-                    <div class="flow-content">
-                        <h3>Dashboard monitorea todo en tiempo real</h3>
-                        <p>Ves qué asesor tiene cuántos leads, conversaciones activas, seguimiento de cada negociación. Decisiones basadas en datos.</p>
-                    </div>
+                    <div class="flow-number">4</div>
+                    <div class="flow-title">Conversión</div>
+                    <div class="flow-description">Usuario responde, tú vendes directo</div>
                 </div>
             </div>
         </div>
@@ -900,67 +906,37 @@
     <!-- BENEFICIOS -->
     <section id="beneficios">
         <div class="container">
-            <h2>Beneficios principales</h2>
+            <h2>Por qué funciona</h2>
             <div class="benefits-grid">
                 <div class="benefit-item">
-                    <div class="benefit-icon">⚡</div>
+                    <span class="benefit-icon">⚡</span>
                     <h3>Velocidad</h3>
-                    <p>Implementación en 2-3 semanas, no en meses. Empieza a recibir leads automáticos desde el día 1.</p>
+                    <p>Respuesta instantánea. El usuario llega a WhatsApp en menos de 2 segundos.</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">💵</div>
-                    <h3>Ahorro total</h3>
-                    <p>$0 en APIs. $0 en bots. Solo pagas la implementación. Todo lo demás es tuyo, nativo.</p>
+                    <span class="benefit-icon">💰</span>
+                    <h3>Ahorro extremo</h3>
+                    <p>Sin herramientas caras. Sin APIs costosas. Sin intermediarios. Solo automatización pura.</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">📱</div>
-                    <h3>WhatsApp Personal</h3>
-                    <p>Usa la app de WhatsApp que ya tienes. No necesitas cambiar números, no necesitas Business Account.</p>
+                    <span class="benefit-icon">📱</span>
+                    <h3>WhatsApp nativo</h3>
+                    <p>No bot. No webhook. Conversación real en el app más confiable de LATAM.</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">📊</div>
+                    <span class="benefit-icon">👀</span>
                     <h3>Visibilidad total</h3>
-                    <p>Dashboard que muestra leads/asesor, tasa de respuesta, conversaciones en progreso. Datos claros, decisiones rápidas.</p>
+                    <p>Dashboard en tiempo real. Sabes exactamente qué está pasando en cada momento.</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">🔄</div>
+                    <span class="benefit-icon">🔄</span>
                     <h3>Automatización 24/7</h3>
-                    <p>El sistema corre 24/7 sin tu intervención. Recibe leads incluso mientras duermes.</p>
+                    <p>El sistema no duerme. Sigue capturando y distribuyendo leads sin ti.</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">🎯</div>
+                    <span class="benefit-icon">🎯</span>
                     <h3>Sin pérdida de datos</h3>
-                    <p>Cada clic en TikTok → Contacto en WhatsApp. 0% de leads perdidos entre plataformas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TIMELINE -->
-    <section id="timeline">
-        <div class="container">
-            <h2>Plan de implementación</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Semana 1-2: Setup</h3>
-                        <p>Análisis de tu funnel TikTok. Configuración de WhatsApp API. Integración con tu cuenta de anuncios. Revisión de flujo contigo.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Semana 2-3: Testing</h3>
-                        <p>Pruebas en vivo con anuncios pequeños. Ajuste de automatizaciones. Capacitación de tu equipo en el dashboard.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Semana 3: Go Live</h3>
-                        <p>Lanzamiento en full. Monitoreo 24/7 durante los primeros 7 días. Soporte directo para cualquier ajuste.</p>
-                    </div>
+                    <p>Cero errores de integración. Todos los leads llegan intactos a WhatsApp.</p>
                 </div>
             </div>
         </div>
@@ -970,81 +946,83 @@
     <section id="inversión">
         <div class="container">
             <div class="investment-container">
-                <div class="investment-label">Inversión total del proyecto</div>
-                <div class="investment-amount">USD $1,000</div>
-                <h3>Incluye implementación completa</h3>
+                <div class="investment-header">
+                    <span class="investment-label">Inversión única para implementación completa</span>
+                    <div class="investment-amount">USD $1,000</div>
+                    <h3>Sistema completamente implementado y funcionando</h3>
+                </div>
+
                 <ul class="benefit-list">
                     <li>Sistema nativo de conversión automática TikTok → WhatsApp</li>
                     <li>Usuarios ilimitados en el dashboard</li>
                     <li>Automatización de inicio de conversaciones</li>
                     <li>Revisión y optimización de flujo para costo cero</li>
                     <li>Dashboard con métricas en tiempo real</li>
-                    <li>Capacitación de tu equipo</li>
-                    <li>Soporte durante implementación (3 semanas)</li>
+                    <li>Capacitación completa de tu equipo</li>
+                    <li>Soporte post-implementación incluido</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p><strong>CRM Multicanal</strong> — Solución nativa LATAM</p>
-        <p>麦克 (Mike Cordova) | <strong>Sistemas que hacen crecer negocios</strong></p>
-        <p style="margin-top: 20px; opacity: 0.5;">© 2026 Mike Cordova. Todos los derechos reservados.</p>
-    </footer>
-
     <script>
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            });
-        });
+        // Navigation active link
+        const navLinks = document.querySelectorAll('nav a.nav-link');
+        const sections = document.querySelectorAll('section[id]');
 
-        // Highlight active nav link on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const scrollY = window.scrollY;
+        function updateActiveLink() {
+            let currentSection = '';
 
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.offsetHeight;
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-                    const activeLink = document.querySelector(`nav a[href="#${section.id}"]`);
-                    if (activeLink) activeLink.classList.add('active');
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (window.scrollY >= sectionTop - 150) {
+                    currentSection = section.getAttribute('id');
                 }
             });
-        });
 
-        // Intersection Observer for animations
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+
+        // Scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'none';
-                    setTimeout(() => {
-                        entry.target.style.animation = '';
-                    }, 10);
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.solution-item, .problem-card, .flow-step, .timeline-content, .benefit-item').forEach(el => {
+        document.querySelectorAll('.solution-item, .benefit-item, .flow-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
     </script>
 </body>
