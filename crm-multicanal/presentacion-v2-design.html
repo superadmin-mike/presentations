@@ -493,6 +493,10 @@
         .flow-container {
             margin-top: 60px;
             position: relative;
+            margin-left: -40px;
+            margin-right: -40px;
+            padding-left: 40px;
+            padding-right: 40px;
         }
 
         .flow-cards-wrapper {
@@ -500,8 +504,6 @@
             overflow-x: auto;
             scroll-behavior: smooth;
             gap: 20px;
-            padding-left: 40px;
-            padding-right: 40px;
             scrollbar-width: none;
             -ms-overflow-style: none;
             margin-bottom: 60px;
@@ -566,7 +568,9 @@
         }
 
         @media (max-width: 768px) {
-            .flow-cards-wrapper {
+            .flow-container {
+                margin-left: -20px;
+                margin-right: -20px;
                 padding-left: 20px;
                 padding-right: 20px;
             }
@@ -1605,8 +1609,8 @@
             if (!cardsWrapper) return;
             const cardWidth = 400;
             const gap = 20;
-            const padding = 40;
-            const scrollPosition = currentCardIndex * (cardWidth + gap);
+            const peekWidth = 60; // Peek of previous card
+            const scrollPosition = Math.max(0, currentCardIndex * (cardWidth + gap) - peekWidth);
             cardsWrapper.scrollLeft = scrollPosition;
 
             document.getElementById('currentStep').textContent = currentCardIndex + 1;
