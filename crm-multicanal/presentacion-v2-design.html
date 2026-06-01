@@ -493,10 +493,9 @@
         .flow-container {
             margin-top: 60px;
             position: relative;
-            margin-left: -40px;
-            margin-right: -40px;
-            padding-left: 40px;
-            padding-right: 40px;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 0 40px;
         }
 
         .flow-cards-wrapper {
@@ -569,10 +568,7 @@
 
         @media (max-width: 768px) {
             .flow-container {
-                margin-left: -20px;
-                margin-right: -20px;
-                padding-left: 20px;
-                padding-right: 20px;
+                padding: 0 20px;
             }
 
             .flow-card {
@@ -1486,6 +1482,21 @@
                 min-width: 140px;
             }
 
+            .flow-container {
+                padding: 0 20px;
+            }
+
+            .flow-card {
+                width: 320px;
+                height: 320px;
+                min-width: 320px;
+                padding: 30px;
+            }
+
+            .flow-navigation {
+                padding: 0 20px;
+            }
+
             .certifications {
                 gap: 40px;
                 padding: 40px 24px;
@@ -1758,8 +1769,9 @@
     <section id="flujo">
         <div class="container">
             <h2 class="section-title">Flujo Automático</h2>
-            <div class="flow-container">
-                <div class="flow-cards-wrapper">
+        </div>
+        <div class="flow-container">
+            <div class="flow-cards-wrapper">
                     <div class="flow-card active" data-step="1">
                         <div class="card-content">
                             <div class="step-badge">Paso 1 de 6</div>
@@ -1849,7 +1861,6 @@
                     <button class="nav-btn" id="nextBtn" onclick="nextCard()">Siguiente →</button>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- TIEMPOS -->
