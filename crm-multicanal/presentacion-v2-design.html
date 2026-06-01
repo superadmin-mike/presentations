@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Multicanal | Mike Cordova · 麦克</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,16 +13,10 @@
 
         :root {
             --gold: #D4AF37;
-            --dark: #0A0E27;
-            --darker: #050810;
-            --white: #F8F9FA;
-            --gray-light: #B0B5C0;
-            --gray: #7A7F8F;
-            --gray-dark: #3D4150;
-            --accent-blue: #4F46E5;
-            --accent-teal: #10B981;
-            --surface: #1A1F35;
-            --surface-light: #252D46;
+            --black: #0D0D0D;
+            --white: #F5F5F2;
+            --gray: #6E6E6E;
+            --light-gray: #2A2A2A;
         }
 
         html {
@@ -34,19 +25,9 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            background: var(--black);
             color: var(--white);
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
         }
 
         .container {
@@ -60,12 +41,10 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 14, 39, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
             padding: 16px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
         }
 
         .header-content {
@@ -80,35 +59,27 @@
             gap: 12px;
             text-decoration: none;
             color: var(--white);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .logo-section:hover {
-            transform: scale(1.05);
         }
 
         .logo-img {
             width: 45px;
             height: 45px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.25));
-            transition: all 0.3s ease;
-        }
-
-        .logo-section:hover .logo-img {
-            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.35));
-            transform: scale(1.1);
+            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.2));
         }
 
         .logo-text h1 {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            color: var(--white);
+            letter-spacing: 0.5px;
+            margin: 0;
+            color: var(--gold);
         }
 
         .logo-text p {
-            font-size: 12px;
-            color: var(--gray-light);
+            font-size: 10px;
+            color: var(--gray);
+            margin: 2px 0 0 0;
             letter-spacing: 0.5px;
         }
 
@@ -119,7 +90,7 @@
         }
 
         nav a {
-            color: var(--gray-light);
+            color: var(--white);
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
@@ -146,562 +117,464 @@
             width: 100%;
         }
 
-        /* HERO SECTION - FULL VIEWPORT */
+        /* HERO PORTADA */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.2), transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(79, 70, 229, 0.12), transparent 50%),
-                        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08), transparent 70%);
-            z-index: 0;
-            will-change: transform;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.02)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-            z-index: 0;
-            will-change: transform;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 0.8s ease both;
             text-align: center;
-            max-width: 900px;
-        }
-
-        .hero-subtitle {
-            font-size: 14px;
-            color: var(--accent-teal);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-            font-weight: 600;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .hero h1 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(52px, 10vw, 92px);
+            font-size: 64px;
             font-weight: 800;
-            background: linear-gradient(135deg, #F8F9FA 0%, #D4AF37 50%, #A68B29 100%);
+            background: linear-gradient(135deg, #F5F5F2 0%, #D4AF37 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 32px;
+            margin-bottom: 16px;
+            letter-spacing: -1.5px;
             line-height: 1.1;
-            letter-spacing: -2px;
         }
 
         .hero p {
-            font-size: 18px;
-            color: var(--gray-light);
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 32px;
             max-width: 700px;
-            margin: 0 auto 60px;
-            font-weight: 300;
-            line-height: 1.8;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Hero Stats */
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 80px;
-            padding-top: 60px;
-            border-top: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .stat {
-            text-align: center;
-            animation: fadeInUp 0.6s ease both;
-        }
-
-        .stat:nth-child(1) { animation-delay: 0.4s; }
-        .stat:nth-child(2) { animation-delay: 0.5s; }
-        .stat:nth-child(3) { animation-delay: 0.6s; }
-
-        .stat h3 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(36px, 6vw, 56px);
-            font-weight: 800;
+        .hero-subtitle {
+            font-size: 16px;
             color: var(--gold);
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #D4AF37, #A68B29);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat p {
-            font-size: 14px;
-            color: var(--gray-light);
-            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 48px;
             letter-spacing: 1px;
-            font-weight: 600;
+            text-transform: uppercase;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 14px 40px;
-            background: linear-gradient(135deg, var(--gold), #A68B29);
-            color: var(--dark);
+            background: linear-gradient(135deg, #D4AF37, #A68B29);
+            color: var(--black);
+            padding: 16px 48px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 15px;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            will-change: transform, box-shadow;
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 45px rgba(212, 175, 55, 0.45);
+            transform: translateY(-3px);
+            box-shadow: 0 18px 60px rgba(212, 175, 55, 0.4);
         }
 
-        /* SECTIONS */
+        /* SECCIONES */
         section {
             padding: 100px 0;
-            position: relative;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
         }
 
         .section-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(32px, 6vw, 52px);
+            font-size: 48px;
             font-weight: 800;
-            color: var(--white);
-            text-align: center;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .section-title span {
-            background: linear-gradient(135deg, #D4AF37, #A68B29);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray-light);
-            font-size: 16px;
+            color: var(--gold);
             margin-bottom: 60px;
-            font-weight: 300;
-            animation: fadeInUp 0.8s ease 0.25s both;
+            text-align: center;
+            animation: fadeInUp 0.8s ease both;
         }
 
-        /* SOLUTION CARDS */
+        /* SOLUCION */
         .solution-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .solution-card {
-            padding: 48px 40px;
-            background: linear-gradient(135deg, rgba(37, 45, 70, 0.4), rgba(26, 31, 53, 0.4));
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            border-left: 5px solid var(--gold);
+            padding: 40px;
             border-radius: 12px;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease both;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease both;
         }
 
-        .solution-card:nth-child(1) { animation-delay: 0.3s; }
-        .solution-card:nth-child(2) { animation-delay: 0.45s; }
-        .solution-card:nth-child(3) { animation-delay: 0.6s; }
-
-        .solution-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .solution-card:nth-child(2) {
+            animation-delay: 0.1s;
         }
 
-        .solution-card:hover::before {
-            opacity: 1;
+        .solution-card:nth-child(3) {
+            animation-delay: 0.2s;
         }
 
         .solution-card:hover {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(79, 70, 229, 0.06));
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
             transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(26, 26, 26, 0.9));
         }
 
         .solution-card h3 {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 22px;
             color: var(--gold);
             margin-bottom: 16px;
+            font-weight: 700;
         }
 
         .solution-card p {
+            color: var(--gray);
             font-size: 15px;
-            color: var(--gray-light);
             line-height: 1.8;
         }
 
-        /* PROCESS STEPS */
+        /* PROCESO */
         .process-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .process-step {
-            padding: 40px 32px;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(16, 185, 129, 0.04));
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 12px;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            animation: fadeInUp 0.6s ease both;
+            padding: 40px;
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            animation: slideInLeft 0.8s ease both;
         }
 
-        .process-step:nth-child(1) { animation-delay: 0.3s; }
-        .process-step:nth-child(2) { animation-delay: 0.45s; }
-        .process-step:nth-child(3) { animation-delay: 0.6s; }
-        .process-step:nth-child(4) { animation-delay: 0.75s; }
-
-        .process-step:hover {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(79, 70, 229, 0.08));
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
-            transform: translateY(-6px);
+        .process-step:nth-child(2) {
+            animation-delay: 0.1s;
         }
 
-        .step-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--gold), #A68B29);
-            color: var(--dark);
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 20px;
-            margin-bottom: 16px;
-            transition: transform 0.3s ease;
+        .process-step:nth-child(3) {
+            animation-delay: 0.2s;
         }
 
-        .process-step:hover .step-number {
-            transform: scale(1.1);
+        .process-step:nth-child(4) {
+            animation-delay: 0.3s;
         }
 
         .process-step h3 {
-            font-size: 18px;
-            color: var(--white);
+            color: var(--gold);
+            font-size: 20px;
             margin-bottom: 12px;
             font-weight: 700;
         }
 
         .process-step p {
+            color: var(--gray);
             font-size: 14px;
-            color: var(--gray-light);
             line-height: 1.7;
         }
 
-        /* FLUJO */
-        #flujo {
-            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08), transparent 70%);
+        .step-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 48px;
+            font-weight: 700;
+            color: rgba(212, 175, 55, 0.2);
         }
 
-        .flow-items {
+        /* FLUJO */
+        .flow-diagram {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
             flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(26, 26, 26, 0.5));
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .flow-item {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(79, 70, 229, 0.06));
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 8px;
-            padding: 24px 20px;
+            flex: 1;
+            min-width: 160px;
             text-align: center;
-            min-width: 140px;
-            animation: fadeInUp 0.6s ease both;
+            animation: fadeInUp 0.8s ease both;
         }
 
-        .flow-item:nth-child(1) { animation-delay: 0.2s; }
-        .flow-item:nth-child(2) { animation-delay: 0.35s; }
-        .flow-item:nth-child(3) { animation-delay: 0.5s; }
-        .flow-item:nth-child(4) { animation-delay: 0.65s; }
-        .flow-item:nth-child(5) { animation-delay: 0.8s; }
+        .flow-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
 
-        .flow-item h4 {
-            font-size: 14px;
-            color: var(--gold);
-            margin-bottom: 6px;
+        .flow-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .flow-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .flow-item:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .flow-item:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .flow-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #D4AF37, #A68B29);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: var(--black);
         }
 
         .flow-item p {
-            font-size: 12px;
-            color: var(--gray-light);
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+            margin: 0;
         }
 
         .flow-arrow {
-            color: var(--gold);
             font-size: 24px;
-            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.4;
+            display: none;
         }
 
-        /* TIMELINE */
+        @media (min-width: 768px) {
+            .flow-arrow {
+                display: block;
+            }
+        }
+
+        /* TIEMPOS TIMELINE */
+        .timeline-container {
+            margin-top: 60px;
+            position: relative;
+        }
+
         .timeline {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
 
         .timeline-item {
+            position: relative;
             padding: 40px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(79, 70, 229, 0.06));
-            border: 1px solid rgba(212, 175, 55, 0.15);
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 12px;
-            text-align: center;
-            animation: fadeInUp 0.6s ease both;
+            animation: slideInRight 0.8s ease both;
         }
 
-        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
-        .timeline-item:nth-child(2) { animation-delay: 0.35s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
 
-        .timeline-item:hover {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(79, 70, 229, 0.1));
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
-            transform: translateY(-4px);
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .timeline-week {
+            color: var(--gold);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
         .timeline-item h3 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(36px, 5vw, 48px);
-            font-weight: 800;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .timeline-item .label {
-            font-size: 14px;
+            font-size: 20px;
             color: var(--white);
+            margin-bottom: 12px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
         }
 
         .timeline-item p {
             font-size: 14px;
-            color: var(--gray-light);
+            color: var(--gray);
             line-height: 1.7;
         }
 
-        /* SERVICIOS */
+        .timeline-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--gold);
+            border: 3px solid var(--black);
+            border-radius: 50%;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* SERVICIOS INCLUIDOS */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .service-item {
-            padding: 36px 32px;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(16, 185, 129, 0.04));
+            padding: 40px;
+            background: rgba(212, 175, 55, 0.03);
             border: 1px solid rgba(212, 175, 55, 0.15);
-            border-left: 4px solid var(--gold);
             border-radius: 12px;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            animation: fadeInUp 0.6s ease both;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease both;
         }
 
-        .service-item:nth-child(1) { animation-delay: 0.2s; }
-        .service-item:nth-child(2) { animation-delay: 0.35s; }
-        .service-item:nth-child(3) { animation-delay: 0.5s; }
-        .service-item:nth-child(4) { animation-delay: 0.65s; }
-        .service-item:nth-child(5) { animation-delay: 0.8s; }
-        .service-item:nth-child(6) { animation-delay: 0.95s; }
+        .service-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .service-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .service-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
 
         .service-item:hover {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(79, 70, 229, 0.08));
-            border-left-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
             border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
-            transform: translateY(-6px);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            height: 40px;
+            display: flex;
+            align-items: center;
         }
 
         .service-item h3 {
             font-size: 18px;
-            color: var(--gold);
+            color: var(--white);
             margin-bottom: 12px;
             font-weight: 700;
         }
 
         .service-item p {
             font-size: 14px;
-            color: var(--gray-light);
+            color: var(--gray);
             line-height: 1.7;
         }
 
         /* CERTIFICACIONES */
         .certifications {
-            text-align: center;
-            margin-top: 80px;
-            padding-top: 60px;
-            border-top: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .cert-title {
-            font-size: 18px;
-            color: var(--gold);
-            margin-bottom: 48px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .cert-badges {
             display: flex;
             justify-content: center;
-            gap: 48px;
+            align-items: center;
+            gap: 80px;
+            margin-top: 60px;
             flex-wrap: wrap;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(26, 26, 26, 0.5));
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .cert-badge {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            animation: fadeInUp 0.6s ease both;
-            font-size: 12px;
+            gap: 16px;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .cert-badge:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .cert-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .cert-badge:hover .cert-logo {
+            transform: scale(1.1);
+        }
+
+        .cert-text {
+            font-size: 14px;
             color: var(--white);
             font-weight: 600;
             text-align: center;
-            padding: 16px;
+            letter-spacing: 0.5px;
         }
 
-        .cert-badge:nth-child(1) { animation-delay: 0.2s; }
-        .cert-badge:nth-child(2) { animation-delay: 0.4s; }
-        .cert-badge:nth-child(3) { animation-delay: 0.6s; }
-
-        .cert-badge:hover {
-            transform: scale(1.15);
-        }
-
-        /* KEY TAKEAWAYS - Presentation Summary */
-        .key-takeaways {
-            margin-top: 80px;
-            padding: 60px;
-            background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.12), transparent 50%),
-                        radial-gradient(circle at 70% 70%, rgba(79, 70, 229, 0.08), transparent 50%);
-            border-radius: 16px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+        /* CTA SECTION */
+        .cta-section {
             text-align: center;
-            animation: fadeInUp 0.8s ease 0.3s both;
+            padding: 100px 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(26, 26, 26, 0.9));
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin: 100px 0;
+            animation: fadeInUp 1s ease 0.5s both;
         }
 
-        .key-takeaways h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(28px, 5vw, 44px);
+        .cta-section h2 {
+            font-size: 42px;
+            color: var(--gold);
+            margin-bottom: 24px;
             font-weight: 800;
-            color: var(--white);
-            margin-bottom: 32px;
         }
 
-        .key-takeaways h2 span {
-            color: var(--gold);
-        }
-
-        .takeaway-points {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 32px;
-            margin-top: 40px;
-        }
-
-        .takeaway-point {
-            padding: 24px;
-        }
-
-        .takeaway-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
-
-        .takeaway-point h3 {
-            font-size: 16px;
-            color: var(--gold);
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .takeaway-point p {
-            font-size: 13px;
-            color: var(--gray-light);
-            line-height: 1.6;
+        .cta-section p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* FOOTER */
         footer {
-            padding: 60px 0 40px;
+            padding: 60px 0;
             text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.08);
-            color: var(--gray-light);
-            font-size: 13px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--gray);
         }
 
         footer p {
-            margin: 8px 0;
-            font-weight: 300;
+            margin-bottom: 12px;
+            font-size: 13px;
         }
 
-        footer .branding {
-            font-weight: 700;
+        footer strong {
             color: var(--gold);
-            letter-spacing: 0.5px;
         }
 
         /* ANIMATIONS */
@@ -719,7 +592,7 @@
         @keyframes slideInLeft {
             from {
                 opacity: 0;
-                transform: translateX(-30px);
+                transform: translateX(-40px);
             }
             to {
                 opacity: 1;
@@ -730,7 +603,7 @@
         @keyframes slideInRight {
             from {
                 opacity: 0;
-                transform: translateX(30px);
+                transform: translateX(40px);
             }
             to {
                 opacity: 1;
@@ -738,22 +611,10 @@
             }
         }
 
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .container {
                 padding: 0 24px;
-            }
-
-            header {
-                padding: 12px 0;
-            }
-
-            .logo-img {
-                width: 40px;
-                height: 40px;
-            }
-
-            nav ul {
-                gap: 16px;
             }
 
             .hero {
@@ -761,60 +622,103 @@
             }
 
             .hero h1 {
-                margin-bottom: 20px;
+                font-size: 40px;
+                margin-bottom: 12px;
             }
 
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 24px;
-                margin-top: 40px;
-                padding-top: 40px;
+            .hero p {
+                font-size: 16px;
+                margin-bottom: 24px;
+            }
+
+            .section-title {
+                font-size: 32px;
+                margin-bottom: 40px;
             }
 
             section {
-                padding: 80px 0;
+                padding: 60px 0;
             }
 
-            .solution-card {
-                padding: 32px 24px;
+            .solution-grid,
+            .process-steps,
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
             }
 
-            .process-step {
-                padding: 28px 24px;
+            .solution-card,
+            .process-step,
+            .timeline-item {
+                padding: 32px;
             }
 
-            .service-item {
-                padding: 28px 24px;
+            .flow-diagram {
+                padding: 40px 24px;
+                gap: 16px;
             }
 
-            .key-takeaways {
+            .flow-item {
+                min-width: 140px;
+            }
+
+            .certifications {
+                gap: 40px;
                 padding: 40px 24px;
             }
 
-            footer {
-                padding: 40px 0 24px;
+            .cert-logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .cta-button {
+                padding: 14px 40px;
+                font-size: 13px;
             }
 
             nav ul {
-                display: none;
+                gap: 16px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-text h1 {
+                font-size: 14px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .cta-section p {
+                font-size: 15px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- HEADER NAVEGACION -->
     <header>
         <div class="container">
             <div class="header-content">
                 <a href="#" class="logo-section">
-                    <img src="logo.png" alt="Mike Cordova" class="logo-img">
+                    <img src="/crm-multicanal/logo.png" alt="Logo" class="logo-img">
                     <div class="logo-text">
-                        <h1>Mike Cordova</h1>
-                        <p>麦克</p>
+                        <h1>Mike Cordova · 麦克</h1>
+                        <p>Sistemas de Alto Impacto</p>
                     </div>
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="#solucion">Solución</a></li>
+                        <li><a href="#solucion">Solucin</a></li>
                         <li><a href="#proceso">Proceso</a></li>
                         <li><a href="#flujo">Flujo</a></li>
                         <li><a href="#tiempos">Tiempos</a></li>
@@ -825,262 +729,206 @@
         </div>
     </header>
 
-    <main>
-        <!-- PORTADA - FULL VIEWPORT HERO -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <p class="hero-subtitle">Solución Integral</p>
-                    <h1>CRM Multicanal Inteligente</h1>
-                    <p>Automatiza la gestión de clientes, aumenta retención y optimiza ROI con inteligencia artificial y datos en tiempo real.</p>
-                    <a href="#servicios" class="cta-button">Explorar Solución</a>
+    <!-- PORTADA HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>CRM WhatsApp API</h1>
+            <p class="hero-subtitle">Para TikTok Ads Performance</p>
+            <p>Integra leads de TikTok Ads directamente en WhatsApp, automatiza conversaciones y optimiza ROAS en tiempo real con un CRM especializado en TikTok Ads.</p>
+            <a href="#servicios" class="cta-button">Conocer Ms</a>
+        </div>
+    </section>
 
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <h3>2-3</h3>
-                            <p>Semanas Implementación</p>
-                        </div>
-                        <div class="stat">
-                            <h3>0$</h3>
-                            <p>Costo Inicial</p>
-                        </div>
-                        <div class="stat">
-                            <h3>24h</h3>
-                            <p>Setup Completo</p>
-                        </div>
-                    </div>
+    <!-- SOLUCION -->
+    <section id="solucion">
+        <div class="container">
+            <h2 class="section-title">La Solucin</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <h3>Lead Capture from TikTok</h3>
+                    <p>Captura automtica de clientes potenciales desde tus campaas de TikTok Ads sin intervencin manual, garantizando que ningn lead se pierda.</p>
+                </div>
+                <div class="solution-card">
+                    <h3>WhatsApp API CRM</h3>
+                    <p>Gestin completa de conversaciones y automatizacin de seguimiento va WhatsApp Business API, con respuestas inteligentes y flujos personalizados.</p>
+                </div>
+                <div class="solution-card">
+                    <h3>TikTok Ads Analytics</h3>
+                    <p>Dashboard integrado con mtricas de ROAS, CAC, performance y ROI de cada campaa, optimizado para decisiones en tiempo real.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SOLUCION -->
-        <section id="solucion">
-            <div class="container">
-                <h2 class="section-title">La <span>Solución</span></h2>
-                <p class="section-subtitle">Tres pilares de transformación digital</p>
-                <div class="solution-grid">
-                    <div class="solution-card">
-                        <h3>Unificación de Canales</h3>
-                        <p>Integra todas las interacciones con clientes en una plataforma centralizada. Email, SMS, WhatsApp, social media y más, en un único dashboard.</p>
-                    </div>
-                    <div class="solution-card">
-                        <h3>Automatización Inteligente</h3>
-                        <p>Workflows inteligentes que responden automáticamente a acciones de clientes. Nurturing, follow-ups y conversiones sin intervención manual.</p>
-                    </div>
-                    <div class="solution-card">
-                        <h3>Analytics & Reporting</h3>
-                        <p>Reportes en tiempo real con KPIs clave. Visibilidad completa del customer journey, pipeline y ROI por canal y campaña.</p>
-                    </div>
+    <!-- PROCESO -->
+    <section id="proceso">
+        <div class="container">
+            <h2 class="section-title">Cmo Funciona</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Setup Inicial</h3>
+                    <p>Configuracin de ambiente, creacin de base de datos, establecimiento de autorizaciones con TikTok Ads y WhatsApp Business API.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Integracin CRM</h3>
+                    <p>Desarrollo e integracin del sistema CRM con webhooks de TikTok, validacin de seguridad y automatizacin de flujos.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Testing</h3>
+                    <p>Pruebas exhaustivas en ambiente dedicado, validacin de flujos end-to-end y optimizaciones previas a produccin.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Go Live</h3>
+                    <p>Lanzamiento a produccin, capacitacin del equipo, documentacin final y monitoreo inicial de performance.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- PROCESO -->
-        <section id="proceso">
-            <div class="container">
-                <h2 class="section-title">Nuestro <span>Proceso</span></h2>
-                <p class="section-subtitle">Implementación estructurada en 4 fases</p>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <span class="step-number">1</span>
-                        <h3>Discovery & Diagnóstico</h3>
-                        <p>Analizamos tu operación actual, desafíos específicos y objetivos. Mapeamos channels, workflows y gaps de tecnología.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-number">2</span>
-                        <h3>Diseño & Planificación</h3>
-                        <p>Diseñamos la arquitectura del CRM, workflows de automatización y estrategia de migración de datos. Validación con tu equipo.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-number">3</span>
-                        <h3>Implementación & Testing</h3>
-                        <p>Desarrollo e integración. Configuración de canales, automatizaciones y reportes. QA exhaustivo antes del go-live.</p>
-                    </div>
-                    <div class="process-step">
-                        <span class="step-number">4</span>
-                        <h3>Capacitación & Optimización</h3>
-                        <p>Entrenamiento de tu equipo, documentación y soporte. Optimizaciones post-launch basadas en datos reales.</p>
-                    </div>
+    <!-- FLUJO -->
+    <section id="flujo">
+        <div class="container">
+            <h2 class="section-title">Flujo Automtico</h2>
+            <div class="flow-diagram">
+                <div class="flow-item">
+                    <div class="flow-icon">1</div>
+                    <p>Usuario ve anuncio en TikTok</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">2</div>
+                    <p>Hace clic y llena formulario</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">3</div>
+                    <p>Datos capturados automticamente</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">4</div>
+                    <p>Envo instantneo a WhatsApp</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">5</div>
+                    <p>Seguimiento y cierre</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">6</div>
+                    <p>Venta completada</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- FLUJO -->
-        <section id="flujo">
-            <div class="container">
-                <h2 class="section-title">Flujo de <span>Datos</span></h2>
-                <p class="section-subtitle">De lead capture hasta conversión</p>
-                <div class="flow-items">
-                    <div class="flow-item">
-                        <h4>Lead Capture</h4>
-                        <p>TikTok Ads</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-item">
-                        <h4>Validation</h4>
-                        <p>Email Verify</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-item">
-                        <h4>Routing</h4>
-                        <p>WhatsApp</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-item">
-                        <h4>Nurturing</h4>
-                        <p>CRM Auto</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-item">
-                        <h4>Sales</h4>
-                        <p>Conversion</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TIEMPOS -->
-        <section id="tiempos">
-            <div class="container">
-                <h2 class="section-title">Timeline de <span>Implementación</span></h2>
-                <p class="section-subtitle">Entrega rápida y resultados medibles</p>
+    <!-- TIEMPOS -->
+    <section id="tiempos">
+        <div class="container">
+            <h2 class="section-title">Plan de Implementacin</h2>
+            <div class="timeline-container">
                 <div class="timeline">
                     <div class="timeline-item">
-                        <h3>2-3</h3>
-                        <div class="label">Semanas</div>
-                        <p>Tiempo total de implementación, desde discovery hasta go-live con tu equipo capacitado.</p>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-week">Despliegue</div>
+                        <h3>2-3 Semanas</h3>
+                        <p>Tiempo de implementacin completa: setup inicial, integracin CRM, configuracin de webhooks y conexin con WhatsApp API. Puede ser menos si todo corre muy bien en ambiente de pruebas.</p>
                     </div>
                     <div class="timeline-item">
-                        <h3>24h</h3>
-                        <div class="label">Setup</div>
-                        <p>Configuración inicial de integraciones, canales y workflows básicos del sistema.</p>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-week">Testing</div>
+                        <h3>1 Semana Dedicada</h3>
+                        <p>Perodo dedicado a pruebas exhaustivas en ambiente controlado, validacin de flujos end-to-end, y optimizaciones previas al lanzamiento en produccin.</p>
                     </div>
                     <div class="timeline-item">
-                        <h3>90d</h3>
-                        <div class="label">Optimización</div>
-                        <p>Periodo de mejora continua con análisis de datos y ajustes automáticos según resultados.</p>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-week">Go Live</div>
+                        <h3>Lanzamiento</h3>
+                        <p>Puesta en produccin, capacitacin del equipo, documentacin completa y monitoreo inicial de performance del sistema.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-week">Post-Implementacin</div>
+                        <h3>Servicio Mensual</h3>
+                        <p>Mantenimiento continuo, monitoreo de performance, optimizaciones y soporte tcnico con costo mensual recurring. (Precio: se define segn contrato)</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SERVICIOS -->
-        <section id="servicios">
-            <div class="container">
-                <h2 class="section-title">Servicios <span>Incluidos</span></h2>
-                <p class="section-subtitle">Paquete completo de implementación</p>
-                <div class="services-grid">
-                    <div class="service-item">
-                        <h3>Consultoría</h3>
-                        <p>Análisis profundo de tu operación actual y recomendaciones de mejora basadas en mejores prácticas de la industria.</p>
-                    </div>
-                    <div class="service-item">
-                        <h3>Integración</h3>
-                        <p>Conexión con TikTok Ads, CRM, WhatsApp Business, email marketing y herramientas existentes que uses.</p>
-                    </div>
-                    <div class="service-item">
-                        <h3>Automatización</h3>
-                        <p>Diseño e implementación de workflows automáticos para nurturing, follow-ups, lead scoring y escalación de ventas.</p>
-                    </div>
-                    <div class="service-item">
-                        <h3>Analytics</h3>
-                        <p>Dashboards en tiempo real con métricas clave: ROAS, CAC, LTV, conversión por canal y performance de equipo.</p>
-                    </div>
-                    <div class="service-item">
-                        <h3>Training</h3>
-                        <p>Capacitación completa de tu equipo de ventas y marketing. Documentación detallada y soporte inicial.</p>
-                    </div>
-                    <div class="service-item">
-                        <h3>Soporte</h3>
-                        <p>Soporte técnico post-launch, optimizaciones basadas en datos, y mejoras continuas durante 90 días.</p>
-                    </div>
+    <!-- SERVICIOS INCLUIDOS -->
+    <section id="servicios">
+        <div class="container">
+            <h2 class="section-title">Qu est Incluido</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">1</div>
+                    <h3>Implementacin Completa</h3>
+                    <p>Setup inicial, integracin CRM, testing dedicado y lanzamiento a produccin en 2-3 semanas. Incluye 1 semana de testing exhaustivo.</p>
                 </div>
-
-                <!-- CERTIFICATIONS -->
-                <div class="certifications">
-                    <h3 class="cert-title">Certificaciones & Expertise</h3>
-                    <div class="cert-badges">
-                        <div class="cert-badge" style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.3), rgba(79, 70, 229, 0.1));">
-                            <strong style="color: var(--accent-blue);">AWS</strong><br>Cloud
-                        </div>
-                        <div class="cert-badge" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.1));">
-                            <strong style="color: var(--accent-teal);">CRM</strong><br>Expert
-                        </div>
-                        <div class="cert-badge" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.1));">
-                            <strong style="color: var(--gold);">API</strong><br>Integrations
-                        </div>
-                    </div>
+                <div class="service-item">
+                    <div class="service-icon">2</div>
+                    <h3>Integraciones con APIs</h3>
+                    <p>Conexin total con TikTok Ads API, WhatsApp Business API, base de datos segura y webhooks validados con HMAC-SHA256.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">3</div>
+                    <h3>Dashboard CRM</h3>
+                    <p>Panel administrativo en tiempo real con mtricas de leads, conversiones, ROAS, CAC y performance de cada campaa de TikTok.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">4</div>
+                    <h3>Automatizacin Inteligente</h3>
+                    <p>Flujos automticos de leads, respuestas inteligentes en WhatsApp, seguimiento automtico y notificaciones de performance.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">5</div>
+                    <h3>Documentacin y Capacitacin</h3>
+                    <p>Documentacin tcnica completa, guas de uso, sesiones de training para tu equipo y manuales de operacin.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">6</div>
+                    <h3>Mantenimiento Mensual</h3>
+                    <p>Servicio de mantenimiento y soporte continuo post-implementacin con monitoreo de performance, optimizaciones y actualizaciones. (Precio: se define segn contrato)</p>
                 </div>
             </div>
-        </section>
 
-        <!-- KEY TAKEAWAYS - PRESENTATION SUMMARY -->
-        <section>
-            <div class="container">
-                <div class="key-takeaways">
-                    <h2>Lo Más <span>Importante</span></h2>
-                    <p style="color: var(--gray-light); font-size: 16px; margin-bottom: 32px;">Transforma tu estrategia de ventas con automatización inteligente y datos en tiempo real</p>
-                    <div class="takeaway-points">
-                        <div class="takeaway-point">
-                            <div class="takeaway-icon">1</div>
-                            <h3>Implementación Rápida</h3>
-                            <p>2-3 semanas desde diagrama hasta operacional, sin interrupciones en tu negocio.</p>
-                        </div>
-                        <div class="takeaway-point">
-                            <div class="takeaway-icon">2</div>
-                            <h3>Cero Inversión Inicial</h3>
-                            <p>Modelo de implementación con costo inicial nulo, pagos por resultados reales.</p>
-                        </div>
-                        <div class="takeaway-point">
-                            <div class="takeaway-icon">3</div>
-                            <h3>ROI Predecible</h3>
-                            <p>Visibilidad total de métricas, control absoluto de presupuesto y rentabilidad por canal.</p>
-                        </div>
-                    </div>
+            <!-- CERTIFICACIONES -->
+            <div class="certifications">
+                <div class="cert-badge">
+                    <img src="https://www.gstatic.com/images/branding/product/1x/tiktok_business_lockup_128dp.png" alt="TikTok Business Certified" class="cert-logo">
+                    <span class="cert-text">TikTok Business Certified Partner</span>
+                </div>
+                <div class="cert-badge">
+                    <img src="https://www.meta.com/en/favicon.ico" alt="Meta Certified Partner" class="cert-logo" style="width: 80px; height: 80px;">
+                    <span class="cert-text">Meta Certified Professional</span>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- CTA FINAL -->
+    <div class="container">
+        <div class="cta-section">
+            <h2>Listo para Implementar?</h2>
+            <p>Contacta directamente para una consulta personalizada. Analicemos tu negocio y diseemos la solucin perfecta para ti.</p>
+            <a href="https://wa.me/+1234567890" class="cta-button">Contactar va WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p class="branding">MIKE CORDOVA · 麦克</p>
+            <p><strong>Mike Cordova · 麦克</strong></p>
             <p>Especialista en sistemas de bajo costo y alto impacto para negocios LATAM</p>
-            <p style="margin-top: 20px; opacity: 0.6;">© 2026 Mike Cordova. Todos los derechos reservados.</p>
+            <p style="margin-top: 20px; opacity: 0.6;">2026 Mike Cordova. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <script>
-        // Smooth scroll to sections
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Intersection Observer para scroll reveals (sin GSAP)
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
-                }
-            });
-        }, observerOptions);
-
-        // Observar elementos animados
-        document.querySelectorAll('.solution-card, .process-step, .service-item, .timeline-item, .flow-item, .cert-badge, .stat, .takeaway-point').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>
