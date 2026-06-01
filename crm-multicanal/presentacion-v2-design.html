@@ -493,9 +493,9 @@
         .flow-container {
             margin-top: 60px;
             position: relative;
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
-            padding: 0 40px;
+            margin-left: -40px;
+            margin-right: -40px;
+            overflow: hidden;
         }
 
         .flow-cards-wrapper {
@@ -507,6 +507,7 @@
             -ms-overflow-style: none;
             margin-bottom: 60px;
             position: relative;
+            padding: 0 40px;
         }
 
         .flow-cards-wrapper::-webkit-scrollbar {
@@ -1483,7 +1484,12 @@
             }
 
             .flow-container {
-                padding: 0 20px;
+                margin-left: -24px;
+                margin-right: -24px;
+            }
+
+            .flow-cards-wrapper {
+                padding: 0 24px;
             }
 
             .flow-card {
@@ -1494,7 +1500,7 @@
             }
 
             .flow-navigation {
-                padding: 0 20px;
+                padding: 0 24px;
             }
 
             .certifications {
