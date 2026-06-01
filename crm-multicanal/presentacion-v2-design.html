@@ -519,6 +519,11 @@
             object-fit: contain;
             filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.2));
             transition: transform 0.3s ease;
+            color: var(--gold);
+        }
+
+        svg.cert-logo {
+            stroke: var(--gold);
         }
 
         .cert-badge:hover .cert-logo {
@@ -902,11 +907,16 @@
             <!-- CERTIFICACIONES -->
             <div class="certifications">
                 <div class="cert-badge">
-                    <img src="https://cdn-prod.tiktok-dmm.com/tiktok-shop-web/images/tiktok-business-logo.png" alt="TikTok Business Certified" class="cert-logo">
+                    <svg class="cert-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
+                        <path d="M19.59 6.69A4.83 4.83 0 0 0 16.601 20.662h-.012a4.42 4.42 0 0 1-2.228-5.541m0 0a4.852 4.852 0 0 0-5.355-4.4m5.355 4.4a4.797 4.797 0 0 0-4.994-3.97v.005c2.6-2.577 6.662-3.477 10.195-1.402"/>
+                    </svg>
                     <span class="cert-text">TikTok Business Certified Partner</span>
                 </div>
                 <div class="cert-badge">
-                    <img src="https://www.metapartners.com/partners/files/2023/04/Meta_Mark_Mark-21.png" alt="Meta Certified Partner" class="cert-logo">
+                    <svg class="cert-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <span class="cert-text">Meta Certified Professional</span>
                 </div>
             </div>
