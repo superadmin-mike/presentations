@@ -349,9 +349,12 @@
         }
 
         .solution-icon {
-            font-size: 48px;
+            width: 48px;
+            height: 48px;
             margin-bottom: 16px;
             display: block;
+            color: #D4AF37;
+            stroke-width: 1.5;
         }
 
         .solution-item h3 {
@@ -479,9 +482,14 @@
         }
 
         .benefit-icon {
-            font-size: 40px;
+            width: 40px;
+            height: 40px;
             margin-bottom: 16px;
             display: block;
+            color: #D4AF37;
+            stroke-width: 1.5;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .benefit-item h3 {
@@ -851,22 +859,30 @@
             <h2>La solución completa</h2>
             <div class="solution-grid">
                 <div class="solution-item">
-                    <span class="solution-icon">🤖</span>
+                    <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                    </svg>
                     <h3>Conversión automática</h3>
                     <p>Tu anuncio en TikTok genera un lead. Automáticamente se abre WhatsApp del usuario con tu mensaje personalizado. Sin intermediarios.</p>
                 </div>
                 <div class="solution-item">
-                    <span class="solution-icon">📊</span>
+                    <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M3 13h2v8H3zm4-8h2v16H7zm4-2h2v18h-2zm4-2h2v20h-2zm4 4h2v16h-2z"/>
+                    </svg>
                     <h3>Dashboard completo</h3>
                     <p>Visualiza en tiempo real: leads capturados, mensajes enviados, respuestas, tasas de conversión. Todas tus métricas en un solo lugar.</p>
                 </div>
                 <div class="solution-item">
-                    <span class="solution-icon">⚡</span>
+                    <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/>
+                    </svg>
                     <h3>Sin costos ocultos</h3>
                     <p>USD $1,000 único. Cero integración, cero API fees, cero comisiones por mensaje. Escalable a usuarios ilimitados.</p>
                 </div>
                 <div class="solution-item">
-                    <span class="solution-icon">🔧</span>
+                    <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11.5" cy="11.5" r="8.5"/><path d="M21 21l-4.35-4.35"/>
+                    </svg>
                     <h3>Implementación rápida</h3>
                     <p>2-3 semanas de setup completo. Testing exhaustivo. Capacitación de tu equipo. Go-live sin sorpresas.</p>
                 </div>
@@ -909,32 +925,44 @@
             <h2>Por qué funciona</h2>
             <div class="benefits-grid">
                 <div class="benefit-item">
-                    <span class="benefit-icon">⚡</span>
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><path d="M12 17v-4M9 20h6"/>
+                    </svg>
                     <h3>Velocidad</h3>
                     <p>Respuesta instantánea. El usuario llega a WhatsApp en menos de 2 segundos.</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">💰</span>
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                    </svg>
                     <h3>Ahorro extremo</h3>
                     <p>Sin herramientas caras. Sin APIs costosas. Sin intermediarios. Solo automatización pura.</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">📱</span>
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="3" y="2" width="18" height="20" rx="2"/><path d="M12 18h.01"/>
+                    </svg>
                     <h3>WhatsApp nativo</h3>
                     <p>No bot. No webhook. Conversación real en el app más confiable de LATAM.</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">👀</span>
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                    </svg>
                     <h3>Visibilidad total</h3>
                     <p>Dashboard en tiempo real. Sabes exactamente qué está pasando en cada momento.</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">🔄</span>
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64"/>
+                    </svg>
                     <h3>Automatización 24/7</h3>
                     <p>El sistema no duerme. Sigue capturando y distribuyendo leads sin ti.</p>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">🎯</span>
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
+                    </svg>
                     <h3>Sin pérdida de datos</h3>
                     <p>Cero errores de integración. Todos los leads llegan intactos a WhatsApp.</p>
                 </div>
