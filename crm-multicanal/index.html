@@ -4,6 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Multicanal | 麦克 Mike Cordova - Sistemas que hacen crecer negocios</title>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="CRM Multicanal: Convierte TikTok Ads en WhatsApp Automáticamente">
+    <meta property="og:description" content="Sistema nativo de conversión de leads de TikTok a WhatsApp. Implementación en 2-3 semanas, $0 inicial. Automatiza tus ventas.">
+    <meta property="og:image" content="https://crm-multicanal.vercel.app/og-preview.png">
+    <meta property="og:url" content="https://crm-multicanal.vercel.app/crm-multicanal">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CRM Multicanal: Automatiza TikTok → WhatsApp">
+    <meta name="twitter:description" content="Convierte leads automáticamente. Cero código. Implementación 2-3 semanas.">
+    <!-- End Open Graph Tags -->
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_GA4_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YOUR_GA4_ID');
+
+      window.trackCTAClick = function(buttonType) {
+        gtag('event', 'cta_click', {
+          'cta_type': buttonType,
+          'event_category': 'engagement',
+          'event_label': document.location.pathname
+        });
+      };
+    </script>
+    <!-- End GA4 -->
+
     <style>
         * {
             margin: 0;
@@ -1350,7 +1396,14 @@
                     </div>
                 </div>
 
-                <a href="#inversión" class="cta-button">Conocer Inversión</a>
+                <a href="#inversión" class="cta-button" onclick="trackCTAClick('main_cta')">Conocer Inversión</a>
+                <div style="margin-top: 24px;">
+                    <a href="https://wa.me/+[YOUR_COUNTRY_CODE][YOUR_NUMBER]?text=Hola,%20quiero%20conocer%20m%C3%A1s%20sobre%20el%20CRM%20Multicanal"
+                       style="display: inline-block; background: linear-gradient(135deg, #25D366 0%, #20BA5F 100%); color: white; padding: 14px 40px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 12px 48px rgba(37, 211, 102, 0.3); transition: all 0.3s; cursor: pointer; border: none;"
+                       onclick="trackCTAClick('whatsapp_cta')">
+                        📱 Solicitar Demo por WhatsApp
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1539,6 +1592,33 @@
                     </div>
                 </div>
                 <p class="certifications-footer">Nuestras certificaciones garantizan expertise y seguimiento de estándares de calidad en publicidad digital</p>
+
+                <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 60px; padding-top: 40px; text-align: center;">
+                    <h4 style="color: #D4AF37; margin-bottom: 24px; font-size: 18px; font-weight: 800;">Ponte en Contacto</h4>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
+                        <a href="https://wa.me/+[YOUR_COUNTRY_CODE][YOUR_NUMBER]?text=Hola,%20quiero%20conocer%20el%20CRM%20Multicanal"
+                           style="color: #D4AF37; text-decoration: none; font-weight: 700; font-size: 14px; padding: 10px 20px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; transition: all 0.3s;"
+                           onmouseover="this.style.borderColor='#D4AF37'; this.style.background='rgba(212, 175, 55, 0.1)';"
+                           onmouseout="this.style.borderColor='rgba(212, 175, 55, 0.3)'; this.style.background='transparent';">
+                            WhatsApp
+                        </a>
+                        <a href="mailto:contact@yourdomain.com"
+                           style="color: #D4AF37; text-decoration: none; font-weight: 700; font-size: 14px; padding: 10px 20px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; transition: all 0.3s;"
+                           onmouseover="this.style.borderColor='#D4AF37'; this.style.background='rgba(212, 175, 55, 0.1)';"
+                           onmouseout="this.style.borderColor='rgba(212, 175, 55, 0.3)'; this.style.background='transparent';">
+                            Email
+                        </a>
+                        <a href="tel:+[YOUR_COUNTRY_CODE][YOUR_NUMBER]"
+                           style="color: #D4AF37; text-decoration: none; font-weight: 700; font-size: 14px; padding: 10px 20px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; transition: all 0.3s;"
+                           onmouseover="this.style.borderColor='#D4AF37'; this.style.background='rgba(212, 175, 55, 0.1)';"
+                           onmouseout="this.style.borderColor='rgba(212, 175, 55, 0.3)'; this.style.background='transparent';">
+                            Llamar
+                        </a>
+                    </div>
+                    <p style="font-size: 13px; color: #6E6E6E; margin: 0;">
+                        Respuesta en menos de 2 horas
+                    </p>
+                </div>
             </div>
         </div>
     </section>

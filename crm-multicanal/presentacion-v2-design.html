@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Multicanal | Mike Cordova (麦克) - Sistemas que hacen crecer negocios</title>
+    <!-- OPEN GRAPH META TAGS -->
+    <meta property="og:title" content="CRM Multicanal: Convierte TikTok Ads en WhatsApp Automáticamente">
+    <meta property="og:description" content="Sistema nativo de conversión de leads de TikTok a WhatsApp. Implementación en 2-3 semanas, $0 inicial. Automatiza tus ventas.">
+    <meta property="og:image" content="https://crm-multicanal.vercel.app/og-preview.png">
+    <meta property="og:url" content="https://crm-multicanal.vercel.app/crm-multicanal/design">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CRM Multicanal: Automatiza TikTok → WhatsApp">
+    <meta name="twitter:description" content="Convierte leads automáticamente. Cero código. Implementación 2-3 semanas.">
     <style>
         * {
             margin: 0;
@@ -746,6 +755,34 @@
             }
         }
     </style>
+    <!-- META PIXEL CODE -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    <!-- GA4 TRACKING CODE -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_GA4_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YOUR_GA4_ID');
+      window.trackCTAClick = function(buttonType) {
+        gtag('event', 'cta_click', {
+          'cta_type': buttonType,
+          'event_category': 'engagement',
+          'event_label': document.location.pathname
+        });
+      };
+    </script>
 </head>
 <body>
     <!-- NAVIGATION -->
@@ -787,6 +824,14 @@
                     <span class="stat-number">$0</span>
                     <span class="stat-label">Costo Inicial</span>
                 </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <a href="https://wa.me/+[YOUR_COUNTRY_CODE][YOUR_NUMBER]?text=Hola,%20quiero%20conocer%20m%C3%A1s%20sobre%20el%20CRM%20Multicanal"
+                   style="display: inline-block; background: linear-gradient(135deg, #25D366 0%, #20BA5F 100%); color: white; padding: 14px 40px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 12px 48px rgba(37, 211, 102, 0.3); transition: all 0.3s; cursor: pointer; border: none;"
+                   onclick="trackCTAClick('whatsapp_hero')">
+                    Solicitar Demo por WhatsApp
+                </a>
             </div>
 
             <p style="font-size: 15px; color: rgba(255, 255, 255, 0.7); margin-top: 60px; letter-spacing: 1px;">
@@ -1200,6 +1245,31 @@
 
     <!-- FOOTER -->
     <footer>
+        <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); padding-top: 40px; margin-bottom: 40px;">
+            <h4 style="color: #D4AF37; margin-bottom: 24px; font-size: 18px; font-weight: 800; text-align: center;">Ponte en Contacto</h4>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
+                <a href="https://wa.me/+[YOUR_COUNTRY_CODE][YOUR_NUMBER]?text=Hola,%20quiero%20conocer%20el%20CRM%20Multicanal"
+                   style="color: #D4AF37; text-decoration: none; font-weight: 700; font-size: 14px; padding: 10px 20px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; transition: all 0.3s;"
+                   onmouseover="this.style.borderColor='#D4AF37'; this.style.background='rgba(212, 175, 55, 0.1)';"
+                   onmouseout="this.style.borderColor='rgba(212, 175, 55, 0.3)'; this.style.background='transparent';"
+                   onclick="trackCTAClick('whatsapp_footer')">
+                    WhatsApp
+                </a>
+                <a href="mailto:contact@yourdomain.com"
+                   style="color: #D4AF37; text-decoration: none; font-weight: 700; font-size: 14px; padding: 10px 20px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; transition: all 0.3s;"
+                   onmouseover="this.style.borderColor='#D4AF37'; this.style.background='rgba(212, 175, 55, 0.1)';"
+                   onmouseout="this.style.borderColor='rgba(212, 175, 55, 0.3)'; this.style.background='transparent';">
+                    Email
+                </a>
+                <a href="tel:+[YOUR_COUNTRY_CODE][YOUR_NUMBER]"
+                   style="color: #D4AF37; text-decoration: none; font-weight: 700; font-size: 14px; padding: 10px 20px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; transition: all 0.3s;"
+                   onmouseover="this.style.borderColor='#D4AF37'; this.style.background='rgba(212, 175, 55, 0.1)';"
+                   onmouseout="this.style.borderColor='rgba(212, 175, 55, 0.3)'; this.style.background='transparent';">
+                    Llamar
+                </a>
+            </div>
+            <p style="font-size: 13px; color: #6E6E6E; margin: 0; text-align: center;">Respuesta en menos de 2 horas</p>
+        </div>
         <p><span class="footer-highlight">MIKE CORDOVA (麦克)</span> | Sistemas que hacen crecer negocios</p>
         <p style="color: rgba(255, 255, 255, 0.7); font-size: 14px;">
             Especializado en soluciones digitales de costo cero al inicio, escalables según resultados.
