@@ -489,21 +489,33 @@
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
-        /* FLUJO AUTOMATICO - 2-COLUMN GRID */
+        /* FLUJO AUTOMATICO - CAROUSEL */
         .flow-container {
             margin-top: 60px;
             position: relative;
         }
 
         .flow-cards-wrapper {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding-left: 40px;
+            padding-right: 40px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             margin-bottom: 60px;
             position: relative;
         }
 
+        .flow-cards-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
         .flow-card {
+            width: 400px;
+            height: 400px;
+            min-width: 400px;
             padding: 40px;
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(20, 20, 20, 0.98));
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -520,6 +532,7 @@
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
+            cursor: pointer;
         }
 
         .flow-card:nth-child(1) {
@@ -554,7 +567,15 @@
 
         @media (max-width: 768px) {
             .flow-cards-wrapper {
-                grid-template-columns: 1fr;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .flow-card {
+                width: 320px;
+                height: 320px;
+                min-width: 320px;
+                padding: 24px;
             }
         }
 
@@ -633,28 +654,54 @@
             color: #E5E5E2;
         }
 
-        /* Navigation Controls - HIDDEN */
+        /* Navigation Controls */
         .flow-navigation {
-            display: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-top: 40px;
         }
 
+        .flow-progress {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn {
+            padding: 12px 28px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(212, 175, 55, 0.25);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
 
         @media (max-width: 768px) {
             .flow-card {
-                padding: 32px 24px;
+                padding: 24px;
             }
 
             .card-icon {
                 width: 100px;
                 height: 100px;
-            }
-
-            .card-content h3 {
-                font-size: 24px;
-            }
-
-            .card-content p {
-                font-size: 14px;
             }
 
             .card-content h3 {
@@ -683,8 +730,31 @@
 
         .timeline {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 40px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.2), transparent);
+            transform: translateX(-1px);
+            pointer-events: none;
+        }
+
+        @media (max-width: 968px) {
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                display: none;
+            }
         }
 
         .timeline-item {
@@ -1527,10 +1597,57 @@
             }
         }
 
+        let currentCardIndex = 0;
+        const totalCards = 6;
+        const cardsWrapper = document.querySelector('.flow-cards-wrapper');
+
+        function updateCarouselPosition() {
+            if (!cardsWrapper) return;
+            const cardWidth = 400;
+            const gap = 20;
+            const padding = 40;
+            const scrollPosition = currentCardIndex * (cardWidth + gap);
+            cardsWrapper.scrollLeft = scrollPosition;
+
+            document.getElementById('currentStep').textContent = currentCardIndex + 1;
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            if (prevBtn) prevBtn.disabled = currentCardIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentCardIndex === totalCards - 1;
+        }
+
+        function nextCard() {
+            if (currentCardIndex < totalCards - 1) {
+                currentCardIndex++;
+                updateCarouselPosition();
+            }
+        }
+
+        function previousCard() {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                updateCarouselPosition();
+            }
+        }
+
+        function handleSwipe() {
+            const cards = document.querySelectorAll('.flow-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    if (currentCardIndex < totalCards - 1) {
+                        currentCardIndex++;
+                        updateCarouselPosition();
+                    }
+                });
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             new HeroParticleBackground('hero-canvas');
-            // Flow Card Carousel Navigation - REMOVED
-            // Grid layout now displays all 6 cards simultaneously
+            handleSwipe();
+            updateCarouselPosition();
         });
     </script>
 </head>
@@ -1710,6 +1827,11 @@
                             <p>La conexión está lista. El agente atiende el lead con contexto completo: número de consulta, campaña original, producto específico. Se inicia conversación personalizada y seguimiento directo desde WhatsApp.</p>
                         </div>
                     </div>
+                </div>
+                <div class="flow-navigation">
+                    <button class="nav-btn" id="prevBtn" onclick="previousCard()">← Anterior</button>
+                    <span class="flow-progress"><span id="currentStep">1</span> / 6</span>
+                    <button class="nav-btn" id="nextBtn" onclick="nextCard()">Siguiente →</button>
                 </div>
             </div>
         </div>
