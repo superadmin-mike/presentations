@@ -489,113 +489,197 @@
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
-        /* FLUJO */
-        .flow-diagram {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
+        /* FLUJO AUTOMATICO - CARD CAROUSEL */
+        .flow-container {
             margin-top: 60px;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(26, 26, 26, 0.5));
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .flow-item {
-            flex: 1;
-            min-width: 160px;
-            text-align: center;
-            animation: flowItemEnter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
             position: relative;
-            padding: 20px 10px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .flow-item:hover {
-            transform: translateY(-8px) scale(1.05);
+        .flow-cards-wrapper {
+            position: relative;
+            height: 500px;
+            perspective: 1000px;
+            margin-bottom: 60px;
         }
 
-        .flow-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .flow-item:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .flow-item:nth-child(5) {
-            animation-delay: 0.3s;
-        }
-
-        .flow-item:nth-child(7) {
-            animation-delay: 0.4s;
-        }
-
-        .flow-item:nth-child(9) {
-            animation-delay: 0.5s;
-        }
-
-        .flow-item:nth-child(11) {
-            animation-delay: 0.6s;
-        }
-
-        .flow-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #D4AF37, #A68B29);
-            border-radius: 12px;
+        .flow-card {
+            position: absolute;
+            inset: 0;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(26, 26, 26, 0.95));
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 16px;
+            opacity: 0;
+            visibility: hidden;
+            transform: rotateY(-90deg) translateZ(-50px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 32px;
+            pointer-events: none;
+            will-change: transform, opacity, visibility;
+        }
+
+        .flow-card.active {
+            opacity: 1;
+            visibility: visible;
+            transform: rotateY(0deg) translateZ(0);
+            pointer-events: auto;
+            animation: cardFlipIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .flow-card.exiting {
+            opacity: 0;
+            visibility: hidden;
+            transform: rotateY(90deg) translateZ(-50px);
+        }
+
+        .card-content {
+            text-align: center;
+            max-width: 400px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .card-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #D4AF37, #A68B29);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 48px;
             font-weight: 700;
             color: var(--black);
-            box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3);
-            animation: flowIconGlow 2s ease-in-out infinite;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3);
+            animation: iconFloat 3s ease-in-out infinite;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .flow-item:hover .flow-icon {
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
-            transform: scale(1.1) rotate(5deg);
+        .flow-card.active .card-icon {
+            animation: iconFloatActive 2s ease-in-out infinite;
         }
 
-        .flow-item p {
-            font-size: 14px;
+        .card-content h3 {
+            font-size: 28px;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .flow-card.active .card-content h3 {
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .card-content p {
+            font-size: 16px;
             color: var(--gray);
-            line-height: 1.6;
+            line-height: 1.8;
             margin: 0;
-            transition: color 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-weight: 500;
+            transition: color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .flow-item:hover p {
+        .flow-card.active .card-content p {
             color: #E5E5E2;
         }
 
-        .flow-arrow {
-            font-size: 28px;
+        /* Navigation Controls */
+        .flow-navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 40px;
+            background: rgba(212, 175, 55, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.3);
             color: var(--gold);
-            opacity: 0.3;
-            display: none;
-            animation: arrowPulse 1.5s ease-in-out infinite;
-            transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: transform, box-shadow;
         }
 
-        .flow-diagram:hover .flow-arrow {
-            opacity: 0.7;
+        .nav-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.1));
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
         }
 
-        @media (min-width: 768px) {
-            .flow-arrow {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex: 0 0 40px;
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .progress-indicator {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            min-width: 60px;
+            text-align: center;
+            animation: progressPulse 1s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .flow-cards-wrapper {
+                height: 600px;
+            }
+
+            .flow-card {
+                padding: 40px 24px;
+            }
+
+            .card-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+
+            .card-content h3 {
+                font-size: 22px;
+            }
+
+            .card-content p {
+                font-size: 14px;
+            }
+
+            .flow-navigation {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-btn {
+                width: 100%;
             }
         }
 
@@ -1147,6 +1231,46 @@
             }
         }
 
+        @keyframes cardFlipIn {
+            from {
+                opacity: 0;
+                transform: rotateY(90deg) translateZ(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: rotateY(0deg) translateZ(0);
+            }
+        }
+
+        @keyframes iconFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes iconFloatActive {
+            0%, 100% {
+                transform: translateY(-8px) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.08);
+            }
+        }
+
+        @keyframes progressPulse {
+            0%, 100% {
+                transform: scale(1);
+                letter-spacing: 2px;
+            }
+            50% {
+                transform: scale(1.05);
+                letter-spacing: 2.5px;
+            }
+        }
+
         @keyframes flowIconGlow {
             0%, 100% {
                 box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3), 0 0 0 0 rgba(212, 175, 55, 0.1);
@@ -1402,6 +1526,46 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             new HeroParticleBackground('hero-canvas');
+
+            // Flow Card Carousel Navigation
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const cards = document.querySelectorAll('.flow-card');
+            const currentStepSpan = document.querySelector('.current-step');
+            let currentStep = 1;
+
+            function updateCarousel() {
+                cards.forEach((card) => {
+                    card.classList.remove('active', 'exiting');
+                    if (parseInt(card.dataset.step) === currentStep) {
+                        card.classList.add('active');
+                    }
+                });
+
+                currentStepSpan.textContent = currentStep;
+                prevBtn.disabled = currentStep === 1;
+                nextBtn.disabled = currentStep === cards.length;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    const currentCard = document.querySelector('[data-step="' + currentStep + '"]');
+                    currentCard.classList.add('exiting');
+                    currentStep--;
+                    setTimeout(updateCarousel, 100);
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < cards.length) {
+                    const currentCard = document.querySelector('[data-step="' + currentStep + '"]');
+                    currentCard.classList.add('exiting');
+                    currentStep++;
+                    setTimeout(updateCarousel, 100);
+                }
+            });
+
+            updateCarousel();
         });
     </script>
 </head>
@@ -1497,35 +1661,64 @@
     <section id="flujo">
         <div class="container">
             <h2 class="section-title">Flujo Automático</h2>
-            <div class="flow-diagram">
-                <div class="flow-item">
-                    <div class="flow-icon">1</div>
-                    <p>Usuario ve anuncio en TikTok</p>
+            <div class="flow-container">
+                <div class="flow-cards-wrapper">
+                    <div class="flow-card active" data-step="1">
+                        <div class="card-content">
+                            <div class="step-badge">Paso 1 de 6</div>
+                            <div class="card-icon">1</div>
+                            <h3>Usuario ve anuncio en TikTok</h3>
+                            <p>El usuario descubre tu campaña en el feed de TikTok y se siente atraído por tu contenido visualmente impactante.</p>
+                        </div>
+                    </div>
+                    <div class="flow-card" data-step="2">
+                        <div class="card-content">
+                            <div class="step-badge">Paso 2 de 6</div>
+                            <div class="card-icon">2</div>
+                            <h3>Hace clic y llena formulario</h3>
+                            <p>Interesado, el usuario hace clic en el anuncio y completa el formulario con sus datos de contacto en segundos.</p>
+                        </div>
+                    </div>
+                    <div class="flow-card" data-step="3">
+                        <div class="card-content">
+                            <div class="step-badge">Paso 3 de 6</div>
+                            <div class="card-icon">3</div>
+                            <h3>Datos capturados automáticamente</h3>
+                            <p>El sistema captura automáticamente toda la información y la almacena de forma segura en tu base de datos centralizada.</p>
+                        </div>
+                    </div>
+                    <div class="flow-card" data-step="4">
+                        <div class="card-content">
+                            <div class="step-badge">Paso 4 de 6</div>
+                            <div class="card-icon">4</div>
+                            <h3>Envío instantáneo a WhatsApp</h3>
+                            <p>En milisegundos, el lead recibe un mensaje automático en WhatsApp con la información que solicitó o tu propuesta comercial.</p>
+                        </div>
+                    </div>
+                    <div class="flow-card" data-step="5">
+                        <div class="card-content">
+                            <div class="step-badge">Paso 5 de 6</div>
+                            <div class="card-icon">5</div>
+                            <h3>Seguimiento y cierre</h3>
+                            <p>Los flujos automáticos de seguimiento se activan, con respuestas personalizadas según el comportamiento del usuario.</p>
+                        </div>
+                    </div>
+                    <div class="flow-card" data-step="6">
+                        <div class="card-content">
+                            <div class="step-badge">Paso 6 de 6</div>
+                            <div class="card-icon">6</div>
+                            <h3>Venta completada</h3>
+                            <p>El lead se convierte en cliente. Tu CRM registra la venta, el ROAS se optimiza y el ciclo se repite con los próximos leads.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-item">
-                    <div class="flow-icon">2</div>
-                    <p>Hace clic y llena formulario</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-item">
-                    <div class="flow-icon">3</div>
-                    <p>Datos capturados automáticamente</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-item">
-                    <div class="flow-icon">4</div>
-                    <p>Envío instantáneo a WhatsApp</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-item">
-                    <div class="flow-icon">5</div>
-                    <p>Seguimiento y cierre</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-item">
-                    <div class="flow-icon">6</div>
-                    <p>Venta completada</p>
+
+                <div class="flow-navigation">
+                    <button class="nav-btn prev-btn" id="prevBtn">← Anterior</button>
+                    <div class="progress-indicator">
+                        <span class="current-step">1</span> / <span class="total-steps">6</span>
+                    </div>
+                    <button class="nav-btn next-btn" id="nextBtn">Siguiente →</button>
                 </div>
             </div>
         </div>
