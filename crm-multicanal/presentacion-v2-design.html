@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Multicanal | Mike Cordova · 麦克</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -121,6 +122,35 @@
         .hero {
             padding: 120px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08), transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.05), transparent 50%);
+            pointer-events: none;
+            animation: heroGradientShift 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
         }
 
         .hero h1 {
@@ -715,6 +745,15 @@
             }
         }
 
+        @keyframes heroGradientShift {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.1);
+            }
+        }
+
         @keyframes slideInLeft {
             from {
                 opacity: 0;
@@ -829,6 +868,84 @@
             }
         }
     </style>
+    <script>
+        // Particle Background Effect - GPU Optimized
+        class HeroParticleBackground {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.particleCount = window.innerWidth < 768 ? 30 : 60;
+                this.resize();
+                this.init();
+                this.animate();
+                window.addEventListener('resize', () => this.resize());
+            }
+
+            resize() {
+                this.canvas.width = this.canvas.offsetWidth;
+                this.canvas.height = this.canvas.offsetHeight;
+            }
+
+            init() {
+                this.particles = [];
+                for (let i = 0; i < this.particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        radius: Math.random() * 1.5 + 0.5,
+                        opacity: Math.random() * 0.5 + 0.2,
+                        color: Math.random() > 0.5 ? 'rgba(212, 175, 55' : 'rgba(245, 245, 242'
+                    });
+                }
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.particles.forEach((p, i) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0) p.x = this.canvas.width;
+                    if (p.x > this.canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = this.canvas.height;
+                    if (p.y > this.canvas.height) p.y = 0;
+
+                    this.ctx.fillStyle = p.color + ', ' + p.opacity + ')';
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    this.ctx.fill();
+
+                    for (let j = i + 1; j < this.particles.length; j++) {
+                        const p2 = this.particles[j];
+                        const dx = p2.x - p.x;
+                        const dy = p2.y - p.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 120) {
+                            this.ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.2 * (1 - dist / 120)) + ')';
+                            this.ctx.lineWidth = 0.5;
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(p.x, p.y);
+                            this.ctx.lineTo(p2.x, p2.y);
+                            this.ctx.stroke();
+                        }
+                    }
+                });
+            }
+
+            animate() {
+                this.draw();
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new HeroParticleBackground('hero-canvas');
+        });
+    </script>
 </head>
 <body>
     <!-- HEADER NAVEGACION -->
@@ -857,11 +974,14 @@
 
     <!-- PORTADA HERO -->
     <section class="hero">
-        <div class="container">
-            <h1>CRM WhatsApp API</h1>
-            <p class="hero-subtitle">Para TikTok Ads Performance</p>
-            <p>Integra leads de TikTok Ads directamente en WhatsApp, automatiza conversaciones y optimiza ROAS en tiempo real con un CRM especializado en TikTok Ads.</p>
-            <a href="#servicios" class="cta-button">Conocer Más</a>
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+            <div class="container">
+                <h1>CRM WhatsApp API</h1>
+                <p class="hero-subtitle">Para TikTok Ads Performance</p>
+                <p>Integra leads de TikTok Ads directamente en WhatsApp, automatiza conversaciones y optimiza ROAS en tiempo real con un CRM especializado en TikTok Ads.</p>
+                <a href="#servicios" class="cta-button">Conocer Más</a>
+            </div>
         </div>
     </section>
 
