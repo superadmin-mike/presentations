@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM Multicanal — Proyecto | Mike Cordova · 麦克</title>
+    <title>CRM Multicanal | Mike Cordova · 麦克</title>
     <style>
         * {
             margin: 0;
@@ -19,12 +19,562 @@
             --light-gray: #2A2A2A;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--black);
             color: var(--white);
             line-height: 1.6;
-            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* HEADER NAVEGACION */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 16px 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.2));
+        }
+
+        .logo-text h1 {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin: 0;
+            color: var(--gold);
+        }
+
+        .logo-text p {
+            font-size: 10px;
+            color: var(--gray);
+            margin: 2px 0 0 0;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO PORTADA */
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #F5F5F2 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 32px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 48px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37, #A68B29);
+            color: var(--black);
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 60px rgba(212, 175, 55, 0.4);
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 60px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        /* SOLUCION */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 40px;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .solution-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .solution-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(26, 26, 26, 0.9));
+        }
+
+        .solution-card h3 {
+            font-size: 22px;
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .solution-card p {
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* PROCESO */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 40px;
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            animation: slideInLeft 0.8s ease both;
+        }
+
+        .process-step:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .process-step:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .process-step:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .process-step h3 {
+            color: var(--gold);
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .process-step p {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 48px;
+            font-weight: 700;
+            color: rgba(212, 175, 55, 0.2);
+        }
+
+        /* FLUJO */
+        .flow-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(26, 26, 26, 0.5));
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .flow-item {
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .flow-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .flow-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .flow-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .flow-item:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .flow-item:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .flow-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #D4AF37, #A68B29);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .flow-item p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: var(--gold);
+            opacity: 0.4;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .flow-arrow {
+                display: block;
+            }
+        }
+
+        /* TIEMPOS TIMELINE */
+        .timeline-container {
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            animation: slideInRight 0.8s ease both;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .timeline-week {
+            color: var(--gold);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item h3 {
+            font-size: 20px;
+            color: var(--white);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .timeline-item p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--gold);
+            border: 3px solid var(--black);
+            border-radius: 50%;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* SERVICIOS INCLUIDOS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-item {
+            padding: 40px;
+            background: rgba(212, 175, 55, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .service-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .service-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .service-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .service-item:hover {
+            background: rgba(212, 175, 55, 0.08);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-item h3 {
+            font-size: 18px;
+            color: var(--white);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .service-item p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* CERTIFICACIONES */
+        .certifications {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(26, 26, 26, 0.5));
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .cert-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .cert-badge:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .cert-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .cert-badge:hover .cert-logo {
+            transform: scale(1.1);
+        }
+
+        .cert-text {
+            font-size: 14px;
+            color: var(--white);
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            text-align: center;
+            padding: 100px 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(26, 26, 26, 0.9));
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin: 100px 0;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            color: var(--gold);
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--gray);
+        }
+
+        footer p {
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: var(--gold);
         }
 
         /* ANIMATIONS */
@@ -39,21 +589,10 @@
             }
         }
 
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
         @keyframes slideInLeft {
             from {
                 opacity: 0;
-                transform: translateX(50px);
+                transform: translateX(-40px);
             }
             to {
                 opacity: 1;
@@ -61,981 +600,334 @@
             }
         }
 
-        @keyframes glowPulse {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
             }
-            50% {
-                box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
-        }
-
-        @keyframes floatUp {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes borderFlow {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 60px;
-            width: 100%;
-        }
-
-        /* HEADER */
-        header {
-            padding: 60px 0;
-            text-align: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        header h1 {
-            font-size: 56px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #F5F5F2 0%, #D4AF37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-        }
-
-        .tagline {
-            font-size: 18px;
-            color: var(--gold);
-            font-weight: 500;
-            margin-bottom: 8px;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        .breadcrumb {
-            font-size: 13px;
-            color: var(--gray);
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .breadcrumb a {
-            color: var(--gold);
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .breadcrumb a:hover {
-            opacity: 0.8;
-        }
-
-        /* CERTIFICATIONS */
-        .certifications {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-
-        .cert-badge {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 20px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-
-        .cert-badge:hover {
-            background: rgba(212, 175, 55, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .cert-logo {
-            height: 30px;
-            max-width: 100px;
-            object-fit: contain;
-        }
-
-        .cert-text {
-            font-size: 12px;
-            color: var(--gold);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* MAIN */
-        main {
-            padding: 80px 0;
-        }
-
-        section {
-            margin-bottom: 120px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .section-title {
-            font-size: 48px;
-            color: var(--gold);
-            margin-bottom: 50px;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 20px;
-            text-align: center;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            border-radius: 2px;
-        }
-
-        /* HERO SECTION */
-        .hero-highlight {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            padding: 60px 40px;
-            border-radius: 16px;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-            animation: glowPulse 3s ease-in-out infinite;
-        }
-
-        .hero-highlight::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
-            animation: slideInLeft 3s ease-in-out infinite;
-        }
-
-        .hero-highlight h3 {
-            font-size: 36px;
-            color: var(--gold);
-            margin-bottom: 20px;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-highlight p {
-            font-size: 18px;
-            color: var(--white);
-            position: relative;
-            z-index: 1;
-        }
-
-        /* FEATURES SECTION */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-left: 4px solid var(--gold);
-            padding: 35px;
-            border-radius: 12px;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.8s ease-out backwards;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 0.1s; }
-        .feature-card:nth-child(2) { animation-delay: 0.2s; }
-        .feature-card:nth-child(3) { animation-delay: 0.3s; }
-        .feature-card:nth-child(4) { animation-delay: 0.4s; }
-        .feature-card:nth-child(5) { animation-delay: 0.5s; }
-        .feature-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
-            transition: left 0.6s;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 70px rgba(212, 175, 55, 0.3);
-            border-color: rgba(212, 175, 55, 0.5);
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(26, 26, 26, 0.95));
-        }
-
-        .feature-icon {
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-
-        .feature-card h4 {
-            color: var(--gold);
-            font-size: 18px;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            font-size: 14px;
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        /* FLOW SECTION */
-        .flow-container {
-            position: relative;
-            padding: 40px 0;
-        }
-
-        .flow-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .flow-step {
-            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            position: relative;
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.8s ease-out backwards;
-        }
-
-        .flow-step:nth-child(1) { animation-delay: 0.1s; }
-        .flow-step:nth-child(2) { animation-delay: 0.2s; }
-        .flow-step:nth-child(3) { animation-delay: 0.3s; }
-        .flow-step:nth-child(4) { animation-delay: 0.4s; }
-        .flow-step:nth-child(5) { animation-delay: 0.5s; }
-        .flow-step:nth-child(6) { animation-delay: 0.6s; }
-
-        .flow-step:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25);
-            border-color: rgba(212, 175, 55, 0.5);
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: var(--gold);
-            color: var(--black);
-            border-radius: 50%;
-            line-height: 50px;
-            font-weight: 700;
-            font-size: 24px;
-            margin-bottom: 16px;
-            animation: floatUp 2s ease-in-out infinite;
-        }
-
-        .flow-step:nth-child(2) .step-number { animation-delay: 0.2s; }
-        .flow-step:nth-child(3) .step-number { animation-delay: 0.4s; }
-        .flow-step:nth-child(4) .step-number { animation-delay: 0.6s; }
-        .flow-step:nth-child(5) .step-number { animation-delay: 0.8s; }
-        .flow-step:nth-child(6) .step-number { animation-delay: 1s; }
-
-        .flow-step h4 {
-            color: var(--gold);
-            font-size: 16px;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .flow-step p {
-            font-size: 14px;
-            color: var(--gray);
-        }
-
-        .flow-arrow {
-            text-align: center;
-            color: var(--gold);
-            font-size: 24px;
-            margin: -15px 0;
-            opacity: 0.5;
-        }
-
-        /* ARCHITECTURE SECTION */
-        .architecture-boxes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .architecture-box {
-            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 35px;
-            border-radius: 12px;
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.8s ease-out backwards;
-        }
-
-        .architecture-box:nth-child(1) { animation-delay: 0.1s; }
-        .architecture-box:nth-child(2) { animation-delay: 0.2s; }
-        .architecture-box:nth-child(3) { animation-delay: 0.3s; }
-        .architecture-box:nth-child(4) { animation-delay: 0.4s; }
-        .architecture-box:nth-child(5) { animation-delay: 0.5s; }
-
-        .architecture-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
-            border-color: rgba(212, 175, 55, 0.5);
-        }
-
-        .architecture-box h4 {
-            color: var(--gold);
-            font-size: 16px;
-            margin-bottom: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .stack-list {
-            list-style: none;
-        }
-
-        .stack-list li {
-            padding: 8px 0;
-            font-size: 14px;
-            color: var(--gray);
-            padding-left: 24px;
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        .stack-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        .architecture-box:hover .stack-list li {
-            color: var(--white);
-            padding-left: 32px;
-        }
-
-        /* TIMELINE */
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .timeline-item {
-            padding-left: 60px;
-            margin-bottom: 40px;
-            position: relative;
-            animation: slideInRight 0.8s ease-out backwards;
-        }
-
-        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 25px;
-            height: 25px;
-            background: var(--gold);
-            border-radius: 50%;
-            border: 3px solid var(--black);
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 26px;
-            top: 25px;
-            width: 3px;
-            height: 70px;
-            background: linear-gradient(180deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.1));
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        .timeline-item h4 {
-            color: var(--gold);
-            font-size: 16px;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .week {
-            color: var(--gold);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .timeline-item p {
-            font-size: 14px;
-            color: var(--gray);
-        }
-
-        /* COSTS TABLE */
-        .costs-table-wrapper {
-            overflow-x: auto;
-            margin: 40px 0;
-            border-radius: 12px;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .costs-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: linear-gradient(135deg, var(--light-gray) 0%, var(--black) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .costs-table th {
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--gold);
-            padding: 14px 20px;
-            text-align: left;
-            font-weight: 700;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .costs-table td {
-            padding: 14px 20px;
-            color: var(--gray);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            font-size: 14px;
-        }
-
-        .costs-table td.price {
-            color: var(--white);
-            font-weight: 600;
-            font-size: 15px;
-        }
-
-        .costs-table tr:last-child td {
-            border-bottom: none;
-            background: rgba(212, 175, 55, 0.08);
-            font-weight: 700;
-        }
-
-        .costs-table tr:last-child td.price {
-            color: var(--gold);
-            font-size: 16px;
-        }
-
-        .costs-table tbody tr {
-            transition: all 0.3s;
-        }
-
-        .costs-table tbody tr:hover {
-            background: rgba(212, 175, 55, 0.05);
-        }
-
-        /* CTA */
-        .cta-section {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            padding: 60px 40px;
-            border-radius: 16px;
-            text-align: center;
-            margin-bottom: 40px;
-            animation: glowPulse 3s ease-in-out infinite;
-        }
-
-        .cta-section h3 {
-            font-size: 32px;
-            color: var(--gold);
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .cta-section p {
-            font-size: 16px;
-            margin-bottom: 30px;
-            color: var(--white);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #D4AF37, #A68B29);
-            color: var(--black);
-            padding: 16px 50px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 60px 0;
-            text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-            color: var(--gray);
-            background: linear-gradient(135deg, var(--black) 0%, rgba(30, 127, 126, 0.02) 100%);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        footer p {
-            margin-bottom: 12px;
-            font-size: 14px;
-        }
-
-        footer strong {
-            color: var(--gold);
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .container {
-                padding: 0 30px;
+                padding: 0 24px;
             }
 
-            header {
-                padding: 40px 0;
+            .hero {
+                padding: 80px 0;
             }
 
-            header h1 {
+            .hero h1 {
                 font-size: 40px;
+                margin-bottom: 12px;
+            }
+
+            .hero p {
+                font-size: 16px;
+                margin-bottom: 24px;
             }
 
             .section-title {
                 font-size: 32px;
-            }
-
-            main {
-                padding: 50px 0;
+                margin-bottom: 40px;
             }
 
             section {
-                margin-bottom: 60px;
+                padding: 60px 0;
+            }
+
+            .solution-grid,
+            .process-steps,
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .solution-card,
+            .process-step,
+            .timeline-item {
+                padding: 32px;
+            }
+
+            .flow-diagram {
+                padding: 40px 24px;
+                gap: 16px;
+            }
+
+            .flow-item {
+                min-width: 140px;
             }
 
             .certifications {
-                gap: 15px;
+                gap: 40px;
+                padding: 40px 24px;
             }
 
-            .cert-badge {
-                padding: 10px 15px;
+            .cert-logo {
+                width: 60px;
+                height: 60px;
             }
 
-            .features-grid,
-            .architecture-boxes {
-                grid-template-columns: 1fr;
+            .cta-button {
+                padding: 14px 40px;
+                font-size: 13px;
             }
 
-            .flow-steps {
-                grid-template-columns: 1fr;
+            nav ul {
+                gap: 16px;
             }
 
-            .flow-arrow {
-                transform: rotate(90deg);
-                margin: 5px 0;
-            }
-
-            .costs-table th,
-            .costs-table td {
-                padding: 10px 12px;
+            nav a {
                 font-size: 12px;
             }
 
-            .cta-section {
-                padding: 40px 30px;
+            .logo-img {
+                width: 40px;
+                height: 40px;
             }
 
-            .cta-section h3 {
-                font-size: 24px;
+            .logo-text h1 {
+                font-size: 14px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .cta-section p {
+                font-size: 15px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- HEADER NAVEGACION -->
     <header>
         <div class="container">
-            <h1>CRM MULTICANAL</h1>
-            <p class="tagline">MIKE CORDOVA · 麦克</p>
-            <p class="subtitle">Proyecto de Automatización: TikTok Ads → WhatsApp</p>
-            <nav class="breadcrumb">
-                <a href="/">← Volver a propuestas</a>
-            </nav>
-            
-            <div class="certifications">
-                <div class="cert-badge">
-                    <img src="https://www.gstatic.com/images/branding/product/1x/tiktok_business_lockup_128dp.png" alt="TikTok Business" class="cert-logo">
-                    <span class="cert-text">Certified Partner</span>
-                </div>
-                <div class="cert-badge">
-                    <img src="https://www.meta.com/en/favicon.ico" alt="Meta" class="cert-logo" style="height: 30px; width: 30px;">
-                    <span class="cert-text">Meta Certified</span>
-                </div>
+            <div class="header-content">
+                <a href="#" class="logo-section">
+                    <img src="/crm-multicanal/logo.png" alt="Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Mike Cordova · 麦克</h1>
+                        <p>Sistemas de Alto Impacto</p>
+                    </div>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#solucion">Solucin</a></li>
+                        <li><a href="#proceso">Proceso</a></li>
+                        <li><a href="#flujo">Flujo</a></li>
+                        <li><a href="#tiempos">Tiempos</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
 
-    <main>
+    <!-- PORTADA HERO -->
+    <section class="hero">
         <div class="container">
-            <!-- SOLUCIÓN -->
-            <section>
-                <h2 class="section-title">La Solución</h2>
-                
-                <div class="hero-highlight">
-                    <h3>Automatización Inteligente de Leads</h3>
-                    <p>Sistema que captura leads de TikTok Ads, los valida, los asigna a asesores en tiempo real y los contacta automáticamente por WhatsApp, con seguimiento centralizado y métricas de conversión.</p>
+            <h1>CRM Multicanal</h1>
+            <p class="hero-subtitle">Convierte TikTok Ads en Ventas Automticas</p>
+            <p>Sistema automtico que captura leads de TikTok Ads y los convierte directamente en WhatsApp Personal, con seguimiento y cierre integrado.</p>
+            <a href="#servicios" class="cta-button">Conocer Ms</a>
+        </div>
+    </section>
+
+    <!-- SOLUCION -->
+    <section id="solucion">
+        <div class="container">
+            <h2 class="section-title">La Solucin</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <h3>Captura Automtica</h3>
+                    <p>Los leads de TikTok Ads se capturan automticamente sin intervencin manual, asegurando que ningn cliente potencial se pierda.</p>
                 </div>
-
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h4>Automatización Cero Fricción</h4>
-                        <p>Leads fluyen directamente de TikTok a WhatsApp sin intervención manual.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">💰</div>
-                        <h4>Costo Inicial Bajo</h4>
-                        <p>Implementación única de $925 USD. Stack 100% open source.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h4>Métricas en Tiempo Real</h4>
-                        <p>Dashboard con ROI, tasa de conversión y performance por asesor.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔐</div>
-                        <h4>Datos Propios</h4>
-                        <p>Base de datos centralizada. Tu propiedad, sin depender de terceros.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🚀</div>
-                        <h4>Escalable</h4>
-                        <p>Desde 1 hasta 1M+ leads sin costos exponenciales.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⏱️</div>
-                        <h4>Implementación Rápida</h4>
-                        <p>4 semanas. MVP funcional listo para producción.</p>
-                    </div>
+                <div class="solution-card">
+                    <h3>Entrega Instant en WhatsApp</h3>
+                    <p>Cada lead se enva automticamente a tu WhatsApp Personal en tiempo real, listo para hacer seguimiento inmediato.</p>
                 </div>
-            </section>
-
-            <!-- FLUJO -->
-            <section>
-                <h2 class="section-title">Flujo Automático</h2>
-                
-                <div class="flow-container">
-                    <div class="flow-steps">
-                        <div class="flow-step">
-                            <div class="step-number">1</div>
-                            <h4>Lead Generado</h4>
-                            <p>Usuario hace clic en TikTok Ads y completa formulario.</p>
-                        </div>
-                        <div class="flow-step">
-                            <div class="step-number">2</div>
-                            <h4>Webhook Recibido</h4>
-                            <p>Sistema valida datos automáticamente.</p>
-                        </div>
-                        <div class="flow-step">
-                            <div class="step-number">3</div>
-                            <h4>Base de Datos</h4>
-                            <p>Lead almacenado con timestamp y fuente.</p>
-                        </div>
-                        <div class="flow-step">
-                            <div class="step-number">4</div>
-                            <h4>Asignación Inteligente</h4>
-                            <p>Se asigna a asesor disponible automáticamente.</p>
-                        </div>
-                        <div class="flow-step">
-                            <div class="step-number">5</div>
-                            <h4>Contacto WhatsApp</h4>
-                            <p>Mensaje automático al cliente.</p>
-                        </div>
-                        <div class="flow-step">
-                            <div class="step-number">6</div>
-                            <h4>Seguimiento</h4>
-                            <p>Dashboard registra interacciones y cierre.</p>
-                        </div>
-                    </div>
+                <div class="solution-card">
+                    <h3>Monitoreo y Reportes</h3>
+                    <p>Dashboard integrado con mtricas completas de conversin, ROI y performance de cada campaa de TikTok.</p>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- ARQUITECTURA -->
-            <section>
-                <h2 class="section-title">Arquitectura del Sistema</h2>
-                
-                <div class="architecture-boxes">
-                    <div class="architecture-box">
-                        <h4>Frontend</h4>
-                        <ul class="stack-list">
-                            <li>Dashboard para asesores</li>
-                            <li>UI responsiva y moderna</li>
-                            <li>Deploy automático</li>
-                        </ul>
-                    </div>
-
-                    <div class="architecture-box">
-                        <h4>Backend</h4>
-                        <ul class="stack-list">
-                            <li>API centralizada</li>
-                            <li>Webhooks de TikTok</li>
-                            <li>Validación y seguridad</li>
-                        </ul>
-                    </div>
-
-                    <div class="architecture-box">
-                        <h4>Base de Datos</h4>
-                        <ul class="stack-list">
-                            <li>PostgreSQL centralizada</li>
-                            <li>Seguridad RLS</li>
-                            <li>Backups automáticos</li>
-                        </ul>
-                    </div>
-
-                    <div class="architecture-box">
-                        <h4>Integración WhatsApp</h4>
-                        <ul class="stack-list">
-                            <li>Mensajes automáticos</li>
-                            <li>Manejo de sesiones</li>
-                            <li>Rate limiting</li>
-                        </ul>
-                    </div>
-
-                    <div class="architecture-box">
-                        <h4>Monitoreo</h4>
-                        <ul class="stack-list">
-                            <li>Error tracking</li>
-                            <li>Health checks</li>
-                            <li>Analytics</li>
-                        </ul>
-                    </div>
+    <!-- PROCESO -->
+    <section id="proceso">
+        <div class="container">
+            <h2 class="section-title">Cmo Funciona</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Configuracin Inicial</h3>
+                    <p>Conectamos tu cuenta de TikTok Ads con el sistema, estableciendo webhooks y autorizaciones necesarias.</p>
                 </div>
-            </section>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Validacin de Seguridad</h3>
+                    <p>Implementamos proteccin HMAC-SHA256 y validacin de cada evento para garantizar integridad de datos.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Integraciones Activas</h3>
+                    <p>Conectamos WhatsApp API y sistemas de respuesta automtica para entregar leads en tiempo real.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Monitoreo Continuo</h3>
+                    <p>Dashboard en vivo mostrando cada lead, conversin y mtrica clave para optimizar tu campaa permanentemente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- TIMELINE -->
-            <section>
-                <h2 class="section-title">Plan de 4 Semanas</h2>
+    <!-- FLUJO -->
+    <section id="flujo">
+        <div class="container">
+            <h2 class="section-title">Flujo Automtico</h2>
+            <div class="flow-diagram">
+                <div class="flow-item">
+                    <div class="flow-icon">1</div>
+                    <p>Usuario ve anuncio en TikTok</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">2</div>
+                    <p>Hace clic y llena formulario</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">3</div>
+                    <p>Datos capturados automticamente</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">4</div>
+                    <p>Envo instantneo a WhatsApp</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">5</div>
+                    <p>Seguimiento y cierre</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-item">
+                    <div class="flow-icon">6</div>
+                    <p>Venta completada</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- TIEMPOS -->
+    <section id="tiempos">
+        <div class="container">
+            <h2 class="section-title">Plan de Implementacin</h2>
+            <div class="timeline-container">
                 <div class="timeline">
                     <div class="timeline-item">
-                        <div class="week">Semana 1: Especificación & Setup</div>
-                        <h4>Base lista para empezar</h4>
-                        <p>Database creada, credenciales verificadas, repositorio inicializado. Equipo de desarrollo onboarded y listo.</p>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-week">Semana 1</div>
+                        <h3>Especificacin y Setup</h3>
+                        <p>Configuracin inicial, creacin de base de datos, revisin de requisitos tcnicos y autorizaciones.</p>
                     </div>
-
                     <div class="timeline-item">
-                        <div class="week">Semana 2: Backend & API</div>
-                        <h4>Sistema de recepción funcional</h4>
-                        <p>Webhook receptor implementado, validación activa, almacenamiento en base de datos, asignación de asesores lista.</p>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-week">Semana 2</div>
+                        <h3>Backend y Webhooks</h3>
+                        <p>Desarrollo de API, conexin con TikTok Ads, implementacin de validaciones de seguridad.</p>
                     </div>
-
                     <div class="timeline-item">
-                        <div class="week">Semana 3: Integraciones & Dashboard</div>
-                        <h4>WhatsApp + Interfaz de asesores</h4>
-                        <p>Sistema de mensajes funcionando, dashboard MVP para gestionar leads, ver historial, responder clientes.</p>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-week">Semana 3</div>
+                        <h3>Integraciones Completas</h3>
+                        <p>Conexin de WhatsApp API, pruebas end-to-end, ajustes de automatizacin y respuestas.</p>
                     </div>
-
                     <div class="timeline-item">
-                        <div class="week">Semana 4: Testing & Producción</div>
-                        <h4>MVP en vivo</h4>
-                        <p>Testing E2E completo, documentación finales, capacitación de equipo, deploy en producción, monitoreo activo.</p>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-week">Semana 4</div>
+                        <h3>Testing y Produccin</h3>
+                        <p>Pruebas exhaustivas, documentacin completa, training de equipo, lanzamiento a produccin.</p>
                     </div>
                 </div>
-            </section>
-
-            <!-- COSTOS -->
-            <section>
-                <h2 class="section-title">Análisis de Costos</h2>
-
-                <h3 style="font-size: 20px; color: var(--white); margin: 30px 0 20px 0; font-weight: 600;">Implementación Inicial</h3>
-                <div class="costs-table-wrapper">
-                    <table class="costs-table">
-                        <thead>
-                            <tr>
-                                <th>Concepto</th>
-                                <th>Horas</th>
-                                <th>Tarifa</th>
-                                <th class="price">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Especificación & Setup</td>
-                                <td>8</td>
-                                <td>$25/hr</td>
-                                <td class="price">$200</td>
-                            </tr>
-                            <tr>
-                                <td>Backend API & Webhooks</td>
-                                <td>15</td>
-                                <td>$25/hr</td>
-                                <td class="price">$375</td>
-                            </tr>
-                            <tr>
-                                <td>Integración WhatsApp</td>
-                                <td>8</td>
-                                <td>$25/hr</td>
-                                <td class="price">$200</td>
-                            </tr>
-                            <tr>
-                                <td>Dashboard & Testing</td>
-                                <td>7</td>
-                                <td>$25/hr</td>
-                                <td class="price">$175</td>
-                            </tr>
-                            <tr>
-                                <td>Documentación & Training</td>
-                                <td>2</td>
-                                <td>$25/hr</td>
-                                <td class="price">$50</td>
-                            </tr>
-                            <tr style="background: rgba(212, 175, 55, 0.08); font-weight: 700;">
-                                <td colspan="3" style="text-align: right; padding-right: 20px;">TOTAL:</td>
-                                <td class="price">$1,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 style="font-size: 20px; color: var(--white); margin: 30px 0 20px 0; font-weight: 600;">Operación Mensual (Después)</h3>
-                <div class="costs-table-wrapper">
-                    <table class="costs-table">
-                        <thead>
-                            <tr>
-                                <th>Servicio</th>
-                                <th>Tier</th>
-                                <th class="price">Costo/mes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Base de datos</td>
-                                <td>Free (< 500K filas)</td>
-                                <td class="price">$0</td>
-                            </tr>
-                            <tr>
-                                <td>Backend hosting</td>
-                                <td>Free (con sleeptime)</td>
-                                <td class="price">$0</td>
-                            </tr>
-                            <tr>
-                                <td>Frontend hosting</td>
-                                <td>Hobby (< 100GB bw)</td>
-                                <td class="price">$0</td>
-                            </tr>
-                            <tr>
-                                <td>WhatsApp integration</td>
-                                <td>Open source</td>
-                                <td class="price">$0</td>
-                            </tr>
-                            <tr>
-                                <td>Error tracking</td>
-                                <td>Starter</td>
-                                <td class="price">$0-10</td>
-                            </tr>
-                            <tr style="background: rgba(212, 175, 55, 0.08); font-weight: 700;">
-                                <td colspan="2" style="text-align: right; padding-right: 20px;">TOTAL MES 1-3:</td>
-                                <td class="price">$0-10</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="hero-highlight" style="margin-top: 40px;">
-                    <h3>ROI Proyectado</h3>
-                    <p><strong>Inversión Año 1:</strong> $1,000 (setup) + $300 (operación) = $1,300 USD</p>
-                    <p style="margin-top: 10px;"><strong>Comparación:</strong> CRM tradicional cuesta $100-500/mes = $1,200-6,000/año solo en software</p>
-                    <p style="margin-top: 10px;"><strong>Si mejoras conversión solo 5%:</strong> ROI > 500% en mes 2</p>
-                </div>
-            </section>
-
-            <!-- CTA -->
-            <section>
-                <div class="cta-section">
-                    <h3>Proyecto Listo para Implementar</h3>
-                    <p>Especificación completa, timeline realista, costos predecibles. Puedes empezar esta semana.</p>
-                    <a href="mailto:contact@mikecordova.com" class="cta-button">Iniciar Proyecto</a>
-                </div>
-            </section>
+            </div>
         </div>
-    </main>
+    </section>
 
+    <!-- SERVICIOS INCLUIDOS -->
+    <section id="servicios">
+        <div class="container">
+            <h2 class="section-title">Qu est Incluido</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">A</div>
+                    <h3>Arquitectura Personalizada</h3>
+                    <p>Sistema diseado especficamente para tu flujo de negocio, escalable y mantenible a largo plazo.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">B</div>
+                    <h3>Integraciones Completas</h3>
+                    <p>Conexin total con TikTok Ads, WhatsApp API, base de datos y sistemas de monitoreo en tiempo real.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">C</div>
+                    <h3>Dashboard de Control</h3>
+                    <p>Panel administrativo con mtricas en vivo, reporte de leads, conversiones y ROI de cada campaa.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">D</div>
+                    <h3>Documentacin y Training</h3>
+                    <p>Documentacin tcnica completa, guias de uso y sesiones de capacitacin para tu equipo.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">E</div>
+                    <h3>Seguridad Enterprise</h3>
+                    <p>Validacin de webhooks, encriptacin de datos, Row Level Security y cumplimiento de estndares.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">F</div>
+                    <h3>Soporte Tcnico</h3>
+                    <p>Soporte prioritario durante la implementacin y sesiones de optimizacin post-lanzamiento.</p>
+                </div>
+            </div>
+
+            <!-- CERTIFICACIONES -->
+            <div class="certifications">
+                <div class="cert-badge">
+                    <img src="https://www.gstatic.com/images/branding/product/1x/tiktok_business_lockup_128dp.png" alt="TikTok Business Certified" class="cert-logo">
+                    <span class="cert-text">TikTok Business Certified Partner</span>
+                </div>
+                <div class="cert-badge">
+                    <img src="https://www.meta.com/en/favicon.ico" alt="Meta Certified Partner" class="cert-logo" style="width: 80px; height: 80px;">
+                    <span class="cert-text">Meta Certified Professional</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <div class="container">
+        <div class="cta-section">
+            <h2>Listo para Implementar?</h2>
+            <p>Contacta directamente para una consulta personalizada. Analicemos tu negocio y diseemos la solucin perfecta para ti.</p>
+            <a href="https://wa.me/+1234567890" class="cta-button">Contactar va WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <p><strong>Mike Cordova · 麦克</strong></p>
             <p>Especialista en sistemas de bajo costo y alto impacto para negocios LATAM</p>
-            <p style="margin-top: 20px; opacity: 0.6;">© 2026 Mike Cordova. Todos los derechos reservados.</p>
+            <p style="margin-top: 20px; opacity: 0.6;">2026 Mike Cordova. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>
