@@ -146,8 +146,12 @@
             width: 100%;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION - FULL VIEWPORT */
         .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 120px 0;
             position: relative;
             overflow: hidden;
@@ -160,9 +164,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(79, 70, 229, 0.15), transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(16, 185, 129, 0.08), transparent 50%);
-            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.2), transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(79, 70, 229, 0.12), transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08), transparent 70%);
+            z-index: 0;
             will-change: transform;
         }
 
@@ -173,9 +178,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            opacity: 0.5;
-            z-index: -1;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.02)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            z-index: 0;
             will-change: transform;
         }
 
@@ -183,6 +188,8 @@
             position: relative;
             z-index: 1;
             animation: fadeInUp 0.8s ease both;
+            text-align: center;
+            max-width: 900px;
         }
 
         .hero-subtitle {
@@ -190,27 +197,69 @@
             color: var(--accent-teal);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             font-weight: 600;
         }
 
         .hero h1 {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(44px, 8vw, 72px);
+            font-size: clamp(52px, 10vw, 92px);
             font-weight: 800;
-            color: var(--white);
-            margin-bottom: 24px;
-            line-height: 1.2;
-            letter-spacing: -1px;
+            background: linear-gradient(135deg, #F8F9FA 0%, #D4AF37 50%, #A68B29 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 32px;
+            line-height: 1.1;
+            letter-spacing: -2px;
         }
 
         .hero p {
             font-size: 18px;
             color: var(--gray-light);
-            max-width: 600px;
-            margin-bottom: 40px;
+            max-width: 700px;
+            margin: 0 auto 60px;
             font-weight: 300;
             line-height: 1.8;
+        }
+
+        /* Hero Stats */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .stat {
+            text-align: center;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .stat:nth-child(1) { animation-delay: 0.4s; }
+        .stat:nth-child(2) { animation-delay: 0.5s; }
+        .stat:nth-child(3) { animation-delay: 0.6s; }
+
+        .stat h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #D4AF37, #A68B29);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat p {
+            font-size: 14px;
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .cta-button {
@@ -246,9 +295,25 @@
             font-weight: 800;
             color: var(--white);
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
             letter-spacing: -0.5px;
             animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #D4AF37, #A68B29);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-light);
+            font-size: 16px;
+            margin-bottom: 60px;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease 0.25s both;
         }
 
         /* SOLUTION CARDS */
@@ -260,9 +325,9 @@
 
         .solution-card {
             padding: 48px 40px;
-            background: linear-gradient(135deg, rgba(37, 45, 70, 0.5), rgba(26, 31, 53, 0.5));
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-left: 5px solid var(--accent-teal);
+            background: linear-gradient(135deg, rgba(37, 45, 70, 0.4), rgba(26, 31, 53, 0.4));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-left: 5px solid var(--gold);
             border-radius: 12px;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
@@ -291,9 +356,9 @@
         }
 
         .solution-card:hover {
-            background: linear-gradient(135deg, rgba(37, 45, 70, 0.8), rgba(26, 31, 53, 0.8));
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.15);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(79, 70, 229, 0.06));
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
             transform: translateY(-8px);
         }
 
@@ -319,8 +384,8 @@
 
         .process-step {
             padding: 40px 32px;
-            background: linear-gradient(135deg, var(--surface-light), var(--surface));
-            border: 1px solid rgba(79, 70, 229, 0.2);
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(16, 185, 129, 0.04));
+            border: 1px solid rgba(212, 175, 55, 0.15);
             border-radius: 12px;
             position: relative;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -333,9 +398,9 @@
         .process-step:nth-child(4) { animation-delay: 0.75s; }
 
         .process-step:hover {
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(16, 185, 129, 0.05));
-            border-color: rgba(79, 70, 229, 0.4);
-            box-shadow: 0 15px 40px rgba(79, 70, 229, 0.2);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(79, 70, 229, 0.08));
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
             transform: translateY(-6px);
         }
 
@@ -345,8 +410,8 @@
             justify-content: center;
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
-            color: var(--white);
+            background: linear-gradient(135deg, var(--gold), #A68B29);
+            color: var(--dark);
             border-radius: 50%;
             font-weight: 700;
             font-size: 20px;
@@ -373,7 +438,7 @@
 
         /* FLUJO */
         #flujo {
-            background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.08), transparent 70%);
+            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08), transparent 70%);
         }
 
         .flow-items {
@@ -385,8 +450,8 @@
         }
 
         .flow-item {
-            background: linear-gradient(135deg, rgba(37, 45, 70, 0.6), rgba(26, 31, 53, 0.6));
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(79, 70, 229, 0.06));
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 8px;
             padding: 24px 20px;
             text-align: center;
@@ -400,98 +465,92 @@
         .flow-item:nth-child(4) { animation-delay: 0.65s; }
         .flow-item:nth-child(5) { animation-delay: 0.8s; }
 
-        .flow-item:hover {
-            background: linear-gradient(135deg, rgba(37, 45, 70, 0.9), rgba(26, 31, 53, 0.9));
-            border-color: var(--accent-teal);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
-            transform: translateY(-4px);
-        }
-
         .flow-item h4 {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--gold);
+            margin-bottom: 6px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .flow-item p {
             font-size: 12px;
             color: var(--gray-light);
-            margin-top: 8px;
         }
 
         .flow-arrow {
+            color: var(--gold);
             font-size: 24px;
-            color: var(--accent-teal);
             font-weight: 700;
-            animation: fadeInUp 0.6s ease 0.4s both;
         }
 
-        /* TIEMPOS SECTION */
+        /* TIMELINE */
         .timeline {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
         }
 
         .timeline-item {
-            background: linear-gradient(135deg, var(--surface-light), var(--surface));
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-top: 3px solid var(--gold);
             padding: 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(79, 70, 229, 0.06));
+            border: 1px solid rgba(212, 175, 55, 0.15);
             border-radius: 12px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             animation: fadeInUp 0.6s ease both;
         }
 
-        .timeline-item:nth-child(1) { animation-delay: 0.3s; }
-        .timeline-item:nth-child(2) { animation-delay: 0.45s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.35s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.5s; }
 
         .timeline-item:hover {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-            transform: translateY(-8px);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(79, 70, 229, 0.1));
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+            transform: translateY(-4px);
         }
 
         .timeline-item h3 {
-            font-size: 28px;
-            color: var(--gold);
-            margin-bottom: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(36px, 5vw, 48px);
             font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 12px;
         }
 
         .timeline-item .label {
-            font-size: 13px;
-            color: var(--gray-light);
+            font-size: 14px;
+            color: var(--white);
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 600;
+            margin-bottom: 16px;
         }
 
         .timeline-item p {
             font-size: 14px;
             color: var(--gray-light);
-            margin-top: 16px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         /* SERVICIOS */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
+            gap: 28px;
+            margin-bottom: 60px;
         }
 
         .service-item {
-            background: linear-gradient(135deg, rgba(37, 45, 70, 0.5), rgba(26, 31, 53, 0.5));
+            padding: 36px 32px;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(16, 185, 129, 0.04));
             border: 1px solid rgba(212, 175, 55, 0.15);
-            border-left: 5px solid var(--accent-blue);
-            padding: 40px;
+            border-left: 4px solid var(--gold);
             border-radius: 12px;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
             animation: fadeInUp 0.6s ease both;
         }
 
@@ -503,15 +562,16 @@
         .service-item:nth-child(6) { animation-delay: 0.95s; }
 
         .service-item:hover {
-            background: linear-gradient(135deg, rgba(37, 45, 70, 0.8), rgba(26, 31, 53, 0.8));
-            border-left-color: var(--accent-teal);
-            box-shadow: 0 20px 50px rgba(79, 70, 229, 0.15);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(79, 70, 229, 0.08));
+            border-left-color: var(--gold);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
             transform: translateY(-6px);
         }
 
         .service-item h3 {
             font-size: 18px;
-            color: var(--white);
+            color: var(--gold);
             margin-bottom: 12px;
             font-weight: 700;
         }
@@ -525,6 +585,9 @@
         /* CERTIFICACIONES */
         .certifications {
             text-align: center;
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
         }
 
         .cert-title {
@@ -568,34 +631,57 @@
             transform: scale(1.15);
         }
 
-        /* Final CTA */
-        .final-cta {
+        /* KEY TAKEAWAYS - Presentation Summary */
+        .key-takeaways {
             margin-top: 80px;
-            padding: 80px 60px;
-            background: radial-gradient(circle at 30% 50%, rgba(79, 70, 229, 0.15), transparent 70%),
-                        radial-gradient(circle at 70% 50%, rgba(16, 185, 129, 0.1), transparent 70%);
+            padding: 60px;
+            background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.12), transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(79, 70, 229, 0.08), transparent 50%);
             border-radius: 16px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             text-align: center;
             animation: fadeInUp 0.8s ease 0.3s both;
         }
 
-        .final-cta h2 {
+        .key-takeaways h2 {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: clamp(28px, 5vw, 44px);
             font-weight: 800;
             color: var(--white);
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
 
-        .final-cta p {
+        .key-takeaways h2 span {
+            color: var(--gold);
+        }
+
+        .takeaway-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .takeaway-point {
+            padding: 24px;
+        }
+
+        .takeaway-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .takeaway-point h3 {
             font-size: 16px;
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .takeaway-point p {
+            font-size: 13px;
             color: var(--gray-light);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
+            line-height: 1.6;
         }
 
         /* FOOTER */
@@ -674,6 +760,17 @@
                 padding: 80px 0;
             }
 
+            .hero h1 {
+                margin-bottom: 20px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-top: 40px;
+                padding-top: 40px;
+            }
+
             section {
                 padding: 80px 0;
             }
@@ -687,11 +784,11 @@
             }
 
             .service-item {
-                padding: 32px 24px;
+                padding: 28px 24px;
             }
 
-            .final-cta {
-                padding: 48px 32px;
+            .key-takeaways {
+                padding: 40px 24px;
             }
 
             footer {
@@ -729,7 +826,7 @@
     </header>
 
     <main>
-        <!-- PORTADA -->
+        <!-- PORTADA - FULL VIEWPORT HERO -->
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
@@ -737,6 +834,21 @@
                     <h1>CRM Multicanal Inteligente</h1>
                     <p>Automatiza la gestión de clientes, aumenta retención y optimiza ROI con inteligencia artificial y datos en tiempo real.</p>
                     <a href="#servicios" class="cta-button">Explorar Solución</a>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3>2-3</h3>
+                            <p>Semanas Implementación</p>
+                        </div>
+                        <div class="stat">
+                            <h3>0$</h3>
+                            <p>Costo Inicial</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24h</h3>
+                            <p>Setup Completo</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -744,7 +856,8 @@
         <!-- SOLUCION -->
         <section id="solucion">
             <div class="container">
-                <h2 class="section-title">La Solución</h2>
+                <h2 class="section-title">La <span>Solución</span></h2>
+                <p class="section-subtitle">Tres pilares de transformación digital</p>
                 <div class="solution-grid">
                     <div class="solution-card">
                         <h3>Unificación de Canales</h3>
@@ -765,7 +878,8 @@
         <!-- PROCESO -->
         <section id="proceso">
             <div class="container">
-                <h2 class="section-title">Nuestro Proceso</h2>
+                <h2 class="section-title">Nuestro <span>Proceso</span></h2>
+                <p class="section-subtitle">Implementación estructurada en 4 fases</p>
                 <div class="process-steps">
                     <div class="process-step">
                         <span class="step-number">1</span>
@@ -794,7 +908,8 @@
         <!-- FLUJO -->
         <section id="flujo">
             <div class="container">
-                <h2 class="section-title">Flujo de Datos</h2>
+                <h2 class="section-title">Flujo de <span>Datos</span></h2>
+                <p class="section-subtitle">De lead capture hasta conversión</p>
                 <div class="flow-items">
                     <div class="flow-item">
                         <h4>Lead Capture</h4>
@@ -827,7 +942,8 @@
         <!-- TIEMPOS -->
         <section id="tiempos">
             <div class="container">
-                <h2 class="section-title">Timeline de Implementación</h2>
+                <h2 class="section-title">Timeline de <span>Implementación</span></h2>
+                <p class="section-subtitle">Entrega rápida y resultados medibles</p>
                 <div class="timeline">
                     <div class="timeline-item">
                         <h3>2-3</h3>
@@ -851,7 +967,8 @@
         <!-- SERVICIOS -->
         <section id="servicios">
             <div class="container">
-                <h2 class="section-title">Servicios Incluidos</h2>
+                <h2 class="section-title">Servicios <span>Incluidos</span></h2>
+                <p class="section-subtitle">Paquete completo de implementación</p>
                 <div class="services-grid">
                     <div class="service-item">
                         <h3>Consultoría</h3>
@@ -897,13 +1014,29 @@
             </div>
         </section>
 
-        <!-- FINAL CTA -->
+        <!-- KEY TAKEAWAYS - PRESENTATION SUMMARY -->
         <section>
             <div class="container">
-                <div class="final-cta">
-                    <h2>Listo para transformar tu estrategia de ventas?</h2>
-                    <p>Implementamos soluciones CRM completas que generan resultados predecibles. Costo cero inicial, ROI garantizado.</p>
-                    <a href="#servicios" class="cta-button">Comenzar Ahora</a>
+                <div class="key-takeaways">
+                    <h2>Lo Más <span>Importante</span></h2>
+                    <p style="color: var(--gray-light); font-size: 16px; margin-bottom: 32px;">Transforma tu estrategia de ventas con automatización inteligente y datos en tiempo real</p>
+                    <div class="takeaway-points">
+                        <div class="takeaway-point">
+                            <div class="takeaway-icon">1</div>
+                            <h3>Implementación Rápida</h3>
+                            <p>2-3 semanas desde diagrama hasta operacional, sin interrupciones en tu negocio.</p>
+                        </div>
+                        <div class="takeaway-point">
+                            <div class="takeaway-icon">2</div>
+                            <h3>Cero Inversión Inicial</h3>
+                            <p>Modelo de implementación con costo inicial nulo, pagos por resultados reales.</p>
+                        </div>
+                        <div class="takeaway-point">
+                            <div class="takeaway-icon">3</div>
+                            <h3>ROI Predecible</h3>
+                            <p>Visibilidad total de métricas, control absoluto de presupuesto y rentabilidad por canal.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -945,7 +1078,7 @@
         }, observerOptions);
 
         // Observar elementos animados
-        document.querySelectorAll('.solution-card, .process-step, .service-item, .timeline-item, .flow-item, .cert-badge').forEach(el => {
+        document.querySelectorAll('.solution-card, .process-step, .service-item, .timeline-item, .flow-item, .cert-badge, .stat, .takeaway-point').forEach(el => {
             observer.observe(el);
         });
     </script>
