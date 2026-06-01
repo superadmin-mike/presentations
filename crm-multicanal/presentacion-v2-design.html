@@ -1605,11 +1605,18 @@
         const totalCards = 6;
         const cardsWrapper = document.querySelector('.flow-cards-wrapper');
 
+        function getCardDimensions() {
+            const isMobile = window.innerWidth <= 768;
+            return {
+                cardWidth: isMobile ? 320 : 400,
+                peekWidth: 60
+            };
+        }
+
         function updateCarouselPosition() {
             if (!cardsWrapper) return;
-            const cardWidth = 400;
+            const { cardWidth, peekWidth } = getCardDimensions();
             const gap = 20;
-            const peekWidth = 60; // Peek of previous card
             const scrollPosition = Math.max(0, currentCardIndex * (cardWidth + gap) - peekWidth);
             cardsWrapper.scrollLeft = scrollPosition;
 
@@ -1651,6 +1658,10 @@
         document.addEventListener('DOMContentLoaded', () => {
             new HeroParticleBackground('hero-canvas');
             handleSwipe();
+            updateCarouselPosition();
+        });
+
+        window.addEventListener('resize', () => {
             updateCarouselPosition();
         });
     </script>
